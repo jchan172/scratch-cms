@@ -64,6 +64,8 @@ Now install heroku toolbelt:
 
 ###Configuration
 
+Git clone our project.
+
 Now check that everything for our project works. Go to the directory where the project is and then run:
 
 	bundle install
@@ -125,17 +127,17 @@ Remember to set name and email so that it shows up in commits
 
 
 ###Git Tools
-git-cola is a nice all-in-one tool.
+git-cola and git-gui are nice all-in-one tools.
 
-	sudo apt-get install git-cola
+	sudo apt-get install git-cola git-gui
+
+To start git-cola, run 'git-cola' in terminal. To start git-gui, run 'git gui' in terminal.
 
 gitg is nice for examining history.
 
 	sudo apt-get install gitg
 
-All you have to do is run either of these tools inside the project directory, and a nice GUI will pop up.
-
-I'll be using git-cola to commit, push, and doing any branch stuff, and I'll use gitg for visualizing history.
+To start gitg, run 'gitg' in terminal.
 
 
 Reference
