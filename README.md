@@ -17,7 +17,7 @@ Once Ubuntu is set up, here are a few things that you'll need to do in order for
 Open terminal, go to edit -> profile preferences -> Title and Command tab -> check the "Run command as a login shell" box.
 
 	# installs bunch of packages that are needed later
-	sudo apt-get install zlib1g-dev curl sqlite3 libsqlite3-dev nodejs openssl 
+	sudo apt-get install zlib1g-dev curl sqlite3 libsqlite3-dev nodejs openssl postgresql libpq-dev
 	
 	# install RVM with Ruby
 	\curl -L https://get.rvm.io | bash -s stable --ruby 
@@ -62,17 +62,30 @@ Now install heroku toolbelt:
 	wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh 
 
 ###Post Setup
-Check that rails has no problems by making it create a new rails app:
 
-	rails new abcdefg
+Now check that everything for our project works. Go to the directory where the project is and then run:
 
-This should create a folder abcdefg with bunch of files inside. If this ran sucessfully, rails has no problems. You can now use rm -r to delete that folder.
+	bundle install
 
-Now check that everything for our project works. Go to the directory where the # project is and then run:
+Setup Postgresql
 
-	bundle install --without production 
+	sudo -u postgres createuser <your shell username>
+	# Shall the NEW ROLE be a superuser? (y/n) n
+	# Shall the NEW ROLE be allowed TO CREATE DATABASES? (y/n) y
+	# Shall the NEW ROLE be allowed TO CREATE more NEW roles? (y/n) n
 
-The line above will install project's dependencies without the postrgesql package that's used only on heroku's end (causes local problems if using something besides PostgreSQL on development database)
+Go into the config/database.yml and change these lines. You can delete the password field.
+	# config/database.yml
+	development:
+	  adapter: postgresql
+	  encoding: unicode
+	  database: website_base_development
+	  pool: 5
+	  username: <your shell username>
+
+Go to the top of the project directory and create a database:
+
+	rake db:create
 
 Try to start a localhost server
 

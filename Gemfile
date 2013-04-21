@@ -4,10 +4,11 @@ gem 'rails', '3.2.13'
 gem 'jquery-rails', '2.0.2' # incorporate jquery
 gem 'bootstrap-sass', '2.1' # twitter bootstrap for frontend
 gem 'bcrypt-ruby', '3.0.1' # gem for password authentication (enables us to use ActiveModel has_secure_password method)
+gem 'pg' # use postgresql for development and production
 
 # these gems used both in development and testing
 group :development, :test do
-	gem 'pg', '0.12.2' # use postgresql for our development database
+	# gem 'sqlite3', '1.3.5' # use sqlite for our development database
 	gem 'rspec-rails', '2.11.0' # use rspec as our testing platform
 end
 
@@ -27,10 +28,10 @@ group :assets do
   gem 'uglifier', '1.2.3' # used for minifying javascript
 end
 
-# use these gems on heroku
-group :production do
-  gem 'pg', '0.12.2' # postgresql gem
-end
+# # use these gems on heroku
+# group :production do
+#   gem 'pg', '0.12.2' # postgresql gem
+# end
 
 
 
