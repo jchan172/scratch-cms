@@ -30,13 +30,13 @@ May need to remove ruby 1.9.3 and reinstall b/c of openssl. if so, run the two l
 	# install & compile w/ openssl
 	rvm install 1.9.3 --with-openssl-dir=$HOME/.rvm/usr
 	
-Use Ruby 1.9.3 (run this just in case you're running another version)
+Use Ruby 1.9.3 (run this just in case you're running another version) 
 
-	rvm use 1.9.3 --default
+	`rvm use 1.9.3 --default`
 
 Check Ruby version to see that you're using 1.9.3
 
-	ruby -v
+	`ruby -v`
 	
 Check gem version
 
