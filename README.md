@@ -102,3 +102,22 @@ Click on the "Add SSH key" and paste the contents from ~/.ssh/id_rsa.pub
 Test to see if this works by running this:
 
 	ssh -T git@github.com
+
+Remember to set name and email so that it shows up in commits
+
+	git config --global user.name "Your Name"
+	git config --global user.email your@email.com
+
+
+###Git Tools
+git-cola is a nice all-in-one tool.
+
+	sudo apt-get install git-cola
+
+gitg is nice for examining history.
+
+	sudo apt-get install gitg
+
+All you have to do is run either of these tools inside the project directory, and a nice GUI will pop up.
+
+I'll be using git-cola to commit, push, and doing any branch stuff, and I'll use gitg for visualizing history.
