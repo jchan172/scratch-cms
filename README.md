@@ -61,7 +61,7 @@ Now install heroku toolbelt:
 
 	wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh 
 
-###Post Setup
+###Configuration
 
 Now check that everything for our project works. Go to the directory where the project is and then run:
 
