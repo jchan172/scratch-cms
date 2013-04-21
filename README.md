@@ -13,13 +13,20 @@ Once Ubuntu is set up, here are a few things that you'll need to do in order for
 
 Open terminal, go to edit -> profile preferences -> Title and Command tab -> check the "Run command as a login shell" box.
 
-	sudo apt-get install zlib1g-dev curl sqlite3 libsqlite3-dev nodejs openssl # installs bunch of packages that are needed later
-	\curl -L https://get.rvm.io | bash -s stable --ruby # install rvm with ruby
+	# installs bunch of packages that are needed later
+	sudo apt-get install zlib1g-dev curl sqlite3 libsqlite3-dev nodejs openssl 
+	
+	# install rvm with ruby
+	\curl -L https://get.rvm.io | bash -s stable --ruby 
+	
 	source /home/jchan/.rvm/scripts/rvm
-may need to remove ruby 1.9.3 and reinstall b/c of openssl. if so, run the two 
-lines below:
-	rvm remove 1.9.3 # remove ruby 1.9.3
-	rvm install 1.9.3 --with-openssl-dir=$HOME/.rvm/usr # install & compile w/ openssl
+may need to remove ruby 1.9.3 and reinstall b/c of openssl. if so, run the two lines below:
+
+	# remove ruby 1.9.3
+	rvm remove 1.9.3
+
+	# install & compile w/ openssl
+	rvm install 1.9.3 --with-openssl-dir=$HOME/.rvm/usr
 	rvm use 1.9.3 --default # use 1.9.3 as default, in case already using another ver.
 	ruby -v # check ruby version
 	gem -v # check gem version
