@@ -1,7 +1,9 @@
 Project Overview
 ====================
 
-This project is the foundation for Jack and Andy's personal websites. The website will have a very basic content management system (CMS) that allows for easy content publishing. The CMS will require a login system (although we only need to have one user in the end). Once this is implemented, Jack and Andy can take this project and customize front-end or whatever else for their own personal websites.
+This project is the foundation for our personal websites. The website will have a very basic content management system (CMS) that allows for easy content publishing so that we don't have to bust out terminals and text editors every time we want to post some content to our websites. 
+
+The CMS will require a login system (although we only need to have one user in the end). Once this is implemented, we can take this project and customize front-end or whatever else for our own personal websites.
 
 Dev Environment Setup
 ====================
@@ -17,9 +19,10 @@ Open terminal, go to edit -> profile preferences -> Title and Command tab -> che
 	# installs bunch of packages that are needed later
 	sudo apt-get install zlib1g-dev curl sqlite3 libsqlite3-dev nodejs openssl 
 	
-	# install rvm with ruby
+	# install RVM with Ruby
 	\curl -L https://get.rvm.io | bash -s stable --ruby 
 	
+	# runs script to configure Ruby
 	source /home/jchan/.rvm/scripts/rvm
 
 May need to remove ruby 1.9.3 and reinstall b/c of openssl. if so, run the two lines below:
@@ -32,13 +35,13 @@ May need to remove ruby 1.9.3 and reinstall b/c of openssl. if so, run the two l
 	
 Use Ruby 1.9.3 (run this just in case you're running another version) 
 
-	`rvm use 1.9.3 --default`
+	rvm use 1.9.3 --default
 
 Check Ruby version to see that you're using 1.9.3
 
-	`ruby -v`
+	ruby -v
 	
-Check gem version
+Check gem version (shows that gem is installed)
 
 	gem -v
 	
@@ -46,7 +49,7 @@ Install Rails
 
 	\curl -L https://get.rvm.io | bash -s stable --rails
 	
-Check rails version
+Check Rails version (shows that Rails is installed)
 
 	rails -v 
 	
