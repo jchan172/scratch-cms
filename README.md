@@ -1,8 +1,10 @@
-== Project Overview ==
+Project Overview
+====================
 
 This project is the foundation for Jack and Andy's personal websites. The website will have a very basic content management system (CMS) that allows for easy content publishing. The CMS will require a login system (although we only need to have one user in the end). Once this is implemented, Jack and Andy can take this project and customize front-end or whatever else for their own personal websites.
 
-== Dev Environment Setup ==
+Dev Environment Setup
+====================
 
 # If not running on native Ubuntu, first install a VirtualBox, create a new virtual machine, and  then install Ubuntu 12.10. 
 # To have a responsive VirtualBox system, give Ubuntu 1024 MB (or more) of RAM, enable 3D acceleration, and install VirtualBox's Guest Additions.
