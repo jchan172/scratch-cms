@@ -8,16 +8,17 @@ The CMS will require a login system (although we only need to have one user in t
 Dev Environment Setup
 ====================
 
+###Installation
 If not running on native Ubuntu, first install a VirtualBox, create a new virtual machine, and  then install Ubuntu 12.10. 
 
 To have a responsive VirtualBox system, give Ubuntu 1024 MB (or more) of RAM, enable 3D acceleration, and install VirtualBox's Guest Additions.
 
 Once Ubuntu is set up, here are a few things that you'll need to do in order for Rails to work as we want.
 
-Open terminal, go to edit -> profile preferences -> Title and Command tab -> check the "Run command as a login shell" box.
+Open a terminal, go to edit -> profile preferences -> Title and Command tab -> check the "Run command as a login shell" box.
 
 	# installs bunch of packages that are needed later
-	sudo apt-get install zlib1g-dev curl sqlite3 libsqlite3-dev nodejs openssl postgresql libpq-dev
+	sudo apt-get install zlib1g-dev curl sqlite3 libsqlite3-dev nodejs openssl postgresql postgresql-client libpq-dev
 	
 	# install RVM with Ruby
 	\curl -L https://get.rvm.io | bash -s stable --ruby 
@@ -67,7 +68,7 @@ Now check that everything for our project works. Go to the directory where the p
 
 	bundle install
 
-Setup Postgresql
+Set up PostgreSQL
 
 	sudo -u postgres createuser <your shell username>
 	# Shall the NEW ROLE be a superuser? (y/n) n
