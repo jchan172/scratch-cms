@@ -75,7 +75,8 @@ Setup Postgresql
 	# Shall the NEW ROLE be allowed TO CREATE more NEW roles? (y/n) n
 
 Go into the config/database.yml and change these lines. You can delete the password field.
-	# config/database.yml
+
+	# inside config/database.yml:
 	development:
 	  adapter: postgresql
 	  encoding: unicode
@@ -136,9 +137,14 @@ All you have to do is run either of these tools inside the project directory, an
 I'll be using git-cola to commit, push, and doing any branch stuff, and I'll use gitg for visualizing history.
 
 
-###Reference
+Reference
+====================
 [Setting up PostgreSQL with Rails on Linux][postgres]
+
 [Generating SSH Keys][sshkeys]
+
+[Markdown Syntax][markdown]
 
 [postgres]: http://mrfrosti.com/2011/06/setup-postgresql-with-rails-on-linux/
 [sshkeys]: https://help.github.com/articles/generating-ssh-keys
+[markdown]: http://daringfireball.net/projects/markdown/syntax
