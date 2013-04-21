@@ -134,3 +134,11 @@ gitg is nice for examining history.
 All you have to do is run either of these tools inside the project directory, and a nice GUI will pop up.
 
 I'll be using git-cola to commit, push, and doing any branch stuff, and I'll use gitg for visualizing history.
+
+
+###Reference
+[Setting up PostgreSQL with Rails on Linux][postgres]
+[Generating SSH Keys][sshkeys]
+
+[postgres]: http://mrfrosti.com/2011/06/setup-postgresql-with-rails-on-linux/
+[sshkeys]: https://help.github.com/articles/generating-ssh-keys
