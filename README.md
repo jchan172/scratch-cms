@@ -81,3 +81,24 @@ Try to start a localhost server
 If there are no errors, everything should work.
 Open up a web browser and navigate to http://localhost:3000/
 You ought to see the website.
+
+###Git Settings
+To push to Github without entering username and password every time, make sure to configure the remote this way:
+
+	git remote set-url origin git@github.com:jchan172/website_base.git
+
+You have to upload your SSH key to Github. If you don't have an SSH key, run this line:
+
+	ssh-keygen-t rsa -C "your_email@example.com"
+
+Then enter a passphrase (don't need to use passphrase, so press enter and then enter again)
+
+Your SSH keys are now in ~/.ssh/
+
+Login to Github, click on your username, click on "Edit your profile", and then click on "SSH Keys" on the left.
+
+Click on the "Add SSH key" and paste the contents from ~/.ssh/id_rsa.pub
+
+Test to see if this works by running this:
+
+	ssh -T git@github.com
