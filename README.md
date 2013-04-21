@@ -27,13 +27,21 @@ may need to remove ruby 1.9.3 and reinstall b/c of openssl. if so, run the two l
 
 	# install & compile w/ openssl
 	rvm install 1.9.3 --with-openssl-dir=$HOME/.rvm/usr
+	
 	rvm use 1.9.3 --default # use 1.9.3 as default, in case already using another ver.
+	
 	ruby -v # check ruby version
+	
 	gem -v # check gem version
+	
 	\curl -L https://get.rvm.io | bash -s stable --rails # install rails
+	
 	rails -v # check rails version
-source /home/jchan/.rvm/scripts/rvm # run rvm configuration script
+	
+	source /home/jchan/.rvm/scripts/rvm # run rvm configuration script
+
 now install heroku toolbelt:
+
 	wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh 
 Request access from the heroku admin (Jack) to collaborate on the app "fnet-app-topo" in order to access it with git using the below instructions. 
 
