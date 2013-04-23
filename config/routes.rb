@@ -1,4 +1,8 @@
 WebsiteBase::Application.routes.draw do
+  match 'users/new' => 'users#new'
+  match 'users/show' => 'users#show'
+  match 'users/edit' => 'users#edit'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
