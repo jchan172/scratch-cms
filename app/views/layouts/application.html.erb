@@ -7,15 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<<<<<<< HEAD
   <% flash.each do |key, value| %>
     <div class="alert alert-<%= key %>"><%= value %></div>
   <% end %>
   <%= yield %>
-=======
-<%= render 'layouts/header' %>
-	<%= yield %>	
-<%= render 'layouts/footer' %>
->>>>>>> 3ee352de37d58c4b4d47fdc6aa884aab026e83fc
 </body>
 </html>
