@@ -8,7 +8,8 @@ Create a new project and use PostrgeSQL as the database. Note that some other co
 
 Generate controller with some views. These are the general website pages, such as the home page.
 
-	# whatever command andy used
+	# generate a pages controller w/ home, about, standard, and blog pages
+	rails generate controller Pages home about standard blog 
 
 Generate a controller for user login. The controller will pass information to model to process. It brings up the appropriate views, such as a page with username and password text boxes. 'new' is going to be the page to display for creating a new account, although we will only have to do it once. 'edit' is going to be the page for editing the user's password and other profile stuff. 'show' is the test page.
 	
@@ -19,7 +20,6 @@ This creates a model where a user will have a name and data attached to it, wher
 
 	# generate a user model
 	rails generate model User name:string email:string
-
 
 We added a model, so this will change the database even though there is no data yet. So, we need to update the database.
 

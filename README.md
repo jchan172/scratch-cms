@@ -125,6 +125,16 @@ Remember to set name and email so that it shows up in commits
 	git config --global user.name "Your Name"
 	git config --global user.email your@email.com
 
+Set your master branch to track origin master
+
+	# ensure you're on the local master branch
+	git checkout master
+
+	# if you're using git version 1.7
+	git branch --set-upstream master origin/master
+
+	# if you're using git version 1.8
+	git branch -u origin/master
 
 ###Git Tools
 git-cola and git-gui are nice all-in-one tools.
