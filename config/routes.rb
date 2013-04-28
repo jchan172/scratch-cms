@@ -3,6 +3,7 @@ WebsiteBase::Application.routes.draw do
   match 'users/show' => 'users#show'
   match 'users/edit' => 'users#edit'
 
+  resources :users
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

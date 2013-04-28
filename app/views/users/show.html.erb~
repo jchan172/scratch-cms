@@ -3,7 +3,7 @@
   <aside class="span4">
     <section>
       <h1>
-        <%= @user.name %> </br>
+        <%= @user.name %>
         <%= @user.email %>
       </h1>
     </section>
