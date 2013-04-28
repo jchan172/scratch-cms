@@ -10,6 +10,10 @@ class UsersController < ApplicationController
   def edit
   end
   
+  def index
+    @users = User.all
+  end
+  
   def create
     @user = User.new(params[:user])
     if @user.save
@@ -18,5 +22,9 @@ class UsersController < ApplicationController
     else
       render 'new'
     end
+  end
+  
+  def destroy
+    # TO IMPLEMENT
   end
 end

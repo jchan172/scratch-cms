@@ -10,13 +10,21 @@ class UsersController < ApplicationController
   def edit
   end
   
+  def index
+    @users = User.all
+  end
+  
   def create
     @user = User.new(params[:user])
     if @user.save
-      flash[:success] = "Welcome to Jack and Andy's CMS!"
+      flash[:success] = "Welcome to Jack and Andys CMS!"
       redirect_to @user
     else
       render 'new'
     end
+  end
+  
+  def destroy
+    User.find(params[:user]).destroy
   end
 end
