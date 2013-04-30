@@ -1,4 +1,8 @@
 WebsiteBase::Application.routes.draw do
+
+  resources :users
+  resources :sessions, only: [:new, :create, :delete]
+
   root to: 'pages#home'
 
   match '/about' => 'pages#about'
@@ -9,7 +13,10 @@ WebsiteBase::Application.routes.draw do
   match 'users/show' => 'users#show'
   match 'users/edit' => 'users#edit'
 
-  resources :users
+  match '/login' => 'sessions#new'
+  match '/logout' => 'sessions#destroy', via: :delete
+  match '/dashboard' => 'sessions#dashboard'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

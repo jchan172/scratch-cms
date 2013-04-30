@@ -38,3 +38,9 @@ Update the database now that it's changed.
 
 	# update database
 	bundle exec rake db:migrate
+
+Add authentication token to users
+
+	# generate a migration
+	rails generate migration add_auth_token_to_users
+	
