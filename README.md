@@ -18,27 +18,27 @@ Once Ubuntu is set up, here are a few things that you'll need to do in order for
 Open a terminal, go to edit -> profile preferences -> Title and Command tab -> check the "Run command as a login shell" box.
 
 	# installs bunch of packages that are needed later
-	sudo apt-get install zlib1g-dev curl sqlite3 libsqlite3-dev nodejs openssl postgresql postgresql-client libpq-dev
+	sudo apt-get install zlib1g-dev curl sqlite3 libsqlite3-dev nodejs openssl postgresql postgresql-client libpq-dev libreadline6-dev libyaml-dev libxml2-dev libxslt1-dev autoconf libgdbm-dev libncurses5-dev automake libtool bison libffi-dev
 	
 	# install RVM with Ruby
-	\curl -L https://get.rvm.io | bash -s stable --ruby 
+	\curl -#L https://get.rvm.io | bash -s stable --autolibs=3 --ruby
 	
 	# runs script to configure Ruby
 	source /home/jchan/.rvm/scripts/rvm
 
-May need to remove ruby 1.9.3 and reinstall b/c of openssl. if so, run the two lines below:
+May need to remove ruby 2.0.0 and reinstall b/c of openssl. if so, run the two lines below:
 
-	# remove ruby 1.9.3
-	rvm remove 1.9.3
+	# remove ruby 2.0.0
+	rvm remove 2.0.0
 
 	# install & compile w/ openssl
-	rvm install 1.9.3 --with-openssl-dir=$HOME/.rvm/usr
+	rvm install 2.0.0 --with-openssl-dir=$HOME/.rvm/usr
 	
-Use Ruby 1.9.3 (run this just in case you're running another version) 
+Use Ruby 2.0.0 (run this just in case you're running another version) 
 
-	rvm use 1.9.3 --default
+	rvm use 2.0.0 --default
 
-Check Ruby version to see that you're using 1.9.3
+Check Ruby version to see that you're using 2.0.0
 
 	ruby -v
 	
@@ -48,7 +48,7 @@ Check gem version (shows that gem is installed)
 	
 Install Rails
 
-	\curl -L https://get.rvm.io | bash -s stable --rails
+	\curl -L https://get.rvm.io | bash -s stable --autolibs=3 --rails
 	
 Check Rails version (shows that Rails is installed)
 
