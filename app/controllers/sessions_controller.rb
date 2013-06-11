@@ -10,11 +10,12 @@ class SessionsController < ApplicationController
 		# by getting params[:session][:username] and params[:session][:password]
 
 		# first look in the database for the user
-		user = Users.find_by_username(params[:session][:username])
+		session = params[:session]
+		user = User.find_by_email(session[:username])
 		# if there's a user and we can authenticate with password
-		if user && user.authenticate(params[:session][:password])
+		if user && user.authenticate(session[:password])
 			sign_in user # call a helper method to sign in the user (need to add method ourselves)
-			redirect_to '/dashboard' # bring the user to his page (uses standard rails method)
+			redirect_to user # bring the user to his page (uses standard rails method)
 		else # otherwise, a user doesn't exist or the password wasn't right
 			flash.now[:error] = "Username/password combination is not correct"
 			# rerender the login page. the flash.now call will set a banner to display
@@ -26,5 +27,5 @@ class SessionsController < ApplicationController
 		sign_out # calls a helper method to sign out the user (need to add method ourselves)
 		redirect_to root_url # redirect to home page (uses standard rails method)
 	end
-	
+
 end
