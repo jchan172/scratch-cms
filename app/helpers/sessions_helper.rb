@@ -9,7 +9,7 @@ module SessionsHelper
 
 	# this method is for use by signed_in? method
 	def current_user
-		@current_user ||= Users.find_by_auth_token(cookies[:auth_token])
+		@current_user ||= User.find_by_auth_token(cookies[:auth_token])
 	end
 
 	def signed_in?
@@ -17,7 +17,7 @@ module SessionsHelper
 		# based on the cookie in the browser. if the model can't find a user that
 		# matches, it will return nil. so, if it returns nil, we want this signed_in?
 		# method to return false so it means that user is not signed in.
-		!current_user.nil
+		!self.current_user.nil?
 	end
 
 	def sign_out

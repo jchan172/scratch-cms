@@ -1,13 +1,11 @@
 class UsersController < ApplicationController
+  before_filter :signed_in_user, only: [:show, :edit, :delete]
   def new
     @user = User.new
   end
 
-  def show
-    if !signed_in
-      redirect_to 'new'
-    else
-      @user = User.find(params[:id])
+  def show  
+    @user = User.find(params[:id])
   end
 
   def edit
@@ -41,5 +39,11 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
+
+  private
+
+    def signed_in_user
+      redirect_to login_url, notice: "Please sign in." unless signed_in?
+    end
   
 end
