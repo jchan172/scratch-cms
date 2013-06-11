@@ -26,13 +26,5 @@ class SessionsController < ApplicationController
 		sign_out # calls a helper method to sign out the user (need to add method ourselves)
 		redirect_to root_url # redirect to home page (uses standard rails method)
 	end
-
-	# this is the dashboard where the user can manage content
-	def dashboard
-		if !signed_in
-			redirect_to 'new'
-		else
-			# probably need to do some stuff
-		end
-	end
+	
 end

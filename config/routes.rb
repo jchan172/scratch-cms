@@ -15,7 +15,7 @@ WebsiteBase::Application.routes.draw do
 
   match '/login' => 'sessions#new'
   match '/logout' => 'sessions#destroy', via: :delete
-  match '/dashboard' => 'sessions#dashboard'
+  match '/dashboard' => 'users#show'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

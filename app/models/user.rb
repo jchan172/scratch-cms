@@ -1,3 +1,5 @@
+require 'securerandom'
+
 class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation
   has_secure_password
@@ -18,6 +20,6 @@ class User < ActiveRecord::Base
 	# keep this method private because we don't want
 	# other things to mess with authentication token
 	def create_auth_token
-		self.auth_token = SecureRandom.url_Base64
+		self.auth_token = SecureRandom.base64(13)
 	end
 end

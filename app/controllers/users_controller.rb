@@ -4,7 +4,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    if !signed_in
+      redirect_to 'new'
+    else
+      @user = User.find(params[:id])
   end
 
   def edit
