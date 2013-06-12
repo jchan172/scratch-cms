@@ -1,11 +1,15 @@
 class UsersController < ApplicationController
-  before_filter :signed_in_user, only: [:show, :edit, :delete]
+  before_filter :signed_in_user, only: [:show, :edit, :delete, :index]
   def new
     @user = User.new
   end
 
   def show  
-    @user = User.find(params[:id])
+    if params[:id] == -1
+      @user = current_user
+    else
+      @user = User.find(params[:id])
+    end
   end
 
   def edit
@@ -19,7 +23,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      flash[:success] = "Welcome to Jack and Andys CMS!"
+      flash[:success] = "Welcome to Jack and Andy\'s CMS!"
+      sign_in @user
       redirect_to @user
     else
       render 'new'

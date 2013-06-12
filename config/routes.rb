@@ -9,13 +9,11 @@ WebsiteBase::Application.routes.draw do
   match '/standard' => 'pages#standard'
   match '/blog' => 'pages#blog'
 
-  match 'users/new' => 'users#new'
-  match 'users/show' => 'users#show'
-  match 'users/edit' => 'users#edit'
+  match '/signup',  to: 'users#new'
 
   match '/login' => 'sessions#new'
   match '/logout' => 'sessions#destroy', via: :delete
-  match '/dashboard' => 'users#show'
+  match '/dashboard' => 'users#show', :defaults => { :id => -1 }
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -2,6 +2,7 @@ require 'securerandom'
 
 class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation
+  has_many :projects, dependent: :destroy
   has_secure_password
 
   before_save { |user| user.email = email.downcase }
