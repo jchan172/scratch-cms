@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     if @user.save
       flash[:success] = "Welcome to Jack and Andy\'s CMS!"
       sign_in @user
-      redirect_to @user
+      redirect_to '/dashboard'
     else
       render 'new'
     end

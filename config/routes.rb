@@ -2,6 +2,7 @@ WebsiteBase::Application.routes.draw do
 
   resources :users
   resources :sessions, only: [:new, :create, :delete]
+  resources :projects
 
   root to: 'pages#home'
 
