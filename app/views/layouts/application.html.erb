@@ -1,16 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>WebsiteBase</title>
+  <title><%= yield(:title) %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= render 'layouts/header' %>
-  <% flash.each do |key, value| %>
-    <div class="alert alert-<%= key %>"><%= value %></div>
-  <% end %>
+
+<% if yield(:mode) == 'management' %>
+	<%= render 'layouts/dashboard_header' %>
+<% else %>
+	<%= render 'layouts/header' %>
+<% end %>
+
+<% if yield(:mode) == 'management' %>
+	<div class="container-fluid">
+<% else %>
+	<div class="container">
+<% end %>
+	  <% flash.each do |key, value| %>
+	    <div id="flash" class="alert alert-<%= key %>"><%= value %></div>
+	  <% end %>
+	</div>
+
 	<%= yield %>
 	<%= render 'layouts/footer' %>
 </body>

@@ -161,3 +161,46 @@ Reference
 [postgres]: http://mrfrosti.com/2011/06/setup-postgresql-with-rails-on-linux/
 [sshkeys]: https://help.github.com/articles/generating-ssh-keys
 [markdown]: http://daringfireball.net/projects/markdown/syntax
+
+
+For Mac
+====================
+The tricky part is to install PostgreSQL (this is for 9.2.4)
+
+Update Homebrew
+
+	brew update
+
+Install PostgreSQL
+
+	brew install postgresql
+
+Make a postgres directory if it doesn't already exist
+
+	sudo mkdir -p /usr/local/var/postgres
+
+Tweak its permissions
+
+	sudo chown yourusername:admin /usr/local/var/postgres/
+
+Create a database
+
+	initdb /usr/local/var/postgres/data
+
+If you go into your Rails project directory now and try to run a server or do a `rake db:create`, you will get something along the lines of:
+
+	FATAL:  role <your shell username> does not exist
+
+Connect as postgres (--username=postgres) and create a superuser role (-s) where the role name is <your shell username>
+
+	$ sudo su
+	# su postgres
+	# createuser -s --username=postgres <your shell username>
+
+Now you can go into your project directory and create a database
+
+	rake db:create
+
+If this completes without complaining, you should be able to start the server.
+
+	rails s
