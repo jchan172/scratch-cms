@@ -9,6 +9,14 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
   end
 
+  def edit_rich
+    @project = Project.find(params[:id])
+  end
+
+  def edit_raw
+    @project = Project.find(params[:id])
+  end
+
   def show
     @project = Project.find(params[:id])
   end
@@ -25,6 +33,11 @@ class ProjectsController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def update_special
+    flash[:success] = "woooo"
+    redirect_to '/dashboard'
   end
 
   def destroy

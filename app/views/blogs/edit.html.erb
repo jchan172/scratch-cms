@@ -1,0 +1,20 @@
+<% provide(:title, "Edit Blog") %> 
+<h1>Update Your Blog</h1>
+
+<div class="row">
+  <div class="offset3">
+    <%= form_for(@blog) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+
+      <div class="field">
+        <%= f.text_area :content, placeholder: "Blog Content Goes Here..." %>
+      </div>
+
+      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+    <% end %>
+
+  </div>
+</div>

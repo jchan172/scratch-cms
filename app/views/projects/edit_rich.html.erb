@@ -1,0 +1,30 @@
+<% provide(:mode, 'management') %>
+<% provide(:title, "Edit Project") %> 
+<h1>Update Your Project</h1>
+<h2>Rich Text Editor!</h2>
+
+<div class="row">
+  <div class="offset3">
+    <%= form_for(@project) do |f| %>
+
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+
+      <%= f.label :content %>
+      <div class="field", contenteditable="true", id="project_content", name="project[content]">
+
+        <%= @project.content.html_safe %>
+
+      </div>
+
+<!--       <div class="field">
+        <%= f.text_area :content, placeholder: "Project Content Goes Here..." %>
+      </div> -->
+
+      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+    <% end %>
+
+  </div>
+</div>

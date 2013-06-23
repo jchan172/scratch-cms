@@ -10,7 +10,10 @@
         <p>
           <% #according to Rails API, link_to(body, url, html_options = {}) %>
           <%= link_to 'Edit »', edit_project_path(project), { :class => "btn" } %>
-          <!-- <a class="btn" href="#">Edit »</a> -->
+          <%= link_to 'Rich Text Editing', edit_rich_project_path(project), { :class => "btn" } %>
+          <%= link_to 'Raw HTML Editing', edit_raw_project_path(project), { :class => "btn" } %>
+          <%= link_to 'Destroy', project, { :class => "btn" }, method: :delete,
+                                     data: { confirm: 'Are you sure?' }%>
         </p>
       </div>
       <!--/span-->
