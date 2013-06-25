@@ -7,8 +7,20 @@ class UsersController < ApplicationController
   def show  
     if params[:id] == -1
       @user = current_user
+      @projects = @user.projects
+
+      respond_to do |format|
+        format.html # renders show.html.erb
+        format.js   # renders show.js.erb
+      end
     else
       @user = User.find(params[:id])
+      @projects = @user.projects
+
+      respond_to do |format|
+        format.html # renders show.html.erb
+        format.js   # renders show.js.erb
+      end
     end
   end
 

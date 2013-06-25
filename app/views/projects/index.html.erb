@@ -1,31 +1,23 @@
-<h1>Listing Projects</h1>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @projects.each do |project| %>
-  <tr>
-    <td><%= project.title %></td>
-    <td>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-    <td><%= link_to 'Show', project %></td>
-    <td>|</td>
-    <td><%= link_to 'Rich Text Editing', edit_rich_project_path(project) %>
-    </td>
-    <td>|</td>
-    <td><%= link_to 'Raw HTML Editing', edit_raw_project_path(project) %>
-    </td>
-    <td>|</td>
-    <td><%= link_to 'Destroy', project, method: :delete,
-                                     data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<% projects.each do |project| %>
+  <div class="row-fluid">
+      <div class="page-list">
+        <h2>
+          <%= project.title %>
+        </h2>
+        <p>
+          <%= project.content %>
+        </p>
+        <p>
+          <% #according to Rails API, link_to(body, url, html_options = {}) %>
+          <%= link_to 'Edit »', edit_project_path(project), { :class => "btn" } %>
+          <%= link_to 'Rich Text Editing', edit_rich_project_path(project), { :class => "btn" } %>
+          <%= link_to 'Raw HTML Editing', edit_raw_project_path(project), { :class => "btn" } %>
+          <%= link_to 'Destroy', project, { :class => "btn" }, method: :delete,
+                                     data: { confirm: 'Are you sure?' }%>
+        </p>
+      </div>
+      <!--/span-->
+    </div>
 <% end %>
-</table>
-
-<br />
 
 <%= link_to 'New Project', new_project_path %>

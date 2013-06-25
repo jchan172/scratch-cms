@@ -15,5 +15,7 @@
 /tmp
 /.idea/
 /config/database.yml
-
-nohup.out
+.DS_Store
+.DS_Store?
+.Spotlight-V100
+.Trashes
