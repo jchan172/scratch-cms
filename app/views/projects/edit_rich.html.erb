@@ -3,28 +3,82 @@
 <h1>Update Your Project</h1>
 <h2>Rich Text Editor!</h2>
 
+<script type="text/javascript">
+
+var isCtrl = false;
+document.onkeyup=function(e){
+  if(e.which == 17)
+   isCtrl=false;
+}
+document.onkeydown=function(e){
+  if(e.which == 17) isCtrl=true;
+  if(e.which == 83 && isCtrl == true && e.target && e.target.id == "project_content") {
+
+  }
+  if(e.which == 66 && isCtrl == true && e.target && e.target.id == "project_content") {
+
+    bold_selected_text();
+  }
+  if(e.which == 73 && isCtrl == true && e.target && e.target.id == "project_content") {
+    italicize_selected_text();
+  }
+}
+
+function transfer_and_try()
+{
+  // alert("old title:" + document.getElementById("project_title").value)
+  var new_title = document.getElementById("project_title_rich").value;
+  document.getElementById("project_title").value = new_title;
+  // alert("new title:" + document.getElementById("project_title").value)
+
+  // alert("old content:" + document.getElementById("project_content").innerHTML);
+  var new_content = document.getElementById("project_content_rich").innerHTML;
+  document.getElementById("project_content").innerHTML = new_content;
+  // alert("new content:" + document.getElementById("project_content").innerHTML);
+
+
+  document.getElementsByName("commit")[0].click();
+
+}
+
+</script>
+
 <div class="row">
   <div class="offset3">
-    <%= form_for(@project) do |f| %>
+    <label for="project_title_rich">Title</label>
+    <input id="project_title_rich" name="project[title]_rich" size="30" type="text" value='<%= @project.title %>' />
 
-      <%= render 'shared/error_messages', object: f.object %>
-
-      <%= f.label :title %>
-      <%= f.text_field :title %>
-
-      <%= f.label :content %>
-      <div class="field", contenteditable="true", id="project_content", name="project[content]">
-
-        <%= @project.content.html_safe %>
-
-      </div>
-
-<!--       <div class="field">
-        <%= f.text_area :content, placeholder: "Project Content Goes Here..." %>
-      </div> -->
-
-      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
-    <% end %>
+    <div class="field" id="project_content_rich" name="project[content]_rich" contenteditable><%= @project.content.html_safe %></div>
 
   </div>
+  <br>
+  <div class="offset3">
+    <button type="button" onclick="transfer_and_try()">Save Changes</button>
+
+  </div>
+
+  
 </div>
+
+<%= form_for(@project) do |f| %>
+<%= render 'shared/error_messages', object: f.object %>
+
+<%= f.label :title %>
+<%= f.text_field :title %>
+
+<div class="field">
+  <%= f.text_area :content, placeholder: "Project Content Goes Here..." %>
+</div>
+
+<%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+<% end %>
+
+<script type="text/javascript">
+  function load()
+  {
+    var edit_form = document.getElementById("edit_project_7");
+    edit_form.style.display = "none";
+  }
+
+  window.onload=load();
+</script>
