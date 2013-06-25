@@ -2,9 +2,19 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 gem 'jquery-rails', '2.0.2' # incorporate jquery
-gem 'bootstrap-sass', '2.1' # twitter bootstrap for frontend
+gem 'bootstrap-sass', '2.1' # Twitter Bootstrap for frontend
 gem 'bcrypt-ruby', '3.0.1' # gem for password authentication (enables us to use ActiveModel has_secure_password method)
-gem 'pg' # use postgresql for development and production
+gem 'pg' # use PostgreSQL for development and production
+gem 'unicorn' # allows using multiple processes on one Heroku dyno
+gem 'localtunnel' # expose your localhost server to the public web
+gem 'annotate' # adds comments to model showing the schema of the model
+gem 'better_errors' # better interface for showing errors
+gem 'font-awesome-rails' # icon font (such as briefcase pic instead of writing out "briefcase")
+gem 'hirb' # makes console output nicer to read
+gem 'mailcatcher' #nice tool to catch email sent to localhost (use this for debugging)
+gem 'meta_request' # shows information about app requests in browser (remember also need chrome extension)
+gem 'railroady' # generates UML diagrams
+# gem 'smusher' # lossless reduction of images
 
 # these gems used both in development and testing
 group :development, :test do
