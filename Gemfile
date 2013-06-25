@@ -11,7 +11,6 @@ gem 'annotate' # adds comments to model showing the schema of the model
 gem 'better_errors' # better interface for showing errors
 gem 'font-awesome-rails' # icon font (such as briefcase pic instead of writing out "briefcase")
 gem 'hirb' # makes console output nicer to read
-gem 'mailcatcher' #nice tool to catch email sent to localhost (use this for debugging)
 gem 'meta_request' # shows information about app requests in browser (remember also need chrome extension)
 gem 'railroady' # generates UML diagrams
 # gem 'smusher' # lossless reduction of images
