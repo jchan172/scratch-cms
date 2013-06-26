@@ -1,12 +1,9 @@
-function format_text_field()
-{
-  document.getElementById("like_text_field").innerHTML="<b>bold?</b>";
-}
 
 // Thanks Tim Down for free code below!
 function replaceSelectionWithHtml(html) {
     var range, html;
     if (window.getSelection && window.getSelection().getRangeAt) {
+
         range = window.getSelection().getRangeAt(0);
         range.deleteContents();
         var div = document.createElement("div");
@@ -17,6 +14,7 @@ function replaceSelectionWithHtml(html) {
         }
         range.insertNode(frag);
     } else if (document.selection && document.selection.createRange) {
+
         range = document.selection.createRange();
         html = (node.nodeType == 3) ? node.data : node.outerHTML;
         range.pasteHTML(html);
@@ -26,6 +24,7 @@ function replaceSelectionWithHtml(html) {
 function formatSelectedHTML(t1, t2) {
     var range, html, remember;
     if (window.getSelection && window.getSelection().getRangeAt) {
+
         range = window.getSelection().getRangeAt(0);
         remember = range.copy()
         range.deleteContents();
@@ -37,6 +36,7 @@ function formatSelectedHTML(t1, t2) {
         }
         range.insertNode(frag);
     } else if (document.selection && document.selection.createRange) {
+
         range = document.selection.createRange();
         html = (node.nodeType == 3) ? node.data : node.outerHTML;
         range.pasteHTML("???");
@@ -46,6 +46,7 @@ function formatSelectedHTML(t1, t2) {
 function getSelectionHtml() {
     var html = "";
     if (typeof window.getSelection != "undefined") {
+
         var sel = window.getSelection();
         if (sel.rangeCount) {
             var container = document.createElement("div");
@@ -55,6 +56,7 @@ function getSelectionHtml() {
             html = container.innerHTML;
         }
     } else if (typeof document.selection != "undefined") {
+
         if (document.selection.type == "Text") {
             html = document.selection.createRange().htmlText;
         }
@@ -65,10 +67,24 @@ function getSelectionHtml() {
 function bold_selected_text()
 {
   //replaceSelectionWithHtml("<b>" + getSelectionHtml() + "</b>");
-  formatSelectedHTML("<b>", "</b>");
+  alert(getSelectionHtml());
+
+  alert('here');
+  //formatSelectedHTML("<b>", "</b>");
 }
 
 function italicize_selected_text()
+{
+  formatSelectedHTML("<i>", "</i>");
+}
+
+function focus_and_bold_selected_text()
+{
+  alert(getSelectionHtml())
+  replaceSelectionWithHtml("<b>" + getSelectionHtml() + "</b>")
+}
+
+function focus_and_italicize_selected_text()
 {
   formatSelectedHTML("<i>", "</i>");
 }

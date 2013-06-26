@@ -1,28 +1,9 @@
 <% provide(:mode, 'management') %>
 <% provide(:title, "Edit Project") %> 
 <h1>Update Your Project</h1>
-<h2>Rich Text Editor!</h2>
+<h2>With this Fancy <b>Rich Text Editor!</b></h2>
 
 <script type="text/javascript">
-
-var isCtrl = false;
-document.onkeyup=function(e){
-  if(e.which == 17)
-   isCtrl=false;
-}
-document.onkeydown=function(e){
-  if(e.which == 17) isCtrl=true;
-  if(e.which == 83 && isCtrl == true && e.target && e.target.id == "project_content") {
-
-  }
-  if(e.which == 66 && isCtrl == true && e.target && e.target.id == "project_content") {
-
-    bold_selected_text();
-  }
-  if(e.which == 73 && isCtrl == true && e.target && e.target.id == "project_content") {
-    italicize_selected_text();
-  }
-}
 
 function transfer_and_try()
 {
@@ -35,7 +16,6 @@ function transfer_and_try()
   var new_content = document.getElementById("project_content_rich").innerHTML;
   document.getElementById("project_content").innerHTML = new_content;
   // alert("new content:" + document.getElementById("project_content").innerHTML);
-
 
   document.getElementsByName("commit")[0].click();
 
@@ -54,7 +34,8 @@ function transfer_and_try()
   <br>
   <div class="offset3">
     <button type="button" onclick="transfer_and_try()">Save Changes</button>
-
+    <button type="button" onclick="focus_and_bold_selected_text()"><b>Bold</b></button>
+    <button type="button" onclick="focus_and_italicize_selected_text()"><i>Italics</i></button>
   </div>
 
   
