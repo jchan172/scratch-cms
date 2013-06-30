@@ -1,9 +1,7 @@
 <% provide(:mode, 'management') %>
 <% provide(:title, 'Create Project') %>
-
 <h1>Create a New Project</h1>
 
-<div class="container">
     <div class="row">
       <div class="offset4">
         <%= form_for(@project) do |f| %>
@@ -12,13 +10,13 @@
           <%= f.label :title %>
           <%= f.text_field :title %>
 
-          <div class="field">
-            <%= f.text_area :content, placeholder: "Project Content Goes Here..." %>
-          </div>
+          <div class="redactor_box">
+        <%= f.text_area :content, placeholder: "Project Content Goes Here...", :class => "redactor"%>
+      </div>
 
           <br>
 
-          <%= f.submit "Create Project", class: "btn btn-large btn-inverse" %>
+          <%= f.submit "Create project", class: "btn btn-large btn-inverse" %>
         <% end %>
       </div>
   </div>

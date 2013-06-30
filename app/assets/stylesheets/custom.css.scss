@@ -294,7 +294,7 @@ body {
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
-  width: 45%;
+  width: 590px;
   padding: 10px;
   margin-bottom: 15px;
 }
@@ -330,4 +330,6 @@ IMG.centeredimage {
     border-top: 1px solid #e8e8e8;
 }
 
-
+.redactor_box {
+    width: 600px;
+}

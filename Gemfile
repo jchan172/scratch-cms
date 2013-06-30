@@ -13,6 +13,9 @@ gem 'font-awesome-rails' # icon font (such as briefcase pic instead of writing o
 gem 'hirb' # makes console output nicer to read
 gem 'meta_request' # shows information about app requests in browser (remember also need chrome extension)
 gem 'railroady' # generates UML diagrams
+gem 'redactor-rails' # wysiwyg html editor
+# gem 'carrierwave' # something that redactor needs for uploading files (hold off on implementing this functionality)
+# gem 'mini_magick' # also something that redactor needs for uploading files (hold off on implementing this functionality)
 # gem 'smusher' # lossless reduction of images
 
 # these gems used both in development and testing

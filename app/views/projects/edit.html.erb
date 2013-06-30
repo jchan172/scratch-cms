@@ -7,12 +7,14 @@
     <%= form_for(@project) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
-      <%= f.label :title %>
-      <%= f.text_field :title %>
+        <%= f.label :title %>
+        <%= f.text_field :title %>
 
-      <div class="field">
-        <%= f.text_area :content, placeholder: "Project Content Goes Here..." %>
+      <div class="redactor_box">
+        <%= f.text_area :content, placeholder: "Project Content Goes Here...", :class => "redactor"%>
       </div>
+
+      <br>
 
       <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
     <% end %>
