@@ -1,15 +1,20 @@
 require 'securerandom'
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password, :password_confirmation
+  attr_accessible :email, :name, :username, :password, :password_confirmation
   has_many :projects, dependent: :destroy
   has_many :blogs, dependent: :destroy
   has_secure_password
 
   before_save { |user| user.email = email.downcase }
+  before_save { |user| user.username = username.downcase }
   before_save :create_auth_token
 
   validates :name, presence: true, length: { maximum: 50 }
+  validates :username, 
+            presence: true, 
+            length: { maximum: 50 }, 
+            uniqueness: { case_sensitive: true}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, 
   			presence: true,

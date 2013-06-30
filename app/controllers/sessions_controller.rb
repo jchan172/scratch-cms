@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
 
 		# first look in the database for the user
 		session = params[:session]
-		user = User.find_by_email(session[:username])
+		user = User.find_by_username(session[:username])
 		# if there's a user and we can authenticate with password
 		if user && user.authenticate(session[:password])
 			sign_in user # call a helper method to sign in the user (need to add method ourselves)
