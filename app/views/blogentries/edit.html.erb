@@ -1,0 +1,21 @@
+<% provide(:mode, 'management') %>
+<% provide(:title, "Edit Blog Entry") %> 
+<h1>Edit Your Blog Entry</h1>
+
+<div class="row">
+  <div class="offset3">
+    <%= form_for(@blogentry) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+
+      <div class="field">
+        <%= f.text_area :content, placeholder: "Blog Entry Goes Here..." %>
+      </div>
+
+      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+    <% end %>
+
+  </div>
+</div>
