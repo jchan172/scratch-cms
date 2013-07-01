@@ -1,2 +1,30 @@
-<h1>Title: <%= @blog.title %> </h1>
-<h2>Content: <%= @blog.content %> </h2>
+<% provide(:mode, 'management') %>
+<h1>Title: <%= @blog.title %></h1>
+<br>
+<h2>Description: </h2>
+<br>
+<%= @blog.content %>
+<br>
+
+<% @blogentries.each do |blogentry| %>
+  <div class="row-fluid">
+      <div class="page-list">
+        <h2>
+          <%= blogentry.title %>
+        </h2>
+        <p>
+          <%= blogentry.content %>
+        </p>
+        <p>
+          <% #according to Rails API, link_to(body, url, html_options = {}) %>
+          <%= link_to 'Edit »', edit_blogentry_path(blogentry), { :class => "btn" } %>
+          <%= link_to 'Destroy', blogentry, { :class => "btn" }, method: :delete,
+                                     data: { confirm: 'Are you sure?' }%>
+        </p>
+      </div>
+      <!--/span-->
+    </div>
+<% end %>
+
+<% # this passes :blogid to blogentries_controller/new, where it can be accessed with "params[:blogid]" %>
+<%= link_to 'New Entry', new_blogentry_path(:blogid => @blog) %>

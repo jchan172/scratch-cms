@@ -1,16 +1,17 @@
-<% provide(:title, "Edit Blog") %> 
-<h1>Update Your Blog</h1>
+<% provide(:mode, 'management') %>
+<% provide(:title, "Edit Blog Entry") %> 
+<h1>Edit Your Blog Entry</h1>
 
 <div class="row">
   <div class="offset3">
-    <%= form_for(@blog) do |f| %>
+    <%= form_for(@blogentry) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
         <%= f.label :title %>
         <%= f.text_field :title %>
 
       <div class="redactor_box">
-        <%= f.text_area :content, placeholder: "Blog description goes here...", :class => "redactor"%>
+        <%= f.text_area :content, placeholder: "Blog Entry Goes Here...", :class => "redactor"%>
       </div>
 
       <br>

@@ -11,13 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130614034420) do
+ActiveRecord::Schema.define(:version => 20130630232308) do
+
+  create_table "blogentries", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.integer  "blog_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "blogs", :force => true do |t|
     t.string   "content"
     t.string   "title"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "user_id"
   end
 
   create_table "projects", :force => true do |t|
@@ -28,6 +37,23 @@ ActiveRecord::Schema.define(:version => 20130614034420) do
     t.integer  "user_id"
   end
 
+  create_table "redactor_assets", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "data_file_name",                  :null => false
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.integer  "assetable_id"
+    t.string   "assetable_type",    :limit => 30
+    t.string   "type",              :limit => 30
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
+  add_index "redactor_assets", ["assetable_type", "assetable_id"], :name => "idx_redactor_assetable"
+  add_index "redactor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_redactor_assetable_type"
+
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
@@ -36,9 +62,10 @@ ActiveRecord::Schema.define(:version => 20130614034420) do
     t.string   "string"
     t.string   "password_digest"
     t.string   "auth_token"
+    t.string   "username"
   end
 
   add_index "users", ["auth_token"], :name => "index_users_on_auth_token"
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["username"], :name => "index_users_on_username", :unique => true
 
 end

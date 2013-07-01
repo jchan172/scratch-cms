@@ -1,6 +1,7 @@
 <% provide(:title, 'Create Blog') %>
 
-<h1>Create a New blog</h1>
+<h1>Create a new blog</h1>
+You can add entries later.
 
 <div class="container">
     <div class="row">
@@ -12,12 +13,12 @@
           <%= f.text_field :title %>
 
           <div class="field">
-            <%= f.text_area :content, placeholder: "Blog Content Goes Here..." %>
+            <%= f.text_area :content, placeholder: "Write a description for this blog" %>
           </div>
 
           <br>
 
-          <%= f.submit "Create Blog Entry", class: "btn btn-large btn-inverse" %>
+          <%= f.submit "Create Blog", class: "btn btn-large btn-inverse" %>
         <% end %>
       </div>
   </div>

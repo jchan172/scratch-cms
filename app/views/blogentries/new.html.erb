@@ -1,0 +1,29 @@
+<% provide(:mode, 'management') %>
+<% provide(:title, 'Create Blog Entry') %>
+
+<h1>Create a New Blog Entry</h1>
+
+<div class="container">
+    <div class="row">
+      <div class="offset4">
+        <%= form_for(@blogentry) do |f| %>
+          <%= render 'shared/error_messages', object: f.object %>
+          
+          <%= f.label :title %>
+          <%= f.text_field :title %>
+
+          <div class="field">
+            <%= f.text_area :content, placeholder: "Write a new blog entry..." %>
+          </div>
+
+          <% # :blogid was passed from blogs_controller/show.html.erb, and now we put it into params[:blog][:id] to %>
+          <% # send off with the POST request. %>
+          <%= hidden_field :blog, :id, :value => params[:blogid] %>
+
+          <br>
+
+          <%= f.submit "Create Entry", class: "btn btn-large btn-inverse" %>
+        <% end %>
+      </div>
+  </div>
+</div>

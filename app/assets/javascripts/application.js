@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require redactor-rails
 
 $(function() {
    $('#flash').delay(500).fadeIn('normal', function() {

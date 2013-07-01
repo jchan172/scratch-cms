@@ -149,6 +149,34 @@ gitg is nice for examining history.
 
 To start gitg, run 'gitg' in terminal.
 
+### Deploying to Heroku
+First you must login to Heroku.
+
+	heroku login
+
+If you don't have a Heroku app already, you'll need to create an app.
+
+	heroku create
+
+If you have an existing Heroku app, just add the remote.
+
+	heroku git:remote -a website-base
+
+The previous line didn't work for me, but this did:
+
+	git remote add heroku git@heroku.com:website-base.git
+
+To push code up to Heroku, simply do this:
+
+	git push heroku master
+
+Once the code is pushed without errors, remember to have Heroku migrate the database.
+
+	heroku run rake db:migrate
+
+Now, you can look at your project on Heroku by doing this:
+
+	heroku open
 
 Reference
 ====================

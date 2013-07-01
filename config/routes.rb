@@ -1,9 +1,11 @@
 WebsiteBase::Application.routes.draw do
 
+  mount RedactorRails::Engine => '/redactor_rails'
+
   resources :blogs
+  resources :blogentries
   resources :users
   resources :sessions, only: [:new, :create, :delete]
-  resources :blogs
 
   resources :projects do
     member do

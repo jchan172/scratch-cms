@@ -5,22 +5,19 @@ class UsersController < ApplicationController
   end
 
   def show  
+    # this is the case when someone goes to /dashboard, so we'll want to display the user's projects and blogs
     if params[:id] == -1
       @user = current_user
       @projects = @user.projects
+      @blogs = @user.blogs
 
       respond_to do |format|
         format.html # renders show.html.erb
         format.js   # renders show.js.erb
       end
     else
+      # this is the case for when someone tries to show a user through entering url, such as /users/2
       @user = User.find(params[:id])
-      @projects = @user.projects
-
-      respond_to do |format|
-        format.html # renders show.html.erb
-        format.js   # renders show.js.erb
-      end
     end
   end
 
