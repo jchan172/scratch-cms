@@ -5,7 +5,7 @@
           <%= project.title %>
         </h2>
         <p>
-          <%= project.content %>
+          <%= truncate_html project.content.html_safe, length: 80 %>
         </p>
         <p>
           <% #according to Rails API, link_to(body, url, html_options = {}) %>

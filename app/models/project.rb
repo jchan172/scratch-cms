@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: projects
+#
+#  id         :integer          not null, primary key
+#  content    :string(255)
+#  title      :string(255)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  user_id    :integer
+#
+
 class Project < ActiveRecord::Base
   attr_accessible :content, :title
 

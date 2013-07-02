@@ -13,7 +13,7 @@ $(document).ready(
       "fileGetJson":"/redactor_rails/documents",
       "path":"/assets/redactor-rails",
       "css":"style.css",
-      "minHeight":"200",
+      "minHeight":"300",
       // File button has been taken out because want to disable file upload for now
       "buttons":['html', '|', 'formatting', '|', 'bold', 'italic', 'deleted', '|',
                 'unorderedlist', 'orderedlist', 'outdent', 'indent', '|',

@@ -1,5 +1,3 @@
-<h1>Blogs</h1>
-
 <% blogs.each do |blog| %>
   <div class="row-fluid">
       <div class="page-list">
@@ -7,7 +5,7 @@
           <%= blog.title %>
         </h2>
         <p>
-          <%= blog.content %>
+          <%= truncate_html blog.content.html_safe, length: 80 %>
         </p>
         <p>
           <% #according to Rails API, link_to(body, url, html_options = {}) %>

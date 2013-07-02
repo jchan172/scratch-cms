@@ -18,6 +18,7 @@ class UsersController < ApplicationController
     else
       # this is the case for when someone tries to show a user through entering url, such as /users/2
       @user = User.find(params[:id])
+      redirect_to '/dashboard'
     end
   end
 

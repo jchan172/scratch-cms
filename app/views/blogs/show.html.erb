@@ -3,7 +3,7 @@
 <br>
 <h2>Description: </h2>
 <br>
-<%= @blog.content %>
+<%= @blog.content.html_safe %>
 <br>
 
 <% @blogentries.each do |blogentry| %>
@@ -13,7 +13,7 @@
           <%= blogentry.title %>
         </h2>
         <p>
-          <%= blogentry.content %>
+          <%= truncate_html blogentry.content.html_safe, length: 80 %>
         </p>
         <p>
           <% #according to Rails API, link_to(body, url, html_options = {}) %>

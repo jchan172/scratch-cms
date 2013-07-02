@@ -3,32 +3,12 @@
 <!-- provide somke token and then have the _header check for token to determine which navbar to show -->
 <div class="container-fluid">
 	<div class="row-fluid">
-		<div class="span3">
-			<div id="my-links" class="well sidebar-nav">
-				<ul class="nav nav-list">
-					<li class="nav-header">
-						Control Panel
-					</li>
-					<li id="account-settings-link" class="inactive">
-						<%= link_to 'Account Settings', dashboard_path(:link => 'settings'), remote: true %>
-					</li>
-					<li id="projects-link" class="inactive">
-						<%= link_to 'Projects', dashboard_path(:link => 'projects'), remote: true %>
-					</li>
-					<li id="blogs-link" class="inactive">
-						<%= link_to 'Blogs', dashboard_path(:link => 'blogs'), remote: true %>
-					</li>
-					<li id="about-scratch-link" class="active">
-						<%= link_to 'About Scratch CMS', dashboard_path(:link => 'about'), remote: true %>
-					</li>
-				</ul>
-			</div>
-			<!--/.well -->
-		</div>
-		<!--/span-->
+
 		
-		<div id="ajax" class="span9">
-			<%= render :template => 'pages/about' %>
+		<%= render 'layouts/sidebar' %>
+		
+		<div id="ajax" class="span8">
+			<%= render :template => 'projects/index', :locals => { :projects => @projects } %>
 		</div>
 
 	</div>
