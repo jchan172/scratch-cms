@@ -9,14 +9,6 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
   end
 
-  def edit_rich
-    @project = Project.find(params[:id])
-  end
-
-  def edit_raw
-    @project = Project.find(params[:id])
-  end
-
   def show
     @project = Project.find(params[:id])
   end

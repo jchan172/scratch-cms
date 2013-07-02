@@ -7,16 +7,6 @@ WebsiteBase::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :delete]
 
-  resources :projects do
-    member do
-      get 'edit_rich'
-      get 'edit_raw'
-    end
-  end
-
-  #match '/projects/:id/edit_rich' => 'projects#edit_rich'
-  #match '/projects/:id/edit_raw' => 'projects#edit_raw'
-
   root to: 'pages#home'
 
   match '/about' => 'pages#about'

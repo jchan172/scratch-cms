@@ -9,8 +9,7 @@
         </p>
         <p>
           <% #according to Rails API, link_to(body, url, html_options = {}) %>
-          <%= link_to 'Rich Text Editing', edit_rich_project_path(project), :class => "btn"  %>
-          <%= link_to 'Raw HTML Editing', edit_raw_project_path(project), :class => "btn"  %>
+          <%= link_to 'Edit', edit_project_path(project), :class => "btn"  %>
           <%= link_to 'Destroy', project, method: :delete, :class => "btn", 
                                      data: { confirm: 'Are you sure?' } %>
         </p>
