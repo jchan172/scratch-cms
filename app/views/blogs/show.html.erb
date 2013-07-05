@@ -5,26 +5,3 @@
 <br>
 <%= @blog.content.html_safe %>
 <br>
-
-<% @blogentries.each do |blogentry| %>
-  <div class="row-fluid">
-      <div class="page-list">
-        <h2>
-          <%= blogentry.title %>
-        </h2>
-        <p>
-          <%= truncate_html blogentry.content.html_safe, length: 80 %>
-        </p>
-        <p>
-          <% #according to Rails API, link_to(body, url, html_options = {}) %>
-          <%= link_to 'Edit »', edit_blogentry_path(blogentry), { :class => "btn" } %>
-          <%= link_to 'Destroy', blogentry, { :class => "btn" }, method: :delete,
-                                     data: { confirm: 'Are you sure?' }%>
-        </p>
-      </div>
-      <!--/span-->
-    </div>
-<% end %>
-
-<% # this passes :blogid to blogentries_controller/new, where it can be accessed with "params[:blogid]" %>
-<%= link_to 'New Entry', new_blogentry_path(:blogid => @blog) %>

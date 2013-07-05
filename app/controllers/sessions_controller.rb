@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
 			sign_in user # call a helper method to sign in the user (need to add method ourselves)
 			redirect_to user # bring the user to his page (uses standard rails method)
 		else # otherwise, a user doesn't exist or the password wasn't right
-			flash.now[:error] = "Username/password combination is not correct"
+			flash.now[:error] = "Username/password combination is not correct."
 			# rerender the login page. the flash.now call will set a banner to display
 			render 'new'
 		end

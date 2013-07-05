@@ -1,0 +1,62 @@
+<% provide(:mode, "management") %>
+<% provide(:title, "Manage Blog") %>
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <%= render 'layouts/sidebar' %>
+    <script type="text/javascript">
+      $('#blogs-link').removeClass("inactive").addClass("active") // change the "inactive" class to "active"
+    </script>
+  
+  <div class="span8">
+    <h1>Update Title and Description</h1>
+      
+      <%= form_for(@blog) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+
+          <%= f.label :title %>
+          <%= f.text_field :title %>
+
+        <div class="redactor_box">
+          <%= f.text_area :content, placeholder: "Blog description goes here...", :class => "redactor"%>
+        </div>
+
+        <br>
+
+        <%= f.submit "Save", class: "btn btn-large btn-green" %>
+      <% end %>
+
+    <br>
+    <br>
+    
+    <h1>Blog Entries</h1>
+    <% # this passes :blogid to blogentries_controller/new, where it can be accessed with "params[:blogid]" %>
+    <%= link_to 'New Entry', new_blogentry_path(:blogid => @blog), { :class => 'btn btn-primary'} %>
+    <br>
+    <br>
+    <% @blogentries.each do |blogentry| %>
+      <div class="row-fluid">
+          <div class="page-list">
+            <h2>
+              <%= blogentry.title %>
+              <%= link_to 'Destroy', blogentry, method: :delete, :class => "btn btn-red pull-right",
+                                         data: { confirm: 'Are you sure?' }%>
+            </h2>
+            <p>
+              <%= truncate_html blogentry.content.html_safe, length: 80 %>
+            </p>
+            <p>
+              <% #according to Rails API, link_to(body, url, html_options) %>
+              <%= link_to 'Edit', edit_blogentry_path(blogentry), { :class => "btn" } %>
+              
+            </p>
+          </div>
+          <!--/span-->
+        </div>
+    <% end %>
+
+  </div>
+</div>
+<%# add some space so that footer bar doesn't cover anything %>
+<br>
+<br>

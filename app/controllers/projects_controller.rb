@@ -20,7 +20,7 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
     if @project.update_attributes(params[:project])
-      flash[:success] = "Project Updated!"
+      flash[:success] = "Project updated!"
       redirect_to '/dashboard'
     else
       render 'edit'
@@ -34,14 +34,14 @@ class ProjectsController < ApplicationController
 
   def destroy
     Project.find(params[:id]).destroy
-    flash[:success] = "Project Deleted."
+    flash[:success] = "Project deleted."
     redirect_to '/dashboard'
   end
 
   def create
     @project = current_user.projects.build(params[:project])
     if @project.save
-      flash[:success] = "Project created successfully"
+      flash[:success] = "Project created successfully!"
       redirect_to '/dashboard'
     else
       render 'new'

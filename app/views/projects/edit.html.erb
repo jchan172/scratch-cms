@@ -4,9 +4,12 @@
 <div class="container-fluid">
   <div class="row-fluid">
     <%= render 'layouts/sidebar' %>
+    <script type="text/javascript">
+      $('#projects-link').removeClass("inactive").addClass("active") // change the "inactive" class to "active"
+    </script>
 
     <div class="span8">
-      <h1>Update Your Project</h1>
+      <h1>Edit Project</h1>
 
         <%= form_for(@project) do |f| %>
           <%= render 'shared/error_messages', object: f.object %>
@@ -20,10 +23,13 @@
 
           <br>
 
-          <%= f.submit "Save", class: "btn btn-large btn-primary" %>
+          <%= f.submit "Save", class: "btn btn-large btn-green" %>
         <% end %>
 
 
     </div>
   </div>
 </div>
+<%# add some space so that footer bar doesn't cover anything %>
+<br>
+<br>

@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      flash[:success] = "Welcome to Jack and Andy\'s CMS!"
+      flash[:success] = "Welcome to Scratch CMS!"
       sign_in @user
       redirect_to '/dashboard'
     else
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
-      flash[:success] = "Profile updated"
+      flash[:success] = "Profile updated!"
       redirect_to @user
     else
       render 'edit'

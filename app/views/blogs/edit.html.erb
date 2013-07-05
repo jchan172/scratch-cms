@@ -1,23 +1,34 @@
-<% provide(:title, "Edit Blog") %> 
-<h1>Update Your Blog</h1>
+<% provide(:mode, "management") %>
+<% provide(:title, "Edit Blog") %>
 
-<div class="row">
-  <div class="offset3">
-    <%= form_for(@blog) do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <%= render 'layouts/sidebar' %>
+    <script type="text/javascript">
+      $('#blogs-link').removeClass("inactive").addClass("active") // change the "inactive" class to "active"
+    </script>
+  
+    <div class="span8">
+      <h1>Update Title and Description</h1>
+        
+        <%= form_for(@blog) do |f| %>
+          <%= render 'shared/error_messages', object: f.object %>
 
-        <%= f.label :title %>
-        <%= f.text_field :title %>
+            <%= f.label :title %>
+            <%= f.text_field :title %>
 
-      <div class="redactor_box">
-        <%= f.text_area :content, placeholder: "Blog description goes here...", :class => "redactor"%>
-      </div>
+          <div class="redactor_box">
+            <%= f.text_area :content, placeholder: "Blog description goes here...", :class => "redactor"%>
+          </div>
 
-      <br>
+          <br>
 
-      <%= f.submit "Save", class: "btn btn-large btn-primary" %>
-    <% end %>
+          <%= f.submit "Save", class: "btn btn-large btn-green" %>
+        <% end %>
 
-
+    </div>
   </div>
 </div>
+<%# add some space so that footer bar doesn't cover anything %>
+<br>
+<br>

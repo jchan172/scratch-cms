@@ -1,28 +1,35 @@
 <% if yield(:mode) == 'management' %>
-	<div class="footer">
-		<div class="container-fluid">
-		  <footer>
-		  	<br>
-		    <p class="pull-left">
-		        <a href="#">Scratch CMS</a>
-		    </p>
-		    <p class="pull-right">
-		        © 2013 Yo Mama · All rights reserved.
-		    </p>
-		  </footer>
-		</div>
-	</div>
+
+	<footer id="footer-container" class="footer navbar navbar-fixed-bottom">
+
+		<table>
+			<tr>
+				<td class="cell-left" rowspan="2">
+					&nbsp;&nbsp; <%= link_to image_tag('ScratchCMS.png', alt: 'Scratch CMS', height: 25, width: 112), '/dashboard' %>
+				</td>
+
+			</tr>
+			<tr>
+				<td class="cell-right">
+					<span class="copyright-text">
+						Copyright &#169; 2013 Yo Mama · All Rights Reserved.
+					</span>
+				</td>
+			</tr>
+		</table>
+
+	</footer>
+
 <% else %>
 	<div class="container marketing">
 		<hr class="divider">
-	  <footer>
-	    <p class="pull-left">
-	        <a href="#">Back to top</a>
-	    </p>
-	    <p class="pull-right">
-	        © 2013 Yo Mama · All rights reserved.
-	    </p>
-	  </footer>
+			<footer>
+				<p class="pull-left">
+					<a href="#">Back to top</a>
+				</p>
+				<p class="pull-right">
+					Copyright &#169; 2013 Yo Mama · All rights reserved.
+				</p>
+		  </footer>
 	</div>
 <% end %>
-	

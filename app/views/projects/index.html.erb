@@ -1,8 +1,13 @@
+<%= link_to 'New Project', new_project_path, { :class => "btn btn-large btn-primary" } %>
+<br>
+<br>
 <% projects.each do |project| %>
   <div class="row-fluid">
       <div class="page-list">
         <h2>
           <%= project.title %>
+          <%= link_to 'Delete', project, method: :delete, :class => "btn btn-red pull-right", 
+                                     data: { confirm: 'Are you sure?' } %>
         </h2>
         
         <p>
@@ -10,14 +15,14 @@
         </p>
 
         <p>
-          <% #according to Rails API, link_to(body, url, html_options = {}) %>
+          <% #according to Rails API, link_to(body, url, html_options) %>
           <%= link_to 'Edit', edit_project_path(project), :class => "btn"  %>
-          <%= link_to 'Destroy', project, method: :delete, :class => "btn", 
-                                     data: { confirm: 'Are you sure?' } %>
+          
         </p>
       </div>
       <!--/span-->
     </div>
 <% end %>
-
-<%= link_to 'New Project', new_project_path %>
+<%# add some space so that footer bar doesn't cover anything %>
+<br>
+<br>

@@ -24,6 +24,8 @@ WebsiteBase::Application.routes.draw do
   match '/logout' => 'sessions#destroy', via: :delete
   match '/dashboard' => 'users#show', :defaults => { :id => -1 }
 
+  match '/blogs/:id/manage' => 'blogs#manage'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

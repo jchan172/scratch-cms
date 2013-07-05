@@ -11,14 +11,14 @@ class BlogentriesController < ApplicationController
 
   def destroy
     Blogentry.find(params[:id]).destroy
-    flash[:success] = "Blog Entry Deleted."
+    flash[:success] = "Blog entry deleted."
     redirect_to '/dashboard'
   end
 
   def update
     @blogentry = Blogentry.find(params[:id])
     if @blogentry.update_attributes(params[:blogentry])
-      flash[:success] = "Blog entry update!"
+      flash[:success] = "Blog entry updated!"
       redirect_to '/dashboard'
     else
       render 'edit'
