@@ -4,6 +4,7 @@ WebsiteBase::Application.routes.draw do
 
   resources :blogs
   resources :blogentries
+  resources :custompages
   resources :users
   resources :sessions, only: [:new, :create, :delete]
 

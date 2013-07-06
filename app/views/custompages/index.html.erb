@@ -1,0 +1,29 @@
+<%= link_to 'New Custom Page', new_custompage_path, { :class => "btn btn-large btn-primary" } %>
+<br>
+<br>
+<% @custompages.each do |custompage| %>
+  <div class="row-fluid">
+      <div class="page-list">
+        <h2>
+          <%= custompage.title %>
+          <%= link_to 'Delete', custompage, method: :delete, :class => "btn btn-red pull-right", 
+                                     data: { confirm: 'Are you sure?' } %>
+        </h2>
+        
+        <p>
+          <%= truncate_html custompage.content.html_safe, length: 80 %>
+        </p>
+
+        <p>
+          <% #according to Rails API, link_to(body, url, html_options) %>
+          <%= link_to 'Edit', edit_custompage_path(custompage), :class => "btn"  %>
+          
+        </p>
+      </div>
+      <!--/span-->
+    </div>
+<% end %>
+<%= will_paginate @custompages %>
+<%# add some space so that footer bar doesn't cover anything %>
+<br>
+<br>

@@ -1,7 +1,7 @@
 <%= link_to 'New Blog', new_blog_path, { :class => "btn btn-large btn-primary" } %>
 <br>
 <br>
-<% blogs.each do |blog| %>
+<% @blogs.each do |blog| %>
   <div class="row-fluid">
       <div class="page-list">
         <h2>
@@ -21,6 +21,7 @@
       <!--/span-->
     </div>
 <% end %>
+<%= will_paginate @blogs %>
 <%# add some space so that footer bar doesn't cover anything %>
 <br>
 <br>

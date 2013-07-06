@@ -1,0 +1,35 @@
+<% provide(:mode, 'management') %>
+<% provide(:title, "Edit Custom Page") %> 
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <%= render 'layouts/sidebar' %>
+    <script type="text/javascript">
+      $('#custompages-link').removeClass("inactive").addClass("active") // change the "inactive" class to "active"
+    </script>
+
+    <div class="span8">
+      <h1>Edit Custompage</h1>
+
+        <%= form_for(@custompage) do |f| %>
+          <%= render 'shared/error_messages', object: f.object %>
+
+            <%= f.label :title %>
+            <%= f.text_field :title %>
+
+          <div class="redactor_box">
+            <%= f.text_area :content, placeholder: "Custom Page content goes here...", :class => "redactor"%>
+          </div>
+
+          <br>
+
+          <%= f.submit "Save", class: "btn btn-large btn-green" %>
+        <% end %>
+
+
+    </div>
+  </div>
+</div>
+<%# add some space so that footer bar doesn't cover anything %>
+<br>
+<br>

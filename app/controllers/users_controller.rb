@@ -8,8 +8,9 @@ class UsersController < ApplicationController
     # this is the case when someone goes to /dashboard, so we'll want to display the user's projects and blogs
     if params[:id] == -1
       @user = current_user
-      @projects = @user.projects
-      @blogs = @user.blogs
+      @projects = @user.projects.paginate(page: params[:page], :per_page => 10)
+      @blogs = @user.blogs.paginate(page: params[:page], :per_page => 10)
+      @custompages = @user.custompages.paginate(page: params[:page], :per_page => 10)
 
       respond_to do |format|
         format.html # renders show.html.erb

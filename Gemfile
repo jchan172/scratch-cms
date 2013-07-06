@@ -14,7 +14,9 @@ gem 'hirb' # makes console output nicer to read
 gem 'meta_request' # shows information about app requests in browser (remember also need chrome extension)
 gem 'railroady' # generates UML diagrams
 gem 'truncate_html' # used to give a preview of content (cuts off content after n characters)
-gem 'redactor-rails' # wysiwyg html editor
+gem 'redactor-rails' # wysiwyg html 
+gem 'will_paginate' # allows pagination, showing a limited number of things at once per page
+gem 'bootstrap-will_paginate' # allows use of bootstrap's pagination styles
 # gem 'carrierwave' # something that redactor needs for uploading files (hold off on implementing this functionality)
 # gem 'mini_magick' # also something that redactor needs for uploading files (hold off on implementing this functionality)
 # gem 'smusher' # lossless reduction of images
