@@ -1,31 +1,28 @@
 <% provide(:title, "Edit user") %> 
 
+<h1>Update Your Profile</h1>
+<div class="account-settings">
+  <%= form_for(@user) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
 
-<!-- <div class="span8"> -->
-  <h1>Update Your Profile</h1>
-  <div class="account-settings">
-    <%= form_for(@user) do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
 
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+    <%= f.label :username %>
+    <%= f.text_field :username %>
 
-      <%= f.label :username %>
-      <%= f.text_field :username %>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
 
-      <%= f.label :email %>
-      <%= f.text_field :email %>
+    <%= f.label :password, "New Password" %>
+    <%= f.password_field :password %>
 
-      <%= f.label :password, "New Password" %>
-      <%= f.password_field :password %>
+    <%= f.label :password_confirmation, "Confirm New Password" %>
+    <%= f.password_field :password_confirmation %>
 
-      <%= f.label :password_confirmation, "Confirm New Password" %>
-      <%= f.password_field :password_confirmation %>
+    <br>
 
-      <br>
+    <%= f.submit "Save changes", class: "btn btn-large btn-success" %>
+  <% end %>
 
-      <%= f.submit "Save changes", class: "btn btn-large btn-success" %>
-    <% end %>
-
-  </div>
-<!-- </div> -->
+</div>  

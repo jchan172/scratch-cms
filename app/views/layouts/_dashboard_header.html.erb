@@ -1,4 +1,4 @@
-<div class="navbar navbar-inverse navbar-fixed-top">
+<div class="navbar navbar-fixed-top">
 	<div class="navbar-inner">
 		<div class="container-fluid">
 			<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -9,13 +9,15 @@
 			<a class="brand" href='/dashboard'>Scratch CMS</a>
 			<div class="nav-collapse collapse">
 				<p class="navbar-text pull-right">
-					Logged in as
-					<%= link_to current_user.name, dashboard_path, { :class => "navbar-link" } %>
-					<!-- # <a href="/dashboard" class="navbar-link">Username</a> -->
+					<% if signed_in? %>
+						Logged in as <%= current_user.name %>
+					<% end %>
 				</p>
-				<ul class="nav">
-					<li class="active">
+				<ul class="nav pull-right">
+					<li class="inactive">
+						<% if signed_in? %>
 						<%= link_to "Sign Out", logout_path, method: :delete %>
+						<% end %>
 					</li>
 				</ul>
 			</div>
