@@ -1,31 +1,29 @@
+<% provide(:mode, 'management') %>
 <% provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
 
-<div class="container">
-    <div class="row">
-      <div class="offset4">
-        <%= form_for(@user) do |f| %>
-          <%= render 'shared/error_messages', object: f.object %>
+<img class="centeredimage" src="/assets/ScratchCMS.png" width=200dp>
+<h1> Create Your Account</h1>
+<div class="account-settings">
+  <%= form_for(@user) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
 
-          <%= f.label :name %>
-          <%= f.text_field :name %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
 
-          <%= f.label :username %>
-          <%= f.text_field :username %>
+    <%= f.label :username %>
+    <%= f.text_field :username %>
 
-          <%= f.label :email %>
-          <%= f.text_field :email %>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
 
-          <%= f.label :password %>
-          <%= f.password_field :password %>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
 
-          <%= f.label :password_confirmation, "Confirmation" %>
-          <%= f.password_field :password_confirmation %>
+    <%= f.label :password_confirmation, "Confirmation" %>
+    <%= f.password_field :password_confirmation %>
 
-          <br>
+    <br>
 
-          <%= f.submit "Create my account", class: "btn btn-large btn-inverse" %>
-        <% end %>
-      </div>
-  </div>
+    <%= f.submit "Create my account", class: "btn btn-large btn-success" %>
+  <% end %>
 </div>
