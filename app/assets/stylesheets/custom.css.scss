@@ -8,7 +8,7 @@
 
 body {
   padding-top: 70px;
-  padding-bottom: 40px;
+  padding-bottom: 0px;
   color: #5a5a5a;
 }
 
@@ -306,6 +306,14 @@ body {
 
 /* Jack and Andy */
 
+.container-main {
+  padding-top: 107px;
+  width: 940px;
+  margin-right: auto;
+  margin-left: auto;
+  *zoom: 1;
+}
+
 /* forms */
 
 input, textarea, select, .uneditable-input {
@@ -375,9 +383,11 @@ footer {
   margin-top: 15px;
   padding-top: 5px;
 
+  /* omit shadow when using flat theme
   -moz-box-shadow: 0px -8px 8px rgba(90, 110, 128, 0.4);
   -webkit-box-shadow: 0px -8px 8px rgba(90, 110, 128, 0.4);
   box-shadow: 0px -8px 8px rgba(90, 110, 128, 0.4);
+  */
 
   color: #999;
 }
