@@ -4856,7 +4856,7 @@ input[type="submit"].btn.btn-mini {
 .navbar-inverse .nav li.dropdown.active > .dropdown-toggle,
 .navbar-inverse .nav li.dropdown.open.active > .dropdown-toggle {
   color: #ffffff;
-  background-color: #007fff;
+  background-color: #000000; /* dropdown button color when pressed */
 }
 
 .navbar-inverse .nav li.dropdown > a:hover .caret,

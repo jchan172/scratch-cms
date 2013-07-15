@@ -1,4 +1,35 @@
 <% provide(:title, 'Home') %>
+<!-- Begin Carousel -->
+  <div class="sliderContainer fullWidth clearfix">
+    <div id="full-width-slider" class="royalSlider heroSlider rsMinW">
+      <div class="rsContent">
+        <img class="rsImg" src="http://dimsemenov.com/plugins/royal-slider/img/full-width/1.jpg" alt="" />
+        <div class="infoBlock infoBlockBottomLeftBlack rsABlock" data-fade-effect="" data-move-offset="10" data-move-effect="bottom" data-speed="200">
+          <h4>This is an animated block, add any number of them to any type of slide</h4>
+          <p>Put completely anything inside - text, images, inputs, links, buttons.</p>
+        </div>
+      </div>
+      <div class="rsContent">
+        <img class="rsImg" src="http://dimsemenov.com/plugins/royal-slider/img/full-width/2.jpg" alt="" />
+         <div class="infoBlock  rsAbsoluteEl" style="color:#000;" data-fade-effect="" data-move-offset="10" data-move-effect="bottom" data-speed="200">
+          <h4>This is a static HTML block</h4>
+          <p>It's always displayed and not animated by slider.</p>
+        </div>
+      </div>
+      <div class="rsContent">
+        <img class="rsImg" src="http://dimsemenov.com/plugins/royal-slider/img/full-width/3.jpg" alt="" />
+        <div class="infoBlock rsABlock infoBlockBottomLeftBlack" data-fade-effect="" data-move-offset="10" data-move-effect="bottom" data-speed="200">
+          <h4>You can link to this slide by adding #3 to url.</h4>
+          <p><a href="http://http://dimsemenov.comhttp://dimsemenov.com/plugins/royal-slider/gallery-with-deeplinking/">Learn more</a></p>
+        </div>
+      </div>
+      <div class="rsContent">
+        <img class="rsImg" src="http://dimsemenov.com/plugins/royal-slider/img/full-width/4.jpg" alt="" />
+        <span class="photosBy rsAbsoluteEl" data-fade-effect="fa;se" data-move-offset="40" data-move-effect="bottom" data-speed="200">Photos by <a href="http://www.flickr.com/photos/gilderic/">Gilderic</a></span>
+      </div>
+    </div>
+  </div>
+<!-- End Carousel -->
 <div class="container-main">
 	<div class="featurette">
 		<img class="featurette-image pull-right" src="http://www.wordans.ca/wvc-1358624700/wordansfiles/images/2013/1/19/176714/176714_340.jpg">
@@ -37,109 +68,5 @@
 						<br>
 						<br>
 						blah blah blah
-
-						<!DOCTYPE html>
-<meta charset="utf-8">
-<style>
-
-path {
-  stroke: #fff;
-  fill-rule: evenodd;
-}
-
-text {
-  font-family: Arial, sans-serif;
-  font-size: 12px;
-}
-
-</style>
 	</div>
 </div>
-
-<script>
-
-var width = 960,
-    height = 700,
-    radius = Math.min(width, height) / 2;
-
-var x = d3.scale.linear()
-    .range([0, 2 * Math.PI]);
-
-var y = d3.scale.linear()
-    .range([0, radius]);
-
-var color = d3.scale.category20c();
-
-var svg = d3.select("body").append("svg")
-    .attr("width", width)
-    .attr("height", height)
-  .append("g")
-    .attr("transform", "translate(" + width / 2 + "," + (height / 2 + 10) + ")");
-
-var partition = d3.layout.partition()
-    .value(function(d) { return d.size; });
-
-var arc = d3.svg.arc()
-    .startAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x))); })
-    .endAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x + d.dx))); })
-    .innerRadius(function(d) { return Math.max(0, y(d.y)); })
-    .outerRadius(function(d) { return Math.max(0, y(d.y + d.dy)); });
-
-d3.json("http://bl.ocks.org/metmajer/raw/5480307/flare.json", function(error, root) {
-  var g = svg.selectAll("g")
-      .data(partition.nodes(root))
-    .enter().append("g");
-
-  var path = g.append("path")
-    .attr("d", arc)
-    .style("fill", function(d) { return color((d.children ? d : d.parent).name); })
-    .on("click", click);
-
-  var text = g.append("text")
-    .attr("transform", function(d) { return "rotate(" + computeTextRotation(d) + ")"; })
-    .attr("x", function(d) { return y(d.y); })
-    .attr("dx", "6") // margin
-    .attr("dy", ".35em") // vertical-align
-    .text(function(d) { return d.name; });
-
-  function click(d) {
-    // fade out all text elements
-    text.transition().attr("opacity", 0);
-
-    path.transition()
-      .duration(750)
-      .attrTween("d", arcTween(d))
-      .each("end", function(e, i) {
-          // check if the animated element's data e lies within the visible angle span given in d
-          if (e.x >= d.x && e.x < (d.x + d.dx)) {
-            // get a selection of the associated text element
-            var arcText = d3.select(this.parentNode).select("text");
-            // fade in the text element and recalculate positions
-            arcText.transition().duration(750)
-              .attr("opacity", 1)
-              .attr("transform", function() { return "rotate(" + computeTextRotation(e) + ")" })
-              .attr("x", function(d) { return y(d.y); });
-          }
-      });
-  }
-});
-
-d3.select(self.frameElement).style("height", height + "px");
-
-// Interpolate the scales!
-function arcTween(d) {
-  var xd = d3.interpolate(x.domain(), [d.x, d.x + d.dx]),
-      yd = d3.interpolate(y.domain(), [d.y, 1]),
-      yr = d3.interpolate(y.range(), [d.y ? 20 : 0, radius]);
-  return function(d, i) {
-    return i
-        ? function(t) { return arc(d); }
-        : function(t) { x.domain(xd(t)); y.domain(yd(t)).range(yr(t)); return arc(d); };
-  };
-}
-
-function computeTextRotation(d) {
-  return (x(d.x + d.dx / 2) - Math.PI / 2) / Math.PI * 180;
-}
-
-</script>

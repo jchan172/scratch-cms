@@ -32,7 +32,7 @@ header {
     margin-bottom: 35px;
 }
 .navbar.transparent.navbar-inverse .navbar-inner {
-    background: rgba(0,0,0,0.4);
+    background: rgba(0,0,0,0.6);
     border-bottom: 1px solid rgb(88, 88, 88);
 }
 .navbar.transparent.navbar-inverse .navbar-inner .container {
