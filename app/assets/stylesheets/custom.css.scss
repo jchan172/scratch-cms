@@ -307,7 +307,16 @@ body {
 /* Jack and Andy */
 
 .container-main {
-  padding-top: 107px;
+  /* Firefox */
+  height: -moz-calc(100% - 336px);
+  /* WebKit */
+  height: -webkit-calc(100% - 336px);
+  /* Opera */
+  height: -o-calc(100% - 336px);
+  /* Standard */
+  height: calc(100% - 336px);
+  margin-top: 100px; /* navbar is 97px */ 
+  position: relative;
   width: 940px;
   margin-right: auto;
   margin-left: auto;
@@ -349,7 +358,6 @@ IMG.centeredimage {
 
 
 /* Dashboard */
-
 .dashboard-content {
   width: 500px;
 }
