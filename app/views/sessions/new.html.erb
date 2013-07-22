@@ -1,17 +1,19 @@
 <% provide(:mode, 'management') %>
 <% provide(:title, 'Sign In') %>
-<img class="centeredimage" src="/assets/ScratchCMS.png" width=200dp>
-<div class="account-settings">
-  <%= form_for(:session, url: sessions_path) do |f| %>
+<div class="management-wrapper">
+	<img class="centeredimage" src="/assets/ScratchCMS.png" width=200dp>
+	<div class="account-settings">
+	  <%= form_for(:session, url: sessions_path) do |f| %>
 
-    <%= f.label :username %>
-    <%= f.text_field :username %>
+	    <%= f.label :username %>
+	    <%= f.text_field :username %>
 
-    <%= f.label :password %>
-    <%= f.password_field :password %>
+	    <%= f.label :password %>
+	    <%= f.password_field :password %>
 
-    <br>
-    
-    <%= f.submit "Log In", class: "btn btn-large btn-success" %>
-  <% end %>
+	    <br>
+	    
+	    <%= f.submit "Log In", class: "btn btn-large btn-success" %>
+	  <% end %>
+	</div>
 </div>

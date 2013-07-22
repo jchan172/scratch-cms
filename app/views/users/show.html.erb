@@ -1,43 +1,44 @@
 <% provide(:mode, 'management') %>
 <% provide(:title, 'Dashboard') %>
 <!-- provide somke token and then have the _header check for token to determine which navbar to show -->
-<div class="container-fluid">
-	<div class="row-fluid">
+<div class="management-wrapper">
+	<div class="container-fluid">
+		<div class="row-fluid">
 
-		
-		<%= render 'layouts/sidebar_main' %>
-		
-		<div id="ajax" class="span8">
-			<script type="text/javascript">
-				$('#my-links li').removeClass("active").addClass("inactive") // goes through all <li> under div id="my-links" and changes class to "inactive"
-			</script>
-			<% if params[:link] == 'settings' %>
-				<%= render :template => 'users/edit', :locals => { :user => @user } %>
+			<%= render 'layouts/sidebar_main' %>
+			
+			<div id="ajax" class="span8">
 				<script type="text/javascript">
-				  $('#account-settings-link').removeClass("inactive").addClass("active") // change the "inactive" class to "active"
+					$('#my-links li').removeClass("active").addClass("inactive") // goes through all <li> under div id="my-links" and changes class to "inactive"
 				</script>
-			<% elsif params[:link] == 'projects' %>
-				<%= render :template => 'projects/index', :locals => { :projects => @projects } %>
-				<script type="text/javascript">
-				  $('#projects-link').removeClass("inactive").addClass("active") // change the "inactive" class to "active"
-				</script>
-			<% elsif params[:link] == 'blogs' %>
-				<%= render :template => 'blogs/index', :locals => { :blogs => @blogs } %>
-				<script type="text/javascript">
-				  $('#blogs-link').removeClass("inactive").addClass("active") // change the "inactive" class to "active"
-				</script>
-			<% elsif params[:link] == 'custompages' %>
-				<%= render :template => 'custompages/index', :locals => { :custompages => @custompages } %>
-				<script type="text/javascript">
-				  $('#custompages-link').removeClass("inactive").addClass("active") // change the "inactive" class to "active"
-				</script>
-			<% else %>
-				<%= render :template => 'pages/about' %>
-				<script type="text/javascript">
-				  $('#about-scratch-link').removeClass("inactive").addClass("active") // change the "inactive" class to "active"
-				</script>
-			<% end %>
+				<% if params[:link] == 'settings' %>
+					<%= render :template => 'users/edit', :locals => { :user => @user } %>
+					<script type="text/javascript">
+					  $('#account-settings-link').removeClass("inactive").addClass("active") // change the "inactive" class to "active"
+					</script>
+				<% elsif params[:link] == 'projects' %>
+					<%= render :template => 'projects/index', :locals => { :projects => @projects } %>
+					<script type="text/javascript">
+					  $('#projects-link').removeClass("inactive").addClass("active") // change the "inactive" class to "active"
+					</script>
+				<% elsif params[:link] == 'blogs' %>
+					<%= render :template => 'blogs/index', :locals => { :blogs => @blogs } %>
+					<script type="text/javascript">
+					  $('#blogs-link').removeClass("inactive").addClass("active") // change the "inactive" class to "active"
+					</script>
+				<% elsif params[:link] == 'custompages' %>
+					<%= render :template => 'custompages/index', :locals => { :custompages => @custompages } %>
+					<script type="text/javascript">
+					  $('#custompages-link').removeClass("inactive").addClass("active") // change the "inactive" class to "active"
+					</script>
+				<% else %>
+					<%= render :template => 'pages/about' %>
+					<script type="text/javascript">
+					  $('#about-scratch-link').removeClass("inactive").addClass("active") // change the "inactive" class to "active"
+					</script>
+				<% end %>
+			</div>
+
 		</div>
-
 	</div>
 </div>

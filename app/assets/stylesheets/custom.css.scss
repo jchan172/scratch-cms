@@ -306,6 +306,11 @@ body {
 
 /* Jack and Andy */
 
+.management-wrapper {
+  margin-top: 97px; /* navbar is 97px */
+  padding-bottom: 56px; 
+}
+
 .container-main {
   /* Firefox */
   height: -moz-calc(100% - 336px);
