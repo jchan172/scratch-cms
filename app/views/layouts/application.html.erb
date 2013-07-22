@@ -10,6 +10,8 @@
 <body>
 <% if yield(:mode) == 'management' %>
 	<%= render 'layouts/dashboard_header' %>
+	<div class="dashboard-placeholder">
+	</div>
 <% else %>
 	<%= render 'layouts/header' %>
 <% end %>
