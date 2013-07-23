@@ -7,8 +7,6 @@
 /* Padding below the footer and lighter body text */
 
 body {
-  padding-top: 70px;
-  padding-bottom: 40px;
   color: #5a5a5a;
 }
 
@@ -268,6 +266,25 @@ body {
 
 /* Scratch CMS */
 
+html,body  {
+  height: 100%;
+  // height: -o-calc(100% - 144px); /* opera */
+  // height: -webkit-calc(100% - 144px); /* google, safari */
+  // height: -moz-calc(100% - 144px); /* firefox */
+  // height: calc(100% - 144px);
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  min-height: 100%;
+  position: relative;
+}
+
+.navbar-placeholder {
+  padding-top: 50px;
+}
+
 /* Forms */
 
 input, textarea, select, .uneditable-input {
@@ -306,14 +323,32 @@ IMG.centeredimage {
 }
 
 /* Public facing */
-.container-content {
+
+.container-main { /* this is for displaying main page; it's wider */
+  width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 70px;
+}
+
+.container-content { /* this is for displaying project and blog pages; it's narrower */
   width: 740px;
   margin-left: auto;
   margin-right: auto;
+  padding-top: 70px;
+  padding-bottom: 230px;
 }
 
 
 /* Dashboard */
+
+.navbar-placeholder {
+  padding-top: 70px;
+}
+
+.management-wrapper {
+  padding-bottom: 70px;
+}
 
 .dashboard-content {
   width: 500px;
@@ -347,6 +382,10 @@ footer {
   background-color: #EFEFEF;
   margin-top: 15px;
   padding-top: 5px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
 
   /* no shadow with flat theme */
   // -moz-box-shadow: 0px -8px 8px rgba(90, 110, 128, 0.4);

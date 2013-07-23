@@ -7,25 +7,33 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<% if yield(:mode) == 'management' %>
-	<%= render 'layouts/dashboard_header' %>
-<% else %>
-	<%= render 'layouts/header' %>
-<% end %>
-
-<% if yield(:mode) == 'management' %>
-	<div class="container-fluid">
-<% else %>
-	<div class="container">
-<% end %>
-	  <% flash.each do |key, value| %>
-	    <div id="flash" class="alert alert-<%= key %>"><%= value %></div>
-	  <% end %>
+	<div class="wrapper">
+		<% if yield(:mode) == 'management' %>
+			<%= render 'layouts/dashboard_header' %>
+		<% else %>
+			<%= render 'layouts/header' %>
+		<% end %>
+			
+		<% if yield(:mode) == 'management' %>
+			<div class="navbar-placeholder">
+			</div>
+			<div class="container-fluid">
+		<% else %>
+			<div class="container">
+		<% end %>
+			  <% flash.each do |key, value| %>
+			    <div id="flash" class="alert alert-<%= key %>"><%= value %></div>
+			  <% end %>
+			</div>
+			<% if yield(:mode) == 'management' %>
+				<div class="management-wrapper">
+			<% end %>
+			<%= yield %>
+			<% if yield(:mode) == 'management' %>
+				</div>
+			<% end %>
+			<%= render 'layouts/footer' %>
+			<%#= debug(params) if Rails.env.development? %>
 	</div>
-
-	<%= yield %>
-	<%= render 'layouts/footer' %>
-	<%#= debug(params) if Rails.env.development? %>
 </body>
 </html>
