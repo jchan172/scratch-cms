@@ -1,7 +1,19 @@
-<% provide(:mode, 'management') %>
-<h1>Title: <%= @blog.title %></h1>
-<br>
-<h2>Description: </h2>
-<br>
-<%= @blog.content.html_safe %>
-<br>
+<div class="container-content">
+	<h1><%= @blog.title %></h1>
+	<%= @blog.content.html_safe %>
+	<br>
+	<% @blogentries.each do |blogentry| %>
+          <div class="row-fluid">
+              <div class="page-list">
+                <h3>
+                  <%= blogentry.title %>
+                </h3>
+                <p>
+                  <%= blogentry.content.html_safe %>
+                </p>
+              </div>
+              <!--/span-->
+            </div>
+        <% end %>
+	<br>
+</div>

@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_filter :signed_in_user
+  before_filter :signed_in_user, :except => [:show]
 
   def new
     @project = Project.new

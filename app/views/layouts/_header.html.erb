@@ -15,37 +15,22 @@
          	<li><%= link_to "Sign Out", logout_path, method: :delete %></li>
          <% end %>
          <li class="dropdown">
-         	<%= link_to 'Projects <b class="caret"></b>'.html_safe, '#', :class => "dropdown-toggle", "data-toggle" => "dropdown" %>
+         	<%= link_to 'Show Me More <b class="caret"></b>'.html_safe, '#', :class => "dropdown-toggle", "data-toggle" => "dropdown" %>
 	         <ul class="dropdown-menu">
-	                  <% User.first.projects.each do |project| %>
-	                    <li>
-	                      <%= link_to project.title, project %>
-	                    </li>
-	                  <% end %>
-	                </ul>
-	         </li>
-         <li class="dropdown">
-            <%= link_to 'Dropdown <b class="caret"></b>'.html_safe, '#', :class => "dropdown-toggle", "data-toggle" => "dropdown" %>
-           <ul class="dropdown-menu" id="project-menu">
-             <li><a href="#">Word on da street is</a></li>
-             <li class="divider"></li>
-             <li><a href="#">Yo</a></li>
-             <li><a href="#">Mama</a></li>
-             <li><a href="#">Is</a></li>
-             <li><a href="#">So</a></li>
-             <li><a href="#">Fat</a></li>
-             <li><a href="#">The</a></li>
-             <li><a href="#">Elevator</a></li>
-             <li><a href="#">Has</a></li>
-             <li><a href="#">To</a></li>
-             <li><a href="#">Go</a></li>
-             <li><a href="#">Down</a></li>
-             <li><a href="#">When</a></li>
-             <li><a href="#">She</a></li>
-             <li><a href="#">Gets</a></li>
-             <li><a href="#">In</a></li>
-           </ul>
-         </li>
+              <% User.first.projects.each do |project| %>
+                <li>
+                  <%= link_to project.title, project %>
+                </li>
+              <% end %>
+              <li class="divider"></li>
+              <% User.first.blogs.each do |blog| %>
+                <li>
+                  <%= link_to blog.title, blog %>
+                </li>
+              <% end %>
+            </li>
+          </ul>
+        </li>
        </ul>
       </div>
     </div>
