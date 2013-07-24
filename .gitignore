@@ -21,6 +21,3 @@
 .Trashes
 
 nohup.out
-
-# Ignore New Relic config file
-/config/newrelic.yml
