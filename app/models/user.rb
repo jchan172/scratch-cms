@@ -39,6 +39,10 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 5 }
   validates :password_confirmation, presence: true
 
+  validate do |user|
+    user.errors.add(:base, "Only one user may exist.") if User.first
+  end
+
   private
 	# keep this method private because we don't want
 	# other things to mess with authentication token
