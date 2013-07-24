@@ -5,7 +5,7 @@ html {
 body {
 	position: relative;
 	-webkit-font-smoothing: antialiased;
-	font-family: 'Lato', sans-serif !important;
+	/*font-family: 'Lato', sans-serif !important;*/
 	padding-top: 107px;
 	height: 100%;
 	margin: 0;
@@ -135,6 +135,7 @@ header {
 	bottom: 0;
 	left: 0;
 	right: 0;
+	position: absolute;
 }
 #footer .footer_header {
 	color: rgb(196, 196, 196);

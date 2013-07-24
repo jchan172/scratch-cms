@@ -268,25 +268,19 @@ body {
 
 /* Scratch CMS */
 
-.management-wrapper {
-  padding-bottom: 56px; 
+html,body  {
+  height: 100%;
+  // height: -o-calc(100% - 144px); /* opera */
+  // height: -webkit-calc(100% - 144px); /* google, safari */
+  // height: -moz-calc(100% - 144px); /* firefox */
+  // height: calc(100% - 144px);
+  margin: 0;
+  padding: 0;
 }
 
-.container-main {
-  /* Firefox */
-  height: -moz-calc(100% - 336px);
-  /* WebKit */
-  height: -webkit-calc(100% - 336px);
-  /* Opera */
-  height: -o-calc(100% - 336px);
-  /* Standard */
-  height: calc(100% - 336px);
-  margin-top: 100px; /* navbar is 97px */ 
+.public-wrapper {
+  min-height: 100%;
   position: relative;
-  width: 940px;
-  margin-right: auto;
-  margin-left: auto;
-  *zoom: 1;
 }
 
 /* Forms */
@@ -327,17 +321,32 @@ IMG.centeredimage {
 }
 
 /* Public facing */
-.container-content {
-  width: 740px;
+
+.container-main { /* this is for displaying main page; it's wider */
+  width: 940px;
   margin-left: auto;
   margin-right: auto;
+  padding-top: 20px;
+  padding-bottom: 300px;
+}
+
+.container-content { /* this is for displaying project and blog pages; it's narrower */
+  width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 80px;
+  padding-bottom: 250px;
 }
 
 
 /* Dashboard */
 
-.dashboard-placeholder {
-  padding-top: 97px;
+.navbar-placeholder {
+  padding-top: 96px; /* this is height of navbar + 20 */
+}
+
+.management-wrapper {
+  padding-bottom: 70px;
 }
 
 .dashboard-content {
@@ -372,6 +381,10 @@ footer {
   background-color: #EFEFEF;
   margin-top: 15px;
   padding-top: 5px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
 
   /* omit shadow when using flat theme
   -moz-box-shadow: 0px -8px 8px rgba(90, 110, 128, 0.4);
