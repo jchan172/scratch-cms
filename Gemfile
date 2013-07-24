@@ -20,6 +20,7 @@ gem 'bootstrap-will_paginate' # allows use of bootstrap's pagination styles
 gem 'carrierwave' # something that redactor needs for uploading files (hold off on implementing this functionality)
 gem 'mini_magick' # also something that redactor needs for uploading files (hold off on implementing this functionality)
 # gem 'smusher' # lossless reduction of images
+gem 'newrelic_rpm' # Heroku add-on for analytics
 
 # these gems used both in development and testing
 group :development, :test do

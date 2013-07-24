@@ -119,6 +119,7 @@ GEM
     net-ssh (2.6.7)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
+    newrelic_rpm (3.6.5.130)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     orm_adapter (0.4.0)
@@ -229,6 +230,7 @@ DEPENDENCIES
   localtunnel
   meta_request
   mini_magick
+  newrelic_rpm
   pg
   railroady
   rails (= 3.2.13)
