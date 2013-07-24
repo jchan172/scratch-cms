@@ -67,9 +67,9 @@ ActiveRecord::Schema.define(:version => 20130722064417) do
     t.string   "email"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
-    t.string   "auth_token"
     t.string   "string"
     t.string   "password_digest"
+    t.string   "auth_token"
     t.string   "username"
   end
 

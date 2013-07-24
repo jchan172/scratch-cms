@@ -83,7 +83,7 @@ Go into the config/database.yml and change these lines. You can delete the passw
 	development:
 	  adapter: postgresql
 	  encoding: unicode
-	  database: website_base_development
+	  database: scratch_cms_development
 	  pool: 5
 	  username: <your shell username>
 
@@ -102,7 +102,7 @@ You ought to see the website.
 ###Git Settings
 To push to Github without entering username and password every time, make sure to configure the remote this way:
 
-	git remote set-url origin git@github.com:jchan172/website_base.git
+	git remote set-url origin git@github.com:jchan172/scratch-cms.git
 
 You have to upload your SSH key to Github. If you don't have an SSH key, run this line:
 
@@ -160,11 +160,11 @@ If you don't have a Heroku app already, you'll need to create an app.
 
 If you have an existing Heroku app, just add the remote.
 
-	heroku git:remote -a website-base
+	heroku git:remote -a scratch-cms
 
 The previous line didn't work for me, but this did:
 
-	git remote add heroku git@heroku.com:website-base.git
+	git remote add heroku git@heroku.com:scratch-cms.git
 
 To push code up to Heroku, simply do this:
 
@@ -177,6 +177,18 @@ Once the code is pushed without errors, remember to have Heroku migrate the data
 Now, you can look at your project on Heroku by doing this:
 
 	heroku open
+
+You can check how the app is running on Heroku using this (shows if app is up or down and for how long):
+
+	heroku ps
+
+If you want to check the Heroku logs in real time, use this command:
+
+	heroku logs -t
+
+To restart the app on Heroku, do this:
+
+	heroku restart
 
 Reference
 ====================
