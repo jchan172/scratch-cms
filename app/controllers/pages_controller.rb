@@ -5,9 +5,6 @@ class PagesController < ApplicationController
   def about
   end
 
-  def standard
-  end
-
-  def blog
+  def error
   end
 end
