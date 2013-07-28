@@ -2,6 +2,7 @@
 	<h1><%= @blog.title %></h1>
 	<%= @blog.content.html_safe %>
 	<br>
+  <br>
 	<% @blogentries.each do |blogentry| %>
           <div class="row-fluid">
               <div class="page-list">
@@ -10,7 +11,7 @@
                 </h3>
 
                 <p>
-                  <i>Created at <%= blogentry.created_at %></i>
+                  <i>Posted at <%= blogentry.created_at.strftime('%Y %B %d %I:%M %P')%></i>
                   <%= blogentry.content.html_safe %>
                 </p>
               </div>

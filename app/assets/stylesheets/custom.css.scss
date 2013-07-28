@@ -362,6 +362,28 @@ IMG.centeredimage {
   margin-right: auto;
 }
 
+.text-label{ 
+  float: left;
+  margin-top: 5px;
+  display: block;
+}
+
+.text-field {
+  float: right;
+  display: block;
+  width: 93%;
+}
+
+.text-label-container {
+  display: block;
+  width: 100%;
+}
+
+.isolation-container {
+  width: 100%;
+  display: block;
+}
+
 .page-list {
   width: 100%;
   border-top: 1px solid #e8e8e8;

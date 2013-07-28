@@ -11,7 +11,7 @@
 #
 
 class Blogentry < ActiveRecord::Base
-  attr_accessible :content, :title, :blog_id
+  attr_accessible :content, :title, :blog_id, :created_at
 
   belongs_to :blog
 
