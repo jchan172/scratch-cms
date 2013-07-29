@@ -11,8 +11,6 @@
 #
 
 class Blog < ActiveRecord::Base
-  attr_accessible :content, :title
-  
   belongs_to :user
   has_many :blogentries, dependent: :destroy
 

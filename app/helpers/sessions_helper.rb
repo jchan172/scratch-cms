@@ -12,6 +12,10 @@ module SessionsHelper
 		@current_user ||= User.find_by_auth_token(cookies[:auth_token])
 	end
 
+	def current_user?(user)
+    	user == current_user
+  	end
+
 	def signed_in?
 		# this calls the current_user method, which calls the model to find a user
 		# based on the cookie in the browser. if the model can't find a user that

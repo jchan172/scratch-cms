@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_filter :signed_in_user, :except => [:show]
+  before_action :signed_in_user, :except => [:show]
 
   def new
     @project = Project.new
@@ -19,7 +19,7 @@ class ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
-    if @project.update_attributes(params[:project])
+    if @project.update_attributes(project_params)
       flash[:success] = "Project updated!"
       redirect_to '/dashboard'
     else
@@ -39,7 +39,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = current_user.projects.build(params[:project])
+    @project = current_user.projects.build(project_params)
     if @project.save
       flash[:success] = "Project created successfully!"
       redirect_to '/dashboard'
@@ -49,6 +49,10 @@ class ProjectsController < ApplicationController
   end
 
   private
+
+    def project_params
+      params.require(:project).permit(:content, :title)
+    end
 
     def signed_in_user
       redirect_to login_url, notice: "Please sign in." unless signed_in?

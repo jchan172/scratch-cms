@@ -1,9 +1,10 @@
 source 'https://rubygems.org'
 
 ruby '2.0.0'
-gem 'rails', '3.2.13'
+gem 'rails', '4.0.0'
 gem 'jquery-rails', '2.0.2' # incorporate jquery
 gem 'bootstrap-sass', '2.1' # Twitter Bootstrap for frontend
+gem 'turbolinks' # turbolinks makes apps appear faster by replacing HTML instead of full reload
 gem 'bcrypt-ruby', '3.0.1' # gem for password authentication (enables us to use ActiveModel has_secure_password method)
 gem 'pg' # use PostgreSQL for development and production
 gem 'unicorn' # allows using multiple processes on one Heroku dyno
@@ -22,6 +23,8 @@ gem 'carrierwave' # something that redactor needs for uploading files (hold off 
 gem 'mini_magick' # also something that redactor needs for uploading files (hold off on implementing this functionality)
 # gem 'smusher' # lossless reduction of images
 gem 'newrelic_rpm' # Heroku add-on for analytics
+gem 'rename' # allows you to rename the Rails project. simply run 'rails g rename:app_to <insert new name>'
+gem 'rails4_upgrade'
 
 # these gems used both in development and testing
 group :development, :test do
@@ -29,20 +32,20 @@ group :development, :test do
 	gem 'rspec-rails', '2.11.0' # use rspec as our testing platform
 end
 
-# these gems only used for testing
+# i don't always test my code, but when i do, i do it in production
 group :test do
-	gem 'cucumber-rails' # more testing tools
-	gem 'database_cleaner' # not required but highly recommended by makers of cucumber
-	gem 'capybara', '1.1.2' # allows us to easily navigate to a page, click links, fill out forms, submit forms, and check the contents of web pages for items during testing
-	gem 'factory_girl_rails', '4.1.0' # easy way to create user during testing
+	gem 'cucumber-rails', '1.3.0', :require => false # more testing tools
+	gem 'database_cleaner', github: 'bmabey/database_cleaner' # not required but highly recommended by makers of cucumber
+	gem 'capybara' # allows us to easily navigate to a page, click links, fill out forms, submit forms, and check the contents of web pages for items during testing
+	gem 'factory_girl_rails' # easy way to create user during testing
 end
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '3.2.5' # integration for sass (frontend stylesheet stuff)
-  gem 'coffee-rails', '3.2.2' # compiles coffeescript
-  gem 'uglifier', '1.2.3' # used for minifying javascript
+  gem 'sass-rails' # integration for sass (frontend stylesheet stuff)
+  gem 'coffee-rails' # compiles coffeescript
+  gem 'uglifier' # used for minifying javascript
 end
 
 # # use these gems on heroku

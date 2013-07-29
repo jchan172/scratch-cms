@@ -1,4 +1,4 @@
-WebsiteBase::Application.routes.draw do
+ScratchCms::Application.routes.draw do
 
   mount RedactorRails::Engine => '/redactor_rails'
 
@@ -15,16 +15,16 @@ WebsiteBase::Application.routes.draw do
 
   root to: 'pages#home'
 
-  match '/about' => 'pages#about'
-  match '/error' => 'pages#error'
+  match '/about' => 'pages#about',    via: 'get'
+  match '/error' => 'pages#error',    via: 'get'
 
-  match '/signup',  to: 'users#new'
+  match '/signup',  to: 'users#new',    via: 'get'
 
-  match '/login' => 'sessions#new'
+  match '/login' => 'sessions#new',    via: 'get'
   match '/logout' => 'sessions#destroy', via: :delete
-  match '/dashboard' => 'users#show', :defaults => { :id => -1 }
+  match '/dashboard' => 'users#show', :defaults => { :id => -1 },    via: 'get'
 
-  match '/blogs/:id/manage' => 'blogs#manage'
+  match '/blogs/:id/manage' => 'blogs#manage',    via: 'get'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

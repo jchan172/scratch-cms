@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
-  before_filter :signed_in_user, :except => [:show]
-
+  before_action :signed_in_user, :except => [:show]
+  
   def new
     @blog = Blog.new
   end
@@ -26,7 +26,7 @@ class BlogsController < ApplicationController
 
   def update
     @blog = Blog.find(params[:id])
-    if @blog.update_attributes(params[:blog])
+    if @blog.update_attributes(blog_params)
       flash[:success] = "Blog updated!"
       redirect_to '/dashboard'
     else
@@ -41,7 +41,7 @@ class BlogsController < ApplicationController
   end
 
   def create
-    @blog = current_user.blogs.build(params[:blog])
+    @blog = current_user.blogs.build(blog_params)
     if @blog.save
       flash[:success] = "Blog created successfully!"
       redirect_to '/dashboard'
@@ -52,7 +52,12 @@ class BlogsController < ApplicationController
 
   private
 
+    def blog_params
+      params.require(:blog).permit(:content, :title)
+    end
+
     def signed_in_user
       redirect_to login_url, notice: "Please sign in." unless signed_in?
     end
+    
 end

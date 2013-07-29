@@ -1,5 +1,5 @@
 class BlogentriesController < ApplicationController
-  before_filter :signed_in_user
+  before_action :signed_in_user
 
   def new
     @blogentry = Blogentry.new
@@ -17,7 +17,7 @@ class BlogentriesController < ApplicationController
 
   def update
     @blogentry = Blogentry.find(params[:id])
-    if @blogentry.update_attributes(params[:blogentry])
+    if @blogentry.update_attributes(blogentry_params)
       flash[:success] = "Blog entry updated!"
       redirect_to '/dashboard'
     else
@@ -26,7 +26,7 @@ class BlogentriesController < ApplicationController
   end
 
   def create
-    @blogentry = current_user.blogs.find(params[:blog][:id]).blogentries.build(params[:blogentry])
+    @blogentry = current_user.blogs.find(params[:blog][:id]).blogentries.build(blogentry_params)
     if @blogentry.save
       flash[:success] = "Blog entry created successfully!"
       redirect_to '/dashboard'
@@ -36,6 +36,10 @@ class BlogentriesController < ApplicationController
   end
 
   private
+
+    def blogentry_params
+      params.require(:blogentry).permit(:content, :title, :blog_id, :created_at)
+    end
 
     def signed_in_user
       redirect_to login_url, notice: "Please sign in." unless signed_in?

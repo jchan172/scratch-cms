@@ -11,8 +11,6 @@
 #
 
 class Custompage < ActiveRecord::Base
-  attr_accessible :content, :title
-
   belongs_to :user
   
   validates :content, presence: true, length: {maximum: 500}
