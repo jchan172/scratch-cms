@@ -10,7 +10,9 @@ So, if you want to create your website from Scratch, here's what to do:
 	1. Get your development environment set up (includes downloading the project)
 	2. Edit the home page to style it the way you want
 	3. Push it up to Github and then push it up to Heroku (this is where your website will exist)
-	4. Go to the website's signup page (such as yourwebsitename.herokuapp.com/signup) and create your account.
-	5. Now you can log in and manage your content (login at yourwebsitename.herokuapp.com/login)
+	4. Go to the website's signup page (such as yoursitename.herokuapp.com/signup) and create your account.
+	5. Now you can log in and manage your content (login at yoursitename.herokuapp.com/login)
 
 For the instructions to set up the dev environment, click on LinuxSetup.md or MacSetup.md in the above Github project directory. If you're using Windows, you're on your own (create a virtual machine and install Linux on it).
+
+Once you're done with the setup, click on Post-Setup.md for some tips on customizing your home page, pushing to Git, and deploying on Heroku.

@@ -98,9 +98,8 @@ If it completes without complaining, you should be able to start the server with
 
 	rails s
 
-If there are no errors, everything should work.
-Open up a web browser and navigate to http://localhost:3000/
-You ought to see the website.
+If there are no errors, everything should work. Open up a web browser and navigate to http://localhost:3000/ You ought to see the website.
+
 Now that you're done with the setup, take a look at Post-Setup.md for tips on customizing your front page and tips on pushing to Github and Heroku.
 
 Useful Information
