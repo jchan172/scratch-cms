@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '2.0.0'
 gem 'rails', '3.2.13'
 gem 'jquery-rails', '2.0.2' # incorporate jquery
 gem 'bootstrap-sass', '2.1' # Twitter Bootstrap for frontend
@@ -17,9 +18,10 @@ gem 'truncate_html' # used to give a preview of content (cuts off content after 
 gem 'redactor-rails' # wysiwyg html 
 gem 'will_paginate' # allows pagination, showing a limited number of things at once per page
 gem 'bootstrap-will_paginate' # allows use of bootstrap's pagination styles
-# gem 'carrierwave' # something that redactor needs for uploading files (hold off on implementing this functionality)
-# gem 'mini_magick' # also something that redactor needs for uploading files (hold off on implementing this functionality)
+gem 'carrierwave' # something that redactor needs for uploading files (hold off on implementing this functionality)
+gem 'mini_magick' # also something that redactor needs for uploading files (hold off on implementing this functionality)
 # gem 'smusher' # lossless reduction of images
+gem 'newrelic_rpm' # Heroku add-on for analytics
 
 # these gems used both in development and testing
 group :development, :test do

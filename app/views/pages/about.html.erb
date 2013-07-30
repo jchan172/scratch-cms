@@ -1,5 +1,11 @@
-<div class="container">
-	<p>This project is the foundation for our personal websites. The website will have a very basic content management system (CMS) that allows for easy content publishing so that we don't have to bust out terminals and text editors every time we want to post some content to our websites.
+<% if yield(:mode) == 'management' %>
+	<div class="dashboard-content">
+<% else %>
+	<div class="container-content">
+<% end %>
+	<img class="centeredimage" src="/assets/ScratchCMS.png" width=200dp>
+	<br>
+	<p>Scratch CMS was an idea that Jack Chan and Andy Pierce had after a couple drinks in a Mexican bar one night. It was such a cool and useful idea that they decided to make it happen. The resulting content management system is a foundation for which hackers with just a tiny, tiny bit of Ruby on Rails experience can quickly create personal websites.</p>
 
-	<p>The CMS will require a login system (although we only need to have one user in the end). Once this is implemented, we can take this project and customize front-end or whatever else for our own personal websites.
+	<p>After the initial setup that might be a little tedious, it's really easy to deploy and manage a website. Essentially, download the project, customize the home page, upload it to Heroku, and then create and manage your content without needing to look at code or bust out any text editors nor terminals/command prompts.</p>
 </div>

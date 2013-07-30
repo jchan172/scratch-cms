@@ -14,13 +14,32 @@
       <%= form_for(@blogentry) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
 
-        <%= f.label :title %>
-        <%= f.text_field :title %>
+        <div class="text-label-container">
+        <%= f.label :title, :class => "text-label" %> <%= f.text_field :title, :class => "text-field" %>
+        </div>
+        <br>
+        <br>
+        <%# if you change the format of the f.text_field, be sure to change the format of the datetimepicker %>
+        <div class="text-label-container">
+          <%= f.label "Date", :class => "text-label" %> 
+          <%= f.text_field :created_at, :value => (@blogentry.created_at.strftime('%Y %B %d %I:%M %P')), :id => 'basic_example_1', :class => "text-field" %>
+        </div>
 
+        <script>
+        $('#basic_example_1').datetimepicker({
+          dateFormat: 'yy MM dd',
+          controlType: 'select',
+          timeFormat: 'hh:mm tt',
+          addSliderAccess: true,
+          sliderAccessArgs: { touchonly: true }
+        });
+        </script>
+        <br>
+        <br>
         <div class="redactor_box">
           <%= f.text_area :content, placeholder: "Blog Entry Goes Here...", :class => "redactor"%>
         </div>
-
+        
         <br>
 
         <%= f.submit "Save", class: "btn btn-large btn-success" %>

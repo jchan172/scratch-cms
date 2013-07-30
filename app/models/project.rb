@@ -3,7 +3,7 @@
 # Table name: projects
 #
 #  id         :integer          not null, primary key
-#  content    :string(255)
+#  content    :text
 #  title      :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -15,7 +15,7 @@ class Project < ActiveRecord::Base
 
   belongs_to :user
   
-  validates :content, presence: true, length: {maximum: 500}
+  validates :content, presence: true
   validates :title, presence: true
   validates :user_id, presence: true
 

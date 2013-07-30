@@ -16,8 +16,7 @@ WebsiteBase::Application.routes.draw do
   root to: 'pages#home'
 
   match '/about' => 'pages#about'
-  match '/standard' => 'pages#standard'
-  match '/blog' => 'pages#blog'
+  match '/error' => 'pages#error'
 
   match '/signup',  to: 'users#new'
 
