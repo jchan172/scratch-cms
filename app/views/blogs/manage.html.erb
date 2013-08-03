@@ -15,7 +15,7 @@
       <div class="page-list">
         <h2>Blog Entries
         <% # this passes :blogid to blogentries_controller/new, where it can be accessed with "params[:blogid]" %>
-        <%= link_to 'New Entry', new_blogentry_path(:blogid => @blog), { :class => 'btn btn-primary pull-right'} %>
+        <%= link_to 'New Entry', new_blogentry_path(:blogid => @blog), 'data-no-turbolink' => true, :class => 'btn btn-primary pull-right' %>
         </h2>
         <br>
         <% @blogentries.each do |blogentry| %>
@@ -31,7 +31,7 @@
                 </p>
                 <p>
                   <% #according to Rails API, link_to(body, url, html_options) %>
-                  <%= link_to 'Edit', edit_blogentry_path(blogentry), { :class => "btn" } %>
+                  <%= link_to 'Edit', edit_blogentry_path(blogentry), 'data-no-turbolink' => true, :class => "btn" %>
                   
                 </p>
               </div>

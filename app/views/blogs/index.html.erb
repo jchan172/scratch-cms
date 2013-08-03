@@ -1,4 +1,4 @@
-<%= link_to 'New Blog', new_blog_path, { :class => "btn btn-large btn-primary" } %>
+<%= link_to 'New Blog', new_blog_path, 'data-no-turbolink' => true, :class => "btn btn-large btn-primary" %>
 <br>
 <br>
 <% @blogs.each do |blog| %>
@@ -14,7 +14,7 @@
         </p>
         <p>
           <% #according to Rails API, link_to(body, url, html_options) %>
-          <%= link_to 'New Entry', new_blogentry_path(:blogid => blog.id), { :class => 'btn'} %>
+          <%= link_to 'New Entry', new_blogentry_path(:blogid => blog.id), 'data-no-turbolink' => true, :class => 'btn' %>
           <%= link_to 'Manage', { :controller => "blogs", :action => "manage", :id => blog.id }, { :class => "btn" } %>
         </p>
       </div>
