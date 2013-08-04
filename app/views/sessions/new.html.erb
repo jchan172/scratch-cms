@@ -1,6 +1,7 @@
 <% provide(:mode, 'management') %>
 <% provide(:title, 'Sign In') %>
-<img class="centeredimage" src="/assets/ScratchCMS.png" width=200dp>
+
+<%= image_tag asset_path("ScratchCMS.png"), :class => "centeredimage", 'width' => '200dp' %>
 <div class="account-settings">
   <%= form_for(:session, url: sessions_path) do |f| %>
 

@@ -1,7 +1,7 @@
 <% provide(:mode, 'management') %>
 <% provide(:title, 'Sign up') %>
 
-<img class="centeredimage" src="/assets/ScratchCMS.png" width=200dp>
+<%= image_tag asset_path("ScratchCMS.png"), :class => "centeredimage", 'width' => '200dp' %>
 <h1> Create Your Account</h1>
 <div class="account-settings">
   <%= form_for(@user) do |f| %>
