@@ -51,7 +51,7 @@ class ProjectsController < ApplicationController
   private
 
     def project_params
-      params.require(:project).permit(:content, :title)
+      params.require(:project).permit(:content, :title, :draft)
     end
 
     def signed_in_user

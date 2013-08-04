@@ -38,7 +38,7 @@ class BlogentriesController < ApplicationController
   private
 
     def blogentry_params
-      params.require(:blogentry).permit(:content, :title, :blog_id, :created_at)
+      params.require(:blogentry).permit(:content, :title, :blog_id, :created_at, :draft)
     end
 
     def signed_in_user

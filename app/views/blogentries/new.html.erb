@@ -47,6 +47,13 @@
 
         <br>
 
+        <div class="draft-checkbox-container">
+            <%= f.check_box :draft, :class => "pull-left" %> <%=f.label "Draft", :class => "pull-right" %>
+        </div>
+
+        <br>
+        <br>
+
         <%= f.submit "Create Entry", class: "btn btn-large btn-success" %>
       <% end %>
 

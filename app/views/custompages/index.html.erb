@@ -5,7 +5,11 @@
   <div class="row-fluid">
       <div class="page-list">
         <h2>
-          <%= custompage.title %>
+          <% if custompage.draft == true %>
+            <%= custompage.title %> <%= '- <i>draft</i>'.html_safe %>
+          <% else %>
+            <%= custompage.title %>
+          <% end %>
           <%= link_to 'Delete', custompage, method: :delete, :class => "btn btn-danger pull-right", 
                                      data: { confirm: 'Are you sure?' } %>
         </h2>

@@ -5,7 +5,11 @@
   <div class="row-fluid">
       <div class="page-list">
         <h2>
-          <%= blog.title %>
+          <% if blog.draft == true %>
+            <%= blog.title %> <%= '- <i>draft</i>'.html_safe %>
+          <% else %>
+            <%= blog.title %>
+          <% end %>
           <%= link_to 'Delete', blog, method: :delete, :class => "btn btn-danger pull-right",
                                      data: { confirm: 'Are you sure?' }%>
         </h2>

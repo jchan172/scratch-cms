@@ -1,2 +1,6 @@
-<h1>Custompages#show</h1>
-<p>Find me in app/views/custompages/show.html.erb</p>
+<% provide :title, @custompage.title %>
+
+<div class="container-content">
+	<h1><%= @custompage.title %> </h1>
+	<p><%= @custompage.content.html_safe %> </p>
+</div>

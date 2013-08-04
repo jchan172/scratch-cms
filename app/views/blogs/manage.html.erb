@@ -10,7 +10,7 @@
   
     <div class="span8">
       <div class="page-list">
-        <h2>Edit Title and Description<%= link_to 'Edit', edit_blog_path(@blog), :class => "btn pull-right"  %></h2>
+        <h2>Edit Title and Description<%= link_to 'Edit', edit_blog_path(@blog), 'data-no-turbolink' => true, :class => "btn pull-right"  %></h2>
       </div>
       <div class="page-list">
         <h2>Blog Entries
@@ -22,7 +22,11 @@
           <div class="row-fluid">
               <div class="sub-page-list pull-right">
                 <h3>
-                  <%= blogentry.title %>
+                  <% if blogentry.draft == true %>
+                    <%= blogentry.title %> <%= '- <i>draft</i>'.html_safe %>
+                  <% else %>
+                    <%= blogentry.title %>
+                  <% end %>
                   <%= link_to 'Destroy', blogentry, method: :delete, :class => "btn btn-danger pull-right",
                                              data: { confirm: 'Are you sure?' }%>
                 </h3>

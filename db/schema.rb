@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130803061020) do
+ActiveRecord::Schema.define(version: 20130803235239) do
 
   create_table "blogentries", force: true do |t|
     t.string   "title"
@@ -25,25 +25,28 @@ ActiveRecord::Schema.define(version: 20130803061020) do
   create_table "blogs", force: true do |t|
     t.string   "content"
     t.string   "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "user_id"
+    t.boolean  "draft",      default: false
   end
 
   create_table "custompages", force: true do |t|
     t.string   "title"
     t.text     "content"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "draft",      default: false
   end
 
   create_table "projects", force: true do |t|
     t.text     "content"
     t.string   "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "user_id"
+    t.boolean  "draft",      default: false
   end
 
   create_table "redactor_assets", force: true do |t|

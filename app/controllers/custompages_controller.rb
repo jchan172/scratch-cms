@@ -51,7 +51,7 @@ class CustompagesController < ApplicationController
   private
 
     def custompage_params
-      params.require(:custompage).permit(:content, :title)
+      params.require(:custompage).permit(:content, :title, :draft)
     end
 
     def signed_in_user
