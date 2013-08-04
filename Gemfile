@@ -13,7 +13,7 @@ gem 'pg' # use PostgreSQL for development and production
 gem 'unicorn' # allows using multiple processes on one Heroku dyno
 gem 'font-awesome-rails' # icon font (such as briefcase pic instead of writing out "briefcase")
 gem 'truncate_html' # used to give a preview of content (cuts off content after n characters)
-gem 'redactor-rails' # wysiwyg html 
+gem 'redactor-rails', '0.4' # wysiwyg html 
 gem 'will_paginate' # allows pagination, showing a limited number of things at once per page
 gem 'bootstrap-will_paginate' # allows use of bootstrap's pagination styles
 gem 'jbuilder', '1.0.2' # gives simple language for declaring JSON structures
