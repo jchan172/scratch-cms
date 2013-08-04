@@ -244,7 +244,7 @@ DEPENDENCIES
   railroady
   rails (= 4.0.0)
   rails_12factor (= 0.0.2)
-  redactor-rails
+  redactor-rails (= 0.4)
   rename
   rspec-rails (= 2.11.0)
   sass-rails
