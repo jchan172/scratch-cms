@@ -10,10 +10,6 @@
       <div class="nav-collapse collapse" id="main-menu">
         <ul class="nav pull-right" id="main-menu-left">
           <li><%= link_to "About", about_path %></li>
-          <% if signed_in? %>
-         	<li><%= link_to "Dashboard", dashboard_path %></li>
-         	<li><%= link_to "Sign Out", logout_path, method: :delete %></li>
-          <% end %>
           <% if User.first %>
             <li class="dropdown">
            	  <%= link_to 'Show Me More <b class="caret"></b>'.html_safe, '#', :class => "dropdown-toggle", "data-toggle" => "dropdown" %>

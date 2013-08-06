@@ -38,7 +38,7 @@ Install Rails
 
 	\curl -L https://get.rvm.io | bash -s stable --autolibs=3 --rails
 	
-Check Rails version (shows that Rails is installed)
+Check Rails version (shows that Rails is installed, should also be Rails 4.0)
 
 	rails -v 
 	
@@ -106,11 +106,11 @@ Useful Information
 ==================
 
 ###Git Settings
-To push to Github without entering username and password every time, make sure to configure the remote this way:
+Github is where you will store your project, so you won't lose all the hard work you've gone through. To push to Github without entering username and password every time, make sure to configure the remote this way:
 
-	git remote set-url origin git@github.com:jchan172/scratch-cms.git
+	git remote set-url origin <insert your github project URL, something like git@github.com:jchan172/scratch-cms.git>
 
-You have to upload your SSH key to Github. If you don't have an SSH key, run this line:
+You have to upload your SSH key to Github. If you don't have an SSH key, run the line below. You should probably check out the link down in the "Reference" section about generating SSH keys. That might be a better guide.
 
 	ssh-keygen-t rsa -C "your_email@example.com"
 
@@ -143,21 +143,21 @@ Set your master branch to track origin master
 	git branch -u origin/master
 
 ### Deploying to Heroku
-First you must login to Heroku.
+Heroku is where you'll host your website (it's free and easy) so that everyone can see your website. If you're confused, find some information online about how Heroku works. There are plenty of other tutorials on the web that show you how to set it up so that you can push your project to it. Anyway, you can continue to try following these instructions first. First you must login to Heroku via the terminal.
 
 	heroku login
 
-If you don't have a Heroku app already, you'll need to create an app.
+If you don't have a Heroku app already, you'll need to create an app. This will create an app named something like "peacful-wind-2829" that you can see by logging into www.heroku.com using an internet browser.
 
 	heroku create
 
 If you have an existing Heroku app, just add the remote.
 
-	heroku git:remote -a scratch-cms
+	heroku git:remote -a name-of-the-app
 
 The previous line didn't work for me, but this did:
 
-	git remote add heroku git@heroku.com:scratch-cms.git
+	git remote add heroku git@heroku.com:name-of-the-app.git
 
 To push code up to Heroku, simply do this:
 
