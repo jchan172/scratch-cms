@@ -1,18 +1,23 @@
 <% provide(:mode, 'management') %>
 <% provide(:title, 'Sign In') %>
 
+<script>
+$("input:text:visible:first").focus();
+</script>
+
 <%= image_tag asset_path("ScratchCMS.png"), :class => "centeredimage", 'width' => '200dp' %>
 <div class="account-settings">
   <%= form_for(:session, url: sessions_path) do |f| %>
 
     <%= f.label :username %>
-    <%= f.text_field :username %>
+    <%= f.text_field :username, :autofocus => true %>
 
     <%= f.label :password %>
-    <%= f.password_field :password %>
+    <%= f.password_field :password%>
 
     <br>
     
     <%= f.submit "Log In", class: "btn btn-large btn-success" %>
   <% end %>
 </div>
+

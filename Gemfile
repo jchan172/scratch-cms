@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.0.0'
 gem 'rails', '4.0.0'
-gem 'jquery-rails', '2.0.2' # incorporate jquery
+gem 'jquery-rails', '3.0.4' # incorporate jquery
 gem 'bootstrap-sass', '2.3.0.1' # Twitter Bootstrap for frontend
 gem 'sass-rails' # integration for sass (frontend stylesheet stuff)
 gem 'coffee-rails' # compiles coffeescript
@@ -16,7 +16,7 @@ gem 'truncate_html' # used to give a preview of content (cuts off content after 
 gem 'redactor-rails', '0.4' # wysiwyg html 
 gem 'will_paginate' # allows pagination, showing a limited number of things at once per page
 gem 'bootstrap-will_paginate' # allows use of bootstrap's pagination styles
-gem 'jbuilder', '1.0.2' # gives simple language for declaring JSON structures
+gem 'jbuilder' # gives simple language for declaring JSON structures
 gem 'carrierwave' # something that redactor needs for uploading files (hold off on implementing this functionality)
 gem 'mini_magick' # also something that redactor needs for uploading files (hold off on implementing this functionality)
 # gem 'smusher' # lossless reduction of images
