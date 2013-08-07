@@ -234,7 +234,7 @@ DEPENDENCIES
   factory_girl_rails
   font-awesome-rails
   hirb
-  jbuilder (= 1.0.2)
+  jbuilder
   jquery-rails (= 3.0.4)
   localtunnel
   meta_request
