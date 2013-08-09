@@ -1,11 +1,15 @@
-<%= link_to 'New Custom Page', new_custompage_path, { :class => "btn btn-large btn-primary" } %>
+<%= link_to 'New Custom Page', new_custompage_path, 'data-no-turbolink' => true, :class => "btn btn-large btn-primary" %>
 <br>
 <br>
 <% @custompages.each do |custompage| %>
   <div class="row-fluid">
       <div class="page-list">
         <h2>
-          <%= custompage.title %>
+          <% if custompage.draft == true %>
+            <%= custompage.title %> <%= '- <i>draft</i>'.html_safe %>
+          <% else %>
+            <%= custompage.title %>
+          <% end %>
           <%= link_to 'Delete', custompage, method: :delete, :class => "btn btn-danger pull-right", 
                                      data: { confirm: 'Are you sure?' } %>
         </h2>
@@ -16,7 +20,7 @@
 
         <p>
           <% #according to Rails API, link_to(body, url, html_options) %>
-          <%= link_to 'Edit', edit_custompage_path(custompage), :class => "btn"  %>
+          <%= link_to 'Edit', edit_custompage_path(custompage), 'data-no-turbolink' => true, :class => "btn"  %>
           
         </p>
       </div>

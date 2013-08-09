@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :signed_in_user, only: [:show, :edit, :delete, :index]
+  before_action :signed_in_user, only: [:show, :edit, :update, :delete, :index]
+  
   def new
     @user = User.new
   end
@@ -32,7 +33,7 @@ class UsersController < ApplicationController
   end
   
   def create
-    @user = User.new(params[:user])
+    @user = User.new(user_params)
     if @user.save
       flash[:success] = "Welcome to Scratch CMS!"
       sign_in @user
@@ -48,7 +49,7 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(params[:user])
+    if @user.update_attributes(user_params)
       flash[:success] = "Profile updated!"
       redirect_to @user
     else
@@ -58,8 +59,12 @@ class UsersController < ApplicationController
 
   private
 
+    def user_params
+      params.require(:user).permit(:email, :name, :username, :password, :password_confirmation)
+    end
+
     def signed_in_user
       redirect_to login_url, notice: "Please sign in." unless signed_in?
     end
-  
+
 end

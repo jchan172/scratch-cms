@@ -37,7 +37,7 @@
         <br>
         <br>
 
-        <div class="redactor_box">
+        <div class="redactor_content">
           <%= f.text_area :content, placeholder: "Write a new blog entry...", :class => "redactor"%>
         </div>
 
@@ -45,6 +45,13 @@
         <% # into params[:blog][:id] to send off with the POST request. %>
         <%= hidden_field :blog, :id, :value => params[:blogid] %>
 
+        <br>
+
+        <div class="draft-checkbox-container">
+            <%= f.check_box :draft, :class => "pull-left" %> <%=f.label "Draft", :class => "pull-right" %>
+        </div>
+
+        <br>
         <br>
 
         <%= f.submit "Create Entry", class: "btn btn-large btn-success" %>

@@ -1,11 +1,15 @@
-<%= link_to 'New Project', new_project_path, { :class => "btn btn-large btn-primary" } %>
+<%= link_to 'New Project', new_project_path, 'data-no-turbolink' => true, :class => "btn btn-large btn-primary" %>
 <br>
 <br>
 <% projects.each do |project| %>
   <div class="row-fluid">
       <div class="page-list">
         <h2>
-          <%= project.title %>
+          <% if project.draft == true %>
+            <%= project.title %> <%= '- <i>draft</i>'.html_safe %>
+          <% else %>
+            <%= project.title %>
+          <% end %>
           <%= link_to 'Delete', project, method: :delete, :class => "btn btn-danger pull-right", 
                                      data: { confirm: 'Are you sure?' } %>
         </h2>
@@ -16,7 +20,7 @@
 
         <p>
           <% #according to Rails API, link_to(body, url, html_options) %>
-          <%= link_to 'Edit', edit_project_path(project), :class => "btn"  %>
+          <%= link_to 'Edit', edit_project_path(project), 'data-no-turbolink' => true, :class => "btn"  %>
           
         </p>
       </div>

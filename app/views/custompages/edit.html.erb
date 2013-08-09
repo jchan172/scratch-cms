@@ -17,10 +17,17 @@
             <%= f.label :title %>
             <%= f.text_field :title %>
 
-          <div class="redactor_box">
+          <div class="redactor_content">
             <%= f.text_area :content, placeholder: "Custom Page content goes here...", :class => "redactor"%>
           </div>
 
+          <br>
+
+          <div class="draft-checkbox-container">
+              <%= f.check_box :draft, :class => "pull-left" %> <%=f.label "Draft", :class => "pull-right" %>
+          </div>
+
+          <br>
           <br>
 
           <%= f.submit "Save", class: "btn btn-large btn-success" %>

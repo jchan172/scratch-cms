@@ -16,7 +16,6 @@
 require 'securerandom'
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :username, :password, :password_confirmation
   has_many :projects, dependent: :destroy
   has_many :blogs, dependent: :destroy
   has_many :custompages, dependent: :destroy
@@ -24,7 +23,7 @@ class User < ActiveRecord::Base
 
   before_save { |user| user.email = email.downcase }
   before_save { |user| user.username = username.downcase }
-  before_save :create_auth_token
+  before_create :create_auth_token
 
   validates :name, presence: true, length: { maximum: 50 }
   validates :username, 
@@ -44,9 +43,9 @@ class User < ActiveRecord::Base
   end
 
   private
-	# keep this method private because we don't want
-	# other things to mess with authentication token
-	def create_auth_token
-		self.auth_token = SecureRandom.base64(13)
-	end
+  	# keep this method private because we don't want
+  	# other things to mess with authentication token
+  	def create_auth_token
+  		self.auth_token = SecureRandom.base64(13)
+  	end
 end

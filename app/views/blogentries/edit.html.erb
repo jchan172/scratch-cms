@@ -36,10 +36,17 @@
         </script>
         <br>
         <br>
-        <div class="redactor_box">
+        <div class="redactor_content">
           <%= f.text_area :content, placeholder: "Blog Entry Goes Here...", :class => "redactor"%>
         </div>
         
+        <br>
+
+        <div class="draft-checkbox-container">
+            <%= f.check_box :draft, :class => "pull-left" %> <%=f.label "Draft", :class => "pull-right" %>
+        </div>
+
+        <br>
         <br>
 
         <%= f.submit "Save", class: "btn btn-large btn-success" %>

@@ -11,8 +11,6 @@
 #
 
 class Blogentry < ActiveRecord::Base
-  attr_accessible :content, :title, :blog_id, :created_at
-
   belongs_to :blog
 
   validates :blog_id, presence: true

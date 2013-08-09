@@ -10,19 +10,23 @@
   
     <div class="span8">
       <div class="page-list">
-        <h2>Edit Title and Description<%= link_to 'Edit', edit_blog_path(@blog), :class => "btn pull-right"  %></h2>
+        <h2>Edit Title and Description<%= link_to 'Edit', edit_blog_path(@blog), 'data-no-turbolink' => true, :class => "btn pull-right"  %></h2>
       </div>
       <div class="page-list">
         <h2>Blog Entries
         <% # this passes :blogid to blogentries_controller/new, where it can be accessed with "params[:blogid]" %>
-        <%= link_to 'New Entry', new_blogentry_path(:blogid => @blog), { :class => 'btn btn-primary pull-right'} %>
+        <%= link_to 'New Entry', new_blogentry_path(:blogid => @blog), 'data-no-turbolink' => true, :class => 'btn btn-primary pull-right' %>
         </h2>
         <br>
         <% @blogentries.each do |blogentry| %>
           <div class="row-fluid">
               <div class="sub-page-list pull-right">
                 <h3>
-                  <%= blogentry.title %>
+                  <% if blogentry.draft == true %>
+                    <%= blogentry.title %> <%= '- <i>draft</i>'.html_safe %>
+                  <% else %>
+                    <%= blogentry.title %>
+                  <% end %>
                   <%= link_to 'Destroy', blogentry, method: :delete, :class => "btn btn-danger pull-right",
                                              data: { confirm: 'Are you sure?' }%>
                 </h3>
@@ -31,7 +35,7 @@
                 </p>
                 <p>
                   <% #according to Rails API, link_to(body, url, html_options) %>
-                  <%= link_to 'Edit', edit_blogentry_path(blogentry), { :class => "btn" } %>
+                  <%= link_to 'Edit', edit_blogentry_path(blogentry), 'data-no-turbolink' => true, :class => "btn" %>
                   
                 </p>
               </div>
