@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     else
       # this is the case for when someone tries to show a user through entering url, such as /users/2
       @user = User.find(params[:id])
-      redirect_to '/dashboard'
+      redirect_to dashboard_path
     end
   end
 
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
     if @user.save
       flash[:success] = "Welcome to Scratch CMS!"
       sign_in @user
-      redirect_to '/dashboard'
+      redirect_to dashboard_path
     else
       render 'new'
     end
