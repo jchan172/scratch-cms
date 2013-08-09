@@ -14,6 +14,7 @@ $(document).ready(
       "path":"/assets/redactor-rails",
       "css":"style.css",
       "minHeight":"300",
+      "linebreaks": "true", // use <br> when user presses enter instead of <p>
       // File button has been taken out because want to disable file upload for now
       "buttons":['html', '|', 'formatting', '|', 'bold', 'italic', 'deleted', '|',
                 'unorderedlist', 'orderedlist', 'outdent', 'indent', '|',
