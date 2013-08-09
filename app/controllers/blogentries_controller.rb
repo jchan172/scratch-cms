@@ -12,14 +12,14 @@ class BlogentriesController < ApplicationController
   def destroy
     Blogentry.find(params[:id]).destroy
     flash[:success] = "Blog entry deleted."
-    redirect_to '/dashboard'
+    redirect_to dashboard_path
   end
 
   def update
     @blogentry = Blogentry.find(params[:id])
     if @blogentry.update_attributes(blogentry_params)
       flash[:success] = "Blog entry updated!"
-      redirect_to '/dashboard'
+      redirect_to dashboard_path
     else
       render 'edit'
     end
@@ -29,7 +29,7 @@ class BlogentriesController < ApplicationController
     @blogentry = current_user.blogs.find(params[:blog][:id]).blogentries.build(blogentry_params)
     if @blogentry.save
       flash[:success] = "Blog entry created successfully!"
-      redirect_to '/dashboard'
+      redirect_to dashboard_path
     else
       render 'new'
     end
