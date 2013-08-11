@@ -27,11 +27,6 @@ class CustompagesController < ApplicationController
     end
   end
 
-  def update_special
-    flash[:success] = "woooo"
-    redirect_to dashboard_path
-  end
-
   def destroy
     Custompage.find(params[:id]).destroy
     flash[:success] = "custompage deleted."

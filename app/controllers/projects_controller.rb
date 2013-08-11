@@ -27,11 +27,6 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def update_special
-    flash[:success] = "woooo"
-    redirect_to dashboard_path
-  end
-
   def destroy
     Project.find(params[:id]).destroy
     flash[:success] = "Project deleted."
