@@ -2,7 +2,11 @@ class UsersController < ApplicationController
   before_action :signed_in_user, only: [:show, :edit, :update, :delete, :index]
   
   def new
-    @user = User.new
+    if !User.first
+      @user = User.new
+    else 
+      redirect_to root_path
+    end
   end
 
   def show  
