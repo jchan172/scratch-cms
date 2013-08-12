@@ -11,6 +11,9 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    if @project.draft == true
+      redirect_to root_path
+    end
   end
 
   def index

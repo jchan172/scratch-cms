@@ -18,7 +18,7 @@
         <%= link_to 'New Entry', new_blogentry_path(:blogid => @blog), 'data-no-turbolink' => true, :class => 'btn btn-primary pull-right' %>
         </h2>
         <br>
-        <% @blogentries.each do |blogentry| %>
+        <% @blogentries.order('created_at DESC').each do |blogentry| %>
           <div class="row-fluid">
               <div class="sub-page-list pull-right">
                 <h3>

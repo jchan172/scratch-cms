@@ -11,6 +11,9 @@ class CustompagesController < ApplicationController
 
   def show
     @custompage = Custompage.find(params[:id])
+    if @custompage.draft == true
+      redirect_to root_path
+    end
   end
 
   def index

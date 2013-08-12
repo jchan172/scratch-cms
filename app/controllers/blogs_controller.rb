@@ -18,6 +18,9 @@ class BlogsController < ApplicationController
   def show
     @blog = Blog.find(params[:id])
     @blogentries = @blog.blogentries
+    if @blog.draft == true
+      redirect_to root_path
+    end
   end
 
   def index
