@@ -17,7 +17,7 @@ class CustompagesController < ApplicationController
   end
 
   def index
-    @custompages = current_user.custompages
+    @custompages = current_user.custompages.paginate(page: params[:page], :per_page => 10)
   end
 
   def update

@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
 		# if there's a user and we can authenticate with password
 		if user && user.authenticate(session[:password])
 			sign_in user # call a helper method to sign in the user (need to add method ourselves)
-			redirect_to user # bring the user to his page (uses standard rails method)
+			redirect_to dashboard_path # bring the user to his page (uses standard rails method)
 		else # otherwise, a user doesn't exist or the password wasn't right
 			flash.now[:error] = "Username/password combination is not correct."
 			# rerender the login page. the flash.now call will set a banner to display

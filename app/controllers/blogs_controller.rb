@@ -12,12 +12,12 @@ class BlogsController < ApplicationController
 
   def manage
     @blog = Blog.find(params[:id])
-    @blogentries = @blog.blogentries
+    @blogentries = @blog.blogentries.paginate(page: params[:page], :per_page => 10)
   end
 
   def show
     @blog = Blog.find(params[:id])
-    @blogentries = @blog.blogentries
+    @blogentries = @blog.blogentries.paginate(page: params[:page], :per_page => 10)
     if @blog.draft == true
       redirect_to root_path
     end
