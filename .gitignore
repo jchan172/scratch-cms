@@ -19,7 +19,6 @@
 .DS_Store?
 .Spotlight-V100
 .Trashes
-/public/assets/*
 
 nohup.out
 

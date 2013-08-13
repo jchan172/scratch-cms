@@ -90,11 +90,39 @@ Connect as postgres (--username=postgres) and create a superuser role (-s) where
 	# su postgres
 	# createuser -s --username=postgres <your shell username>
 
+Go into the config/database.yml and change these lines. You can delete the password field.
+
+	# inside config/database.yml:
+	development:
+	  adapter: postgresql
+	  encoding: unicode
+	  database: website_base_development (or whatever you want to name it)
+	  pool: 5
+	  username: <your shell username>
+
 Now you can go into your project directory and create a database
 
 	rake db:create
 
-If it completes without complaining, you should be able to start the server with this:
+Add a password to user you just created by getting into the psql shell
+
+	sudo -u <shell username> pqsl scratch-cms_development (or whatever you named the database it in previous step)
+
+Now that you're in the psql shell, type
+
+	\password
+
+It will prompt you to enter a new password. Do so, and remember it! You'll need to know this later in Post Setup. Enter it again to confirm.
+
+Now you can quit out of the psql shell by typing 
+
+	\q
+
+Run a database migration.
+
+	bundle exec rake db:migrate
+
+Try to start a localhost server.
 
 	rails s
 
