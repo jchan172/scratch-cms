@@ -40,7 +40,13 @@ Push local database schema to Heroku
 
 	heroku db:push postgres://<your username>:<your password>@localhost/<your db name>
 
+Confirm by typing your app name again.
+
 There are probably going to be problems, but the important thing is that schema and redactor assets are pushed up to Heroku.
+
+Change back to Ruby 2.0
+
+	rvm use 2.0.0
 
 Compile assets locally.
 
