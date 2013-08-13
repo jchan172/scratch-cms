@@ -63,17 +63,21 @@ Push local database schema to Heroku like you did earlier.
 
 Confirm by typing your app name again.
 
-There are probably going to be problems yet again, but the important thing is that schema and redactor assets are pushed up to Heroku.
+There are probably going to be problems like before, but the important thing is that schema and redactor assets are pushed up to Heroku.
 
-Change back to Ruby 2.0
+Change back to Ruby 2.0.
 
 	rvm use 2.0.0
 
-Run a database migration on Heroku
+Run a database migration on Heroku. It ought to complete successfully.
 
 	heroku run rake db:migrate
 
-If it completes successfully, then you've completed the initial Heroku set up. After this, all you have to do is develop, compile assets, and push to Heroku. These are the steps:
+Enable Heroku's user-env-compile add-on. If you encounter any precompilation issues later on, try disabling this add-on and then re-enabling it. Some people have reported that this works.
+
+	heroku labs:enable user-env-compile
+
+If the steps above complete successfully, then you've completed the initial Heroku set up. After this, all you have to do is develop and then push to Heroku. These are the steps:
 
 	(edit, change, write code)
 	git add .
@@ -81,5 +85,10 @@ If it completes successfully, then you've completed the initial Heroku set up. A
 	git push origin master
 	git push heroku master
 
+###Note About user-env-compile
+
+Ideally, when you push to Heroku, it will do asset precompilation for you. But currently, you have to do the Heroku set up detailed above before you can have Heroku do asset precompilation. An extra add-on has to be enabled as well because something in the redactor gem requires user environment variables. See [https://devcenter.heroku.com/articles/labs-user-env-compile][user-env-compile documentation] info about this add-on. Basically, this tells Heroku to use user environment variables to compile assets. It's a one time thing. You then ought to be able to push to Heroku without problems. Note that this is an experimental thing by Heroku, and they may cancel it.
+
 [github]: http://www.github.com
 [heroku]: http://www.heroku.com
+[user-env-compile documentation]: https://devcenter.heroku.com/articles/labs-user-env-compile
