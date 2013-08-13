@@ -141,7 +141,7 @@ body {
 }
 .featurette {
   vertical-align: top;
-  padding-top: 70px; /* Vertically center images part 1: add padding above and below text. */
+  padding-top: 40px; /* Vertically center images part 1: add padding above and below text. */
   overflow: hidden; /* Vertically center images part 2: clear their floats. */
 }
 .featurette-image {
@@ -341,6 +341,10 @@ IMG.centeredimage {
   margin-right: auto;
   padding-top: 80px;
   padding-bottom: 250px;
+}
+
+.button-centered {
+  text-align: center;
 }
 
 .error-content {

@@ -2,12 +2,16 @@ class UsersController < ApplicationController
   before_action :signed_in_user, only: [:show, :edit, :update, :delete, :index]
   
   def new
-    @user = User.new
+    if !User.first
+      @user = User.new
+    else 
+      redirect_to root_path
+    end
   end
 
   def show  
     # this is the case when someone goes to /dashboard, so we'll want to display the user's projects and blogs
-    if params[:id] == -1
+    # if params[:id] == -1
       @user = current_user
       @projects = @user.projects.paginate(page: params[:page], :per_page => 10)
       @blogs = @user.blogs.paginate(page: params[:page], :per_page => 10)
@@ -17,15 +21,15 @@ class UsersController < ApplicationController
         format.html # renders show.html.erb
         format.js   # renders show.js.erb
       end
-    else
+    # else
       # this is the case for when someone tries to show a user through entering url, such as /users/2
-      @user = User.find(params[:id])
-      redirect_to dashboard_path
-    end
+      # @user = User.find(params[:id])
+      # redirect_to dashboard_path
+    # end
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = current_user
   end
   
   def index

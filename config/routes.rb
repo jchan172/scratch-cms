@@ -22,7 +22,8 @@ ScratchCms::Application.routes.draw do
 
   match '/login' => 'sessions#new',    via: 'get'
   match '/logout' => 'sessions#destroy', via: :delete
-  match '/dashboard' => 'users#show', :defaults => { :id => -1 },    via: 'get'
+  # match '/dashboard' => 'users#show', :defaults => { :id => -1 },    via: 'get'
+  match '/dashboard' => 'users#show',    via: 'get'
 
   match '/blogs/:id/manage' => 'blogs#manage',    via: 'get'
 

@@ -11,10 +11,13 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    if @project.draft == true
+      redirect_to root_path
+    end
   end
 
   def index
-    @projects = current_user.projects
+    @projects = current_user.projects.paginate(page: params[:page], :per_page => 10)
   end
 
   def update
@@ -25,11 +28,6 @@ class ProjectsController < ApplicationController
     else
       render 'edit'
     end
-  end
-
-  def update_special
-    flash[:success] = "woooo"
-    redirect_to dashboard_path
   end
 
   def destroy

@@ -11,10 +11,13 @@ class CustompagesController < ApplicationController
 
   def show
     @custompage = Custompage.find(params[:id])
+    if @custompage.draft == true
+      redirect_to root_path
+    end
   end
 
   def index
-    @custompages = current_user.custompages
+    @custompages = current_user.custompages.paginate(page: params[:page], :per_page => 10)
   end
 
   def update
@@ -25,11 +28,6 @@ class CustompagesController < ApplicationController
     else
       render 'edit'
     end
-  end
-
-  def update_special
-    flash[:success] = "woooo"
-    redirect_to dashboard_path
   end
 
   def destroy

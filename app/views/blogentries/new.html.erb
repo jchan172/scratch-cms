@@ -22,7 +22,7 @@
         <%# if you change the format of the f.text_field, be sure to change the format of the datetimepicker %>
         <div class="text-label-container">
           <%= f.label "Date", :class => "text-label" %> 
-          <%= f.text_field :created_at, :value => (Time.now.strftime('%Y %B %d %I:%M %P')), :id => 'basic_example_1', :class => "text-field" %>
+          <%= f.text_field :created_at, :value => (Time.zone.now.strftime('%Y %B %d %I:%M %P')), :id => 'basic_example_1', :class => "text-field" %>
         </div>
 
         <script>
