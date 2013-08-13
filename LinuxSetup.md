@@ -27,6 +27,10 @@ May need to remove ruby 2.0.0 and reinstall b/c of openssl. This is highly unlik
 
 	# install & compile w/ openssl
 	rvm install 2.0.0 --with-openssl-dir=$HOME/.rvm/usr
+
+Install Ruby 1.9.3 (used in Post Setup)
+
+	rvm install 1.9.3
 	
 Use Ruby 2.0.0 (run this just in case you're running another version) 
 
@@ -79,7 +83,7 @@ Go into the config/database.yml and change these lines. You can delete the passw
 	development:
 	  adapter: postgresql
 	  encoding: unicode
-	  database: scratch-cms_development
+	  database: website_base_development (or whatever you want to name it)
 	  pool: 5
 	  username: <your shell username>
 
@@ -87,7 +91,25 @@ Go to the top of the project directory and create a database:
 
 	rake db:create
 
-Try to start a localhost server
+Add a password to user you just created by getting into the psql shell
+
+	sudo -u <shell username> pqsl scratch-cms_development (or whatever you named the database it in previous step)
+
+Now that you're in the psql shell, type
+
+	\password
+
+It will prompt you to enter a new password. Do so, and remember it! You'll need to know this later in Post Setup. Enter it again to confirm.
+
+Now you can quit out of the psql shell by typing 
+
+	\q
+
+Run a database migration.
+
+	bundle exec rake db:migrate
+
+Try to start a localhost server.
 
 	rails s
 

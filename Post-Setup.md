@@ -50,7 +50,7 @@ Push local database schema to Heroku
 
 Confirm by typing your app name again.
 
-There are probably going to be problems, but the important thing is that schema and redactor assets are pushed up to Heroku.
+There are probably going to be problems (probably due to Ruby incompatibility with 'taps' gem), but the important thing is that schema and redactor assets are pushed up to Heroku.
 
 Change back to Ruby 2.0
 
