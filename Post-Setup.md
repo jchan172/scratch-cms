@@ -20,13 +20,21 @@ Add the remote so you can push to Heroku.
 
 	heroku git:remote -a <your app name, e.g. falling-wind-1624>
 
-Add what you have right now to Git.
+Compile assets locally.
 
-	git add .
+	bundle exec rake assets:precompile
 
-Commit everything.
+Add the assets and ensure that .gitignore file doesn't contain a line that says "public/assets" or something similar.
 
-	git commit -m "About to push to Heroku"
+	git add public/assets/
+
+Commit this change.
+
+	git commit -m "Added precompiled assets"
+
+Push to Heroku.
+
+	git push heroku master
 
 Switch to Ruby 1.9.3 (2.0.0 might have issues with the following steps)
 
@@ -48,27 +56,11 @@ Change back to Ruby 2.0
 
 	rvm use 2.0.0
 
-Compile assets locally.
-
-	bundle exec rake assets:precompile
-
-Add the assets and ensure that .gitignore file doesn't contain a line that says "public/assets or public/assets/*"
-
-	git add public/assets/
-
-Commit this change.
-
-	git commit -m "Added precompiled assets"
-
-Push to Heroku.
-
-	git push heroku master
-
 Run a database migration on Heroku
 
 	heroku run rake db:migrate
 
-If it completes, then you're set up to deploy on Heroku. After this, all you have to do is develop, compile assets, and push to Heroku. These are the steps:
+If it completes successfully, then you've completed the initial Heroku set up. After this, all you have to do is develop, compile assets, and push to Heroku. These are the steps:
 
 	(edit, change, write code)
 	git add .
@@ -76,9 +68,5 @@ If it completes, then you're set up to deploy on Heroku. After this, all you hav
 	git push origin master
 	git push heroku master
 
-Note that there is a "problem" with deploying to Heroku regarding asset compilation. Ideally, when you push to Heroku, it will do asset precompilation for you. But currently, that is failing with Scratch CMS. Something needs user environment variables, which prevents Heroku from doing the compilation. Therefore, you have to do asset compilation on your local machine before pushing up to Heroku (read ["Rails Asset Pipeline on Heroku Cedar"][assetpipeline] for more information). It's actually suggested as the preferred method (Heroku says it attempts to do asset compilation if you don't do it locally). If you don't want to compile assets locally and push, you can use Heroku's user-env-compile add-on (see [user-env-compile documentation][user-env-compile]). Basically, this tells Heroku to use user environment variables to compile assets. Once you set up your app and know its name, enable the add-on as shown in [user-env-compile documentation][user-env-compile]. It's a one time thing. You then ought to be able to push to Heroku without problems. Note that this is an experimental thing by Heroku, and they may cancel it.
-
 [github]: http://www.github.com
 [heroku]: http://www.heroku.com
-[assetpipeline]: https://devcenter.heroku.com/articles/rails-asset-pipeline
-[user-env-compile]: https://devcenter.heroku.com/articles/labs-user-env-compile
