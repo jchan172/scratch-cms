@@ -1,7 +1,8 @@
-<% if yield(:mode) == 'management' %>
-	<div class="dashboard-content">
-<% else %>
+<% provide(:title, 'About') %>
+<% if params[:mode] == 'main' %>
 	<div class="container-content">
+<% else %>
+	<div class="dashboard-content">
 <% end %>
 	<%= image_tag asset_path("ScratchCMS.png"), :class => "centeredimage", 'width' => '200dp' %>
 	<br>
