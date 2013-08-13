@@ -20,6 +20,19 @@ Add the remote so you can push to Heroku.
 
 	heroku git:remote -a <your app name, e.g. falling-wind-1624>
 
+Add and commit everything.
+
+	git add .
+	git commit -m "Initial Heroku setup"
+
+Push local database schema to Heroku
+
+	heroku db:push postgres://<your username>:<your password>@localhost/<your db name>
+
+Confirm by typing your app name again.
+
+There are probably going to be problems (probably due to Ruby incompatibility with 'taps' gem), but the important thing is that schema and redactor assets are pushed up to Heroku.
+
 Compile assets locally.
 
 	bundle exec rake assets:precompile
@@ -44,13 +57,13 @@ Install the 'taps' gem
 
 	gem install taps
 
-Push local database schema to Heroku
+Push local database schema to Heroku like you did earlier.
 
 	heroku db:push postgres://<your username>:<your password>@localhost/<your db name>
 
 Confirm by typing your app name again.
 
-There are probably going to be problems (probably due to Ruby incompatibility with 'taps' gem), but the important thing is that schema and redactor assets are pushed up to Heroku.
+There are probably going to be problems yet again, but the important thing is that schema and redactor assets are pushed up to Heroku.
 
 Change back to Ruby 2.0
 
