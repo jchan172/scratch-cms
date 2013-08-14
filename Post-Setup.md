@@ -20,63 +20,46 @@ Add the remote so you can push to Heroku.
 
 	heroku git:remote -a <your app name, e.g. falling-wind-1624>
 
-Add and commit everything.
+Add a database to your Heroku app.
 
-	git add .
-	git commit -m "Initial Heroku setup"
+	heroku addons:add heroku-postgresql:dev
 
-Push local database schema to Heroku
+Install Heroku pg:transfer plugin ([documentation][pgtransfer] here if you need)
 
-	heroku db:push postgres://<your username>:<your password>@localhost/<your db name>
+	heroku plugins:install https://github.com/ddollar/heroku-pg-transfer
+
+Push local database to Heroku.
+
+	heroku config
+	# now write down the HEROKU_POSTGRESQL_X_URL shown from previous command
+	heroku pg:transfer --from postgres://<your username>:<your password>@localhost/<your db name> --to <HEROKU_POSTGRESQL_JADE_URL you just wrote down> 
 
 Confirm by typing your app name again.
-
-There are probably going to be problems (probably due to Ruby incompatibility with 'taps' gem), but the important thing is that schema and redactor assets are pushed up to Heroku.
 
 Compile assets locally.
 
 	bundle exec rake assets:precompile
 
-Add the assets and ensure that .gitignore file doesn't contain a line that says "public/assets" or something similar.
+Add the assets and ensure that .gitignore file doesn't contain a line that says "public/assets" or something similar. Then commit the changes.
 
 	git add public/assets/
-
-Commit this change.
-
-	git commit -m "Added precompiled assets"
+	git commit -m "Initial Heroku setup"
 
 Push to Heroku.
 
 	git push heroku master
 
-Switch to Ruby 1.9.3 (2.0.0 might have issues with the following steps)
-
-	rvm use 1.9.3
-
-Install the 'taps' gem
-
-	gem install taps
-
-Push local database schema to Heroku like you did earlier.
-
-	heroku db:push postgres://<your username>:<your password>@localhost/<your db name>
-
-Confirm by typing your app name again.
-
-
-There are probably going to be problems like before, but the important thing is that schema and redactor assets are pushed up to Heroku.
-
-Change back to Ruby 2.0.
-
-	rvm use 2.0.0
-
-Run a database migration on Heroku. It ought to complete successfully.
+Run a database migration on Heroku. It should finish without errors.
 
 	heroku run rake db:migrate
 
 Enable Heroku's user-env-compile add-on. If you encounter any precompilation issues later on, try disabling this add-on and then re-enabling it. Some people have reported that this works.
 
 	heroku labs:enable user-env-compile
+
+Remove the precompiled assets. You won't need them anymore because now you'll be able to have Heroku do asset precompilation.
+
+	git rm pubilc/assets/*
 
 If the steps above complete successfully, then you've completed the initial Heroku set up. After this, all you have to do is develop and then push to Heroku. These are the steps:
 
@@ -93,3 +76,4 @@ Ideally, when you push to Heroku, it will do asset precompilation for you. But c
 [github]: http://www.github.com
 [heroku]: http://www.heroku.com
 [user-env-compile documentation]: https://devcenter.heroku.com/articles/labs-user-env-compile
+[pgtransfer]: http://www.higherorderheroku.com/articles/pgtransfer-is-the-new-taps/
