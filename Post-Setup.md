@@ -1,13 +1,6 @@
 Post-Setup Tips
 ===============
 
-###Customizing the Home Page
-The only thing you really need to do now is customize the home page to the way you want. It's front-end UI work, so you'll only be working with HTML, CSS, and maybe JavaScript. You can use any text editor/IDE to do your editing, but we recommended Sublime Text. It's so good that we go out of our way to promote it with these two sentences.
-
-After visualizing what you want on your home page, you can go and find stuff on the internet to plug in. If you're a real badass, you can make your own stuff. For example, if you wanted a sliding carousel on your website, you could find some package online that's fairly easy to integrate. It'll usually have some .js and .css files you'll need to include, as well as the HTML code to properly display the thing. Any .js or .css files you need can be included by putting the files into app/assets/. The .js files will go into javascripts/, and .css files will go into stylesheets/. Rails will import those automatically; it's how the Rails asset pipeline works.
-
-You'll probably want to change some CSS code to style it the home page the way you want. Look for the stylesheets in app/assets/stylesheets/. Most of the custom CSS code is in custom.css.scss, so you can edit/add to that one to get the styles you want. To be more organized, you can even (probably should) create a new .css file(s). In addition to the CSS styles, you can add/edit HTML for the home page inside the app/views/pages/home.html.erb file. Note that any image you want to display work properly with plain HTML <img> tags. You'll have to go Rails style and use <%= image_tag ... %>. See an example of this in home.html.erb (ScratchCMS.png is inside an <%= image_tag %>). To customize the navbar, look at app/views/layouts/_header.html.erb. You'll see some embedded Ruby code, so you can modify and add to the navbar with that code as an example. The footer is located at app/views/layouts/_footer.html.erb, so change that to your liking. We ask that you please keep the "Built from Scratch CMS" logo there though.
-
 ###Pushing to Git
 As you make changes, you'll want to push to your own repository inside Github. There are instructions on how to create your own repository and using Git all over the internet, and especially on [www.github.com][github]
 
@@ -20,56 +13,36 @@ Add the remote so you can push to Heroku.
 
 	heroku git:remote -a <your app name, e.g. falling-wind-1624>
 
-Add and commit everything.
+Add a database to your Heroku app.
 
-	git add .
-	git commit -m "Initial Heroku setup"
+	heroku addons:add heroku-postgresql:dev
 
-Push local database schema to Heroku
+Install Heroku pg:transfer plugin ([documentation][pgtransfer] here if you need)
 
-	heroku db:push postgres://<your username>:<your password>@localhost/<your db name>
+	heroku plugins:install https://github.com/ddollar/heroku-pg-transfer
+
+Push local database to Heroku.
+
+	heroku config
+	# now write down the HEROKU_POSTGRESQL_X_URL shown from previous command
+	heroku pg:transfer --from postgres://<your username>:<your password>@localhost/<your db name> --to <HEROKU_POSTGRESQL_JADE_URL you just wrote down> 
 
 Confirm by typing your app name again.
-
-There are probably going to be problems (probably due to Ruby incompatibility with 'taps' gem), but the important thing is that schema and redactor assets are pushed up to Heroku.
 
 Compile assets locally.
 
 	bundle exec rake assets:precompile
 
-Add the assets and ensure that .gitignore file doesn't contain a line that says "public/assets" or something similar.
+Add the assets and ensure that .gitignore file doesn't contain a line that says "public/assets" or something similar. Then commit the changes.
 
 	git add public/assets/
-
-Commit this change.
-
-	git commit -m "Added precompiled assets"
+	git commit -m "Initial Heroku setup"
 
 Push to Heroku.
 
 	git push heroku master
 
-Switch to Ruby 1.9.3 (2.0.0 might have issues with the following steps)
-
-	rvm use 1.9.3
-
-Install the 'taps' gem
-
-	gem install taps
-
-Push local database schema to Heroku like you did earlier.
-
-	heroku db:push postgres://<your username>:<your password>@localhost/<your db name>
-
-Confirm by typing your app name again.
-
-There are probably going to be problems like before, but the important thing is that schema and redactor assets are pushed up to Heroku.
-
-Change back to Ruby 2.0.
-
-	rvm use 2.0.0
-
-Run a database migration on Heroku. It ought to complete successfully.
+Run a database migration on Heroku. It should finish without errors.
 
 	heroku run rake db:migrate
 
@@ -77,7 +50,19 @@ Enable Heroku's user-env-compile add-on. If you encounter any precompilation iss
 
 	heroku labs:enable user-env-compile
 
-If the steps above complete successfully, then you've completed the initial Heroku set up. After this, all you have to do is develop and then push to Heroku. These are the steps:
+Remove the precompiled assets. You won't need them anymore because now you'll be able to have Heroku do asset precompilation.
+
+	git rm pubilc/assets/*
+
+Commit changes.
+
+	git commit -m "Removed precompiled assets"
+
+Push to Heroku.
+
+	git push heroku master
+
+You should see that asset precompilation succeeds. If the steps above complete successfully, then you've completed the initial Heroku set up. After this, all you have to do is develop and then push to Heroku. No more local asset compilation. These are the steps when developing:
 
 	(edit, change, write code)
 	git add .
@@ -85,10 +70,18 @@ If the steps above complete successfully, then you've completed the initial Hero
 	git push origin master
 	git push heroku master
 
-###Note About user-env-compile
+**Note About user-env-compile**
 
 Ideally, when you push to Heroku, it will do asset precompilation for you. But currently, you have to do the Heroku set up detailed above before you can have Heroku do asset precompilation. An extra add-on has to be enabled as well because something in the redactor gem requires user environment variables. See [https://devcenter.heroku.com/articles/labs-user-env-compile][user-env-compile documentation] info about this add-on. Basically, this tells Heroku to use user environment variables to compile assets. It's a one time thing. You then ought to be able to push to Heroku without problems. Note that this is an experimental thing by Heroku, and they may cancel it.
+
+###Customizing the Home Page
+The only thing you really need to do now is customize the home page to the way you want. It's front-end UI work, so you'll only be working with HTML, CSS, and maybe JavaScript. You can use any text editor/IDE to do your editing, but we recommended Sublime Text. It's so good that we go out of our way to promote it with these two sentences.
+
+After visualizing what you want on your home page, you can go and find stuff on the internet to plug in. For example, if you wanted a sliding carousel on your website, you could find some package online that's fairly easy to integrate. It'll usually have some .js and .css files you'll need to include, as well as the HTML code to properly display the thing. Any .js or .css files you need can be included by putting the files into app/assets/. The .js files will go into javascripts/, and .css files will go into stylesheets/. Rails will import those automatically; it's how the Rails asset pipeline works. If you're a real badass, you can make your own stuff.
+
+You'll probably want to change some CSS code to style it the home page the way you want. Look for the stylesheets in app/assets/stylesheets/. Most of the custom CSS code is in custom.css.scss, so you can edit/add to that file to get the styles you want. To be more organized, you can even (probably should) create new .css files. In addition to the CSS styles, you can add/edit HTML for the home page inside the app/views/pages/home.html.erb file. Note that any image you want to display work properly with plain HTML <img> tags. You'll have to go Rails style and use <%= image_tag ... %>. See an example of this in home.html.erb (ScratchCMS.png is inside an <%= image_tag %>). To customize the navbar, look at app/views/layouts/_header.html.erb. You'll see some embedded Ruby code, so you can modify and add to the navbar with that code as an example. The footer is located at app/views/layouts/_footer.html.erb, so change that to your liking. We ask that you please keep the "Built from Scratch CMS" logo there though.
 
 [github]: http://www.github.com
 [heroku]: http://www.heroku.com
 [user-env-compile documentation]: https://devcenter.heroku.com/articles/labs-user-env-compile
+[pgtransfer]: http://www.higherorderheroku.com/articles/pgtransfer-is-the-new-taps/
