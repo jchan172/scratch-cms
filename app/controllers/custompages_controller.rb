@@ -21,29 +21,32 @@ class CustompagesController < ApplicationController
   end
 
   def update
-    @custompage = Custompage.find(params[:id])
-    if @custompage.update_attributes(custompage_params)
-      flash[:success] = "Custom Category page updated!"
+    # Demo, so disable update
+    # @custompage = Custompage.find(params[:id])
+    # if @custompage.update_attributes(custompage_params)
+      flash[:success] = "Custom Category page updated! (not really because this is a demo)"
       redirect_to dashboard_path
-    else
-      render 'edit'
-    end
+    # else
+    #   render 'edit'
+    # end
   end
 
   def destroy
-    Custompage.find(params[:id]).destroy
-    flash[:success] = "custompage deleted."
+    # Demo, so disable delete
+    # Custompage.find(params[:id]).destroy
+    flash[:success] = "custompage deleted. (not really because this is a demo)"
     redirect_to dashboard_path
   end
 
   def create
-    @custompage = current_user.custompages.build(custompage_params)
-    if @custompage.save
-      flash[:success] = "custompage created successfully!"
+    # Demo, so disable create
+    # @custompage = current_user.custompages.build(custompage_params)
+    # if @custompage.save
+      flash[:success] = "custompage created successfully! (not really because this is a demo)"
       redirect_to dashboard_path
-    else
-      render 'new'
-    end
+    # else
+    #   render 'new'
+    # end
   end
 
   private

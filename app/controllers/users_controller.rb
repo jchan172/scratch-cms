@@ -37,28 +37,31 @@ class UsersController < ApplicationController
   end
   
   def create
-    @user = User.new(user_params)
-    if @user.save
-      flash[:success] = "Welcome to Scratch CMS!"
-      sign_in @user
+    # Demo, so disable create
+    # @user = User.new(user_params)
+    # if @user.save
+      flash[:success] = "Welcome to Scratch CMS! (no user was created; this is a demo)"
+      # sign_in @user
       redirect_to dashboard_path
-    else
-      render 'new'
-    end
+    # else
+    #   render 'new'
+    # end
   end
   
   def destroy
-    User.find(params[:id]).destroy()
+    # Demo, so disable delete
+    # User.find(params[:id]).destroy()
   end
   
   def update
+    # Demo, so disable update
     @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
-      flash[:success] = "Profile updated!"
+    # if @user.update_attributes(user_params)
+      flash[:success] = "Profile updated! (not really because this is a demo)"
       redirect_to @user
-    else
-      render 'edit'
-    end
+    # else
+    #   render 'edit'
+    # end
   end
 
   private

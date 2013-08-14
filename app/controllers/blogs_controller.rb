@@ -28,29 +28,32 @@ class BlogsController < ApplicationController
   end
 
   def update
-    @blog = Blog.find(params[:id])
-    if @blog.update_attributes(blog_params)
-      flash[:success] = "Blog updated!"
+    # Demo, so disable update
+    # @blog = Blog.find(params[:id])
+    # if @blog.update_attributes(blog_params)
+      flash[:success] = "Blog updated! (not really because this is a demo)"
       redirect_to dashboard_path
-    else
-      render 'edit'
-    end
+    # else
+    #   render 'edit'
+    # end
   end
 
   def destroy
-    Blog.find(params[:id]).destroy
-    flash[:success] = "Blog deleted."
+    # Demo, so disable delete
+    # Blog.find(params[:id]).destroy
+    flash[:success] = "Blog deleted. (not really because this is a demo)"
     redirect_to dashboard_path
   end
 
   def create
-    @blog = current_user.blogs.build(blog_params)
-    if @blog.save
-      flash[:success] = "Blog created successfully!"
+    # Demo, so disable create
+    # @blog = current_user.blogs.build(blog_params)
+    # if @blog.save
+      flash[:success] = "Blog created successfully! (not really because this is a demo)"
       redirect_to dashboard_path
-    else
-      render 'new'
-    end
+    # else
+    #   render 'new'
+    # end
   end
 
   private
