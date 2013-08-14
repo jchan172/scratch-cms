@@ -27,10 +27,6 @@ May need to remove ruby 2.0.0 and reinstall b/c of openssl. This is highly unlik
 
 	# install & compile w/ openssl
 	rvm install 2.0.0 --with-openssl-dir=$HOME/.rvm/usr
-
-Install Ruby 1.9.3 (used in Post Setup)
-
-	rvm install 1.9.3
 	
 Use Ruby 2.0.0 (run this just in case you're running another version) 
 
@@ -169,47 +165,6 @@ Set your master branch to track origin master
 
 	# if you're using git version 1.8
 	git branch -u origin/master
-
-### Deploying to Heroku
-Heroku is where you'll host your website (it's free and easy) so that everyone can see your website. If you're confused, find some information online about how Heroku works. There are plenty of other tutorials on the web that show you how to set it up so that you can push your project to it. Anyway, you can continue to try following these instructions first. First you must login to Heroku via the terminal.
-
-	heroku login
-
-If you don't have a Heroku app already, you'll need to create an app. This will create an app named something like "peacful-wind-2829" that you can see by logging into www.heroku.com using an internet browser.
-
-	heroku create
-
-If you have an existing Heroku app, just add the remote.
-
-	heroku git:remote -a name-of-the-app
-
-The previous line didn't work for me, but this did:
-
-	git remote add heroku git@heroku.com:name-of-the-app.git
-
-To push code up to Heroku, simply do this:
-
-	git push heroku master
-
-Once the code is pushed without errors, remember to have Heroku migrate the database.
-
-	heroku run rake db:migrate
-
-Now, you can look at your project on Heroku by doing this:
-
-	heroku open
-
-You can check how the app is running on Heroku using this (shows if app is up or down and for how long):
-
-	heroku ps
-
-If you want to check the Heroku logs in real time, use this command:
-
-	heroku logs -t
-
-To restart the app on Heroku, do this:
-
-	heroku restart
 
 Reference
 =========

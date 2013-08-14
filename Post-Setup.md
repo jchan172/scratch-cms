@@ -1,13 +1,17 @@
-Post-Setup Tips
-===============
+Post-Setup
+==========
 
 ###Pushing to Git
-As you make changes, you'll want to push to your own repository inside Github. There are instructions on how to create your own repository and using Git all over the internet, and especially on [www.github.com][github]
+As you make changes, you'll want to push to your own repository inside Github. There are instructions all over the internet on how to create your own repository and using Git, and especially on [the git website][git].
 
 ###Deploying to Heroku
 Heroku is where you'll host your website so that everyone in the world can access it. Deploying is easy with the Heroku toolbelt installed. Find instructions on [www.heroku.com][heroku] for how to deploy your app to Heroku. You should deploy to Heroku often so that you know when you added code that makes the website not work. There is a one time thing you have to do to set up Heroku. After this, deployment to Heroku is really easy.
 
 Create a new app in Heroku's dashboard. Remember the name of the app.
+
+Now log in using the command line.
+
+	heroku login
 
 Add the remote so you can push to Heroku.
 
@@ -82,7 +86,42 @@ After visualizing what you want on your home page, you can go and find stuff on 
 
 You'll probably want to change some CSS code to style it the home page the way you want. Look for the stylesheets in app/assets/stylesheets/. Most of the custom CSS code is in custom.css.scss, so you can edit/add to that file to get the styles you want. To be more organized, you can even (probably should) create new .css files. In addition to the CSS styles, you can add/edit HTML for the home page inside the app/views/pages/home.html.erb file. Note that any image you want to display work properly with plain HTML <img> tags. You'll have to go Rails style and use <%= image_tag ... %>. See an example of this in home.html.erb (ScratchCMS.png is inside an <%= image_tag %>). To customize the navbar, look at app/views/layouts/_header.html.erb. You'll see some embedded Ruby code, so you can modify and add to the navbar with that code as an example. The footer is located at app/views/layouts/_footer.html.erb, so change that to your liking. We ask that you please keep the "Built from Scratch CMS" logo there though.
 
-[github]: http://www.github.com
+###Heroku Reference
+If you're confused, find some information online about how Heroku works. There are plenty of other tutorials on the web that show you how to set it up so that you can push your project to it. Anyway, below are some basic and very useful commands.
+
+This is how you login.
+
+	heroku login
+
+This is how you add a Heroku remote.
+
+	git remote add heroku git@heroku.com:name-of-the-app.git
+
+To push code up to Heroku, simply do this:
+
+	git push heroku master
+
+If you change the models or schema at all, remember to migrate the database when you deploy to Heroku.
+
+	heroku run rake db:migrate
+
+You can look at your project on Heroku by doing this:
+
+	heroku open
+
+You can check how the app is running on Heroku using this (shows if app is up or down and for how long):
+
+	heroku ps
+
+If you want to check the Heroku logs in real time, use this command:
+
+	heroku logs -t
+
+To restart the app on Heroku, do this:
+
+	heroku restart
+
+[git]: http://git-scm.com/documentation
 [heroku]: http://www.heroku.com
 [user-env-compile documentation]: https://devcenter.heroku.com/articles/labs-user-env-compile
 [pgtransfer]: http://www.higherorderheroku.com/articles/pgtransfer-is-the-new-taps/
