@@ -54,8 +54,9 @@ Remove the precompiled assets. You won't need them anymore because now you'll be
 
 	git rm pubilc/assets/*
 
-Commit changes.
+Add and commit changes.
 
+	git add .
 	git commit -m "Removed precompiled assets"
 
 Push to Heroku.
