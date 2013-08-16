@@ -95,7 +95,7 @@ Now that you're in the psql shell, type
 
 	\password
 
-It will prompt you to enter a new password. Do so, and remember it! You'll need to know this later in Post Setup. Enter it again to confirm.
+It will prompt you to enter a new password. Do so, and remember it! You'll need it if you ever need to backup your database in the future. Enter your password again to confirm.
 
 Now you can quit out of the psql shell by typing 
 

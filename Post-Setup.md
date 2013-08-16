@@ -5,7 +5,7 @@ Post-Setup
 As you make changes, you'll want to push to your own repository inside Github. There are instructions all over the internet on how to create your own repository and using Git, and especially on [the git website][git].
 
 ###Deploying to Heroku
-Heroku is where you'll host your website so that everyone in the world can access it. Deploying is easy with the Heroku toolbelt installed. Find instructions on [www.heroku.com][heroku] for how to deploy your app to Heroku. You should deploy to Heroku often so that you know when you added code that makes the website not work. There is a one time thing you have to do to set up Heroku. After this, deployment to Heroku is really easy.
+Heroku is where you'll host your website so that everyone in the world can access it. Deploying is easy with the Heroku toolbelt installed. Find instructions on [Heroku's getting started guide][heroku] for how to deploy your app to Heroku. You should deploy to Heroku often so that you know when you added code that makes the website not work. There is a one time thing you have to do to set up Heroku. After this, deployment to Heroku is really easy.
 
 Create a new app in Heroku's dashboard. Remember the name of the app.
 
@@ -17,67 +17,26 @@ Add the remote so you can push to Heroku.
 
 	heroku git:remote -a <your app name, e.g. falling-wind-1624>
 
-Add a database to your Heroku app.
-
-	heroku addons:add heroku-postgresql:dev
-
-Install Heroku pg:transfer plugin ([documentation][pgtransfer] here if you need)
-
-	heroku plugins:install https://github.com/ddollar/heroku-pg-transfer
-
-Push local database to Heroku.
-
-	heroku config
-	# now write down the HEROKU_POSTGRESQL_X_URL shown from previous command
-	heroku pg:transfer --from postgres://<your username>:<your password>@localhost/<your db name> --to <HEROKU_POSTGRESQL_JADE_URL you just wrote down> 
-
-Confirm by typing your app name again.
-
-Compile assets locally.
-
-	bundle exec rake assets:precompile
-
-Add the assets and ensure that .gitignore file doesn't contain a line that says "public/assets" or something similar. Then commit the changes.
-
-	git add public/assets/
-	git commit -m "Initial Heroku setup"
-
-Push to Heroku.
-
-	git push heroku master
-
-Run a database migration on Heroku. It should finish without errors.
-
-	heroku run rake db:migrate
-
-Enable Heroku's user-env-compile add-on. If you encounter any precompilation issues later on, try disabling this add-on and then re-enabling it. Some people have reported that this works.
-
-	heroku labs:enable user-env-compile
-
-Remove the precompiled assets. You won't need them anymore because now you'll be able to have Heroku do asset precompilation.
-
-	git rm pubilc/assets/*
-
 Add and commit changes.
 
 	git add .
-	git commit -m "Removed precompiled assets"
+	git commit -m "Initial commit"
 
 Push to Heroku.
 
 	git push heroku master
 
-You should see that asset precompilation succeeds. If the steps above complete successfully, then you've completed the initial Heroku set up. After this, all you have to do is develop and then push to Heroku. No more local asset compilation. These are the steps when developing:
+You should see that Ruby gems install and asset precompilation succeeds. If the steps above complete successfully, then you've deployed your web site! After this, all you have to do is develop and push to Heroku until you're happy with your website. These are the steps when developing:
 
-	(edit, change, write code)
+	# (edit, change, write code)
 	git add .
 	git commit -m "Enter your commit message here"
 	git push origin master
 	git push heroku master
 
-**Note About user-env-compile**
+If you go to your web site (yourwebsitename.herokuapp.com), you ought to see the standard Scratch CMS page. You'll have to edit this home page to your liking (see next section).
 
-Ideally, when you push to Heroku, it will do asset precompilation for you. But currently, you have to do the Heroku set up detailed above before you can have Heroku do asset precompilation. An extra add-on has to be enabled as well because something in the redactor gem requires user environment variables. See [https://devcenter.heroku.com/articles/labs-user-env-compile][user-env-compile documentation] info about this add-on. Basically, this tells Heroku to use user environment variables to compile assets. It's a one time thing. You then ought to be able to push to Heroku without problems. Note that this is an experimental thing by Heroku, and they may cancel it.
+Remember to create your account on your web site (yourwebsitename.herokuapp.com/signup) so that you can start adding content. Note that only one user may exist, so don't worry about people going to the signup page and creating accounts.
 
 ###Customizing the Home Page
 The only thing you really need to do now is customize the home page to the way you want. It's front-end UI work, so you'll only be working with HTML, CSS, and maybe JavaScript. You can use any text editor/IDE to do your editing, but we recommended Sublime Text. It's so good that we go out of our way to promote it with these two sentences.
@@ -127,7 +86,24 @@ To restart the app on Heroku, do this:
 
 	heroku restart
 
+You can backup your Heroku database. This is how to install Heroku pg:transfer plugin ([documentation][pgtransfer] here if you need).
+
+	heroku plugins:install https://github.com/ddollar/heroku-pg-transfer
+
+Push local database to Heroku:
+
+	heroku config
+	# Now write down the HEROKU_POSTGRESQL_X_URL shown from previous command
+	heroku pg:transfer --from postgres://<your username>:<your password>@localhost/<your db name> --to <HEROKU_POSTGRESQL_X_URL you just wrote down> 
+	# Confirm by typing your app name again.
+
+Pull database from Heroku:
+
+	heroku config
+	# Now write down the HEROKU_POSTGRESQL_X_URL shown from previous command
+	heroku pg:transfer --from <HEROKU_POSTGRESQL_X_URL you just wrote down> --to  postgres://<your username>:<your password>@localhost/<your db name>
+	# Confirm by typing your app name again.
+
 [git]: http://git-scm.com/documentation
-[heroku]: http://www.heroku.com
-[user-env-compile documentation]: https://devcenter.heroku.com/articles/labs-user-env-compile
+[heroku]: https://devcenter.heroku.com/articles/quickstart
 [pgtransfer]: http://www.higherorderheroku.com/articles/pgtransfer-is-the-new-taps/
