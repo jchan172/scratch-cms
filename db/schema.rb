@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20130803235239) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "blogentries", force: true do |t|
     t.string   "title"
     t.text     "content"
@@ -74,9 +71,9 @@ ActiveRecord::Schema.define(version: 20130803235239) do
     t.string   "email"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "auth_token"
     t.string   "string"
     t.string   "password_digest"
-    t.string   "auth_token"
     t.string   "username"
   end
 
