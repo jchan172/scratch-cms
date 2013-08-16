@@ -34,6 +34,10 @@ You should see that Ruby gems install and asset precompilation succeeds. If the 
 	git push origin master
 	git push heroku master
 
+If you go to your web site (yourwebsitename.herokuapp.com), you ought to see the standard Scratch CMS page. You'll have to edit this home page to your liking (see next section).
+
+Remember to create your account on your web site (yourwebsitename.herokuapp.com/signup) so that you can start adding content. Note that only one user may exist, so don't worry about people going to the signup page and creating accounts.
+
 ###Customizing the Home Page
 The only thing you really need to do now is customize the home page to the way you want. It's front-end UI work, so you'll only be working with HTML, CSS, and maybe JavaScript. You can use any text editor/IDE to do your editing, but we recommended Sublime Text. It's so good that we go out of our way to promote it with these two sentences.
 
