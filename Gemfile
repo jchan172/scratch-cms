@@ -13,12 +13,12 @@ gem 'pg' # use PostgreSQL for development and production
 gem 'unicorn' # allows using multiple processes on one Heroku dyno
 gem 'font-awesome-rails' # icon font (such as briefcase pic instead of writing out "briefcase")
 gem 'truncate_html' # used to give a preview of content (cuts off content after n characters)
-gem 'redactor-rails', '0.4' # wysiwyg html 
+# gem 'redactor-rails', '0.4' # wysiwyg html 
 gem 'will_paginate' # allows pagination, showing a limited number of things at once per page
 gem 'bootstrap-will_paginate' # allows use of bootstrap's pagination styles
 gem 'jbuilder' # gives simple language for declaring JSON structures
-gem 'carrierwave' # something that redactor needs for uploading files (hold off on implementing this functionality)
-gem 'mini_magick' # also something that redactor needs for uploading files (hold off on implementing this functionality)
+# gem 'carrierwave' # something that redactor needs for uploading files (hold off on implementing this functionality)
+# gem 'mini_magick' # also something that redactor needs for uploading files (hold off on implementing this functionality)
 # gem 'smusher' # lossless reduction of images
 gem 'newrelic_rpm' # Heroku add-on for analytics
 gem 'rename' # allows you to rename the Rails project. simply run 'rails g rename:app_to <insert new name>'
