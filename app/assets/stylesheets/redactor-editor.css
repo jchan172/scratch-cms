@@ -115,10 +115,10 @@ body .redactor_box_fullscreen {
 .redactor_editor blockquote,
 .redactor_editor pre {
 	box-shadow: none !important;
-	background: none !important;
+	/*background: none !important;*/
 	margin: 0 !important;
-	margin-bottom: 15px !important;
-	border: none;
+	margin-bottom: 8px !important;
+	/*border: none;*/
 }
 .redactor_editor iframe,
 .redactor_editor object,
@@ -126,7 +126,7 @@ body .redactor_box_fullscreen {
 	margin-bottom: 15px !important;
 }
 .redactor_editor blockquote {
-	margin-left: 3em !important;
+	margin-left: 0em !important;
 	font-style: italic !important;
 	color: #777;
 }
