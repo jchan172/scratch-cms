@@ -22,13 +22,13 @@ class ProjectsController < ApplicationController
 
   def update
     # Demo, so disable update
-    # @project = Project.find(params[:id])
-    # if @project.update_attributes(project_params)
+    @project = Project.find(params[:id])
+    if @project.update_attributes(project_params)
       flash[:success] = "Project updated! (not really because this is a demo)"
       redirect_to dashboard_path
-    # else
-    #   render 'edit'
-    # end
+    else
+      render 'edit'
+    end
   end
 
   def destroy
