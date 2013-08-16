@@ -1,6 +1,6 @@
 ScratchCms::Application.routes.draw do
 
-  mount RedactorRails::Engine => '/redactor_rails'
+  # mount RedactorRails::Engine => '/redactor_rails'
 
   resources :blogs
   resources :blogentries

@@ -37,8 +37,8 @@
         <br>
         <br>
 
-        <div class="redactor_content">
-          <%= f.text_area :content, placeholder: "Write a new blog entry...", :class => "redactor"%>
+        <div class="redactor_box">
+          <%= f.text_area :content, placeholder: "Write a new blog entry...", :id => "redactor"%>
         </div>
 
         <% # :blogid was passed from a blogs_controller action, and now we put it %>
