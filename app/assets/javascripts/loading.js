@@ -7,8 +7,8 @@ jQuery(document).ready(function($) {
     imageScaleMode: 'fill',
     arrowsNavAutoHide: false,
     autoScaleSlider: true, 
-    autoScaleSliderWidth: 960,     
-    autoScaleSliderHeight: 350,
+    autoScaleSliderWidth: 1400,     
+    autoScaleSliderHeight: 500,
     controlNavigation: 'bullets',
     thumbsFitInViewport: false,
     loop: true,
@@ -28,6 +28,6 @@ jQuery(document).ready(function($) {
     },
     /* size of all images http://help.dimsemenov.com/kb/royalslider-jquery-plugin-faq/adding-width-and-height-properties-to-images */
     imgWidth: 1400,
-    imgHeight: 680
+    imgHeight: 500
   });
 });
