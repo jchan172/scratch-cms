@@ -354,6 +354,22 @@ IMG.centeredimage {
   }
 }
 
+/* home page */
+
+.intro-container div{
+  display: inline-block;
+}
+
+.intro-text {
+  text-align: right;
+  width: 40%;
+  vertical-align: top;
+}
+
+.intro-content {
+  text-align: left;
+}
+
 /* Dashboard */
 
 .navbar-placeholder {
