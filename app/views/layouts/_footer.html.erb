@@ -21,32 +21,20 @@
 	</footer>
 
 <% else %>
-	<footer id="footer" class="footer">
+    <footer id="footer" class="footer">
         <div class="container">
-            <div class="row info">
-                <div class="span6 residence">
-                    <ul>
-                        <li></li>
-                        <li></li>
-                    </ul>
-                </div>
-                <div class="pull-right">
-                    <ul>
-                        <!-- <li><strong>Email:</strong><a href="#"> admin@scratchcms.herokuapp.com</a></li> -->
-                    </ul>
-                </div>
-            </div>
             <div class="row credits">
-                <div class="span12">
-                    <div class="row social">
-                        insert Ruby powered, built from Scratch
-                    </div>
-                </div>  
                 <div class="row copyright">
                     <div class="span12">
                         Copyright &#169; 2013 Scratch CMS. All rights reserved.
                     </div>
                 </div> 
+                <div class="span12">
+                    <div class="row social">
+                        <p>This website is built from</p>
+                        <p><%= image_tag asset_path("builtfromScratchCMS.png") %></p>
+                    </div>
+                </div>  
             </div>
         </div>
 

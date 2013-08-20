@@ -505,7 +505,7 @@ small {
     margin-top: 10px;
     background-color: #252528;
     color: #fff;
-    padding-top: 35px;
+    padding-top: 0px;
 }
 #footer .footer_header {
     color: rgb(196, 196, 196);
@@ -631,11 +631,12 @@ small {
 }
 #footer .credits {
     border-top: 1px solid #343437;
-    padding: 10px 0px 60px 0px;
+    padding: 10px 0px 10px 0px;
 }
 #footer .credits .social {
     margin-top: 30px;
     text-align: center;
+    color: #a6a6a7;
 }
 #footer .credits .social a {
     margin: 10px;
