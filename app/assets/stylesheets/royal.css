@@ -28,6 +28,12 @@
   background: rgba(0,0,0,0.75);
   margin-top: 70%;
 }
+.infoBlockBottomLeftWhite {
+  left: 30px;
+  right: auto;
+  bottom: 20px;
+  top: auto;
+}
 .infoBlock h4 {
   font-size: 20px;
   line-height: 1.2;
@@ -42,6 +48,11 @@
   color: #FFF;
   text-decoration: underline;
 }
+.infoBlockBottomLeftWhite a {
+  color: #0f82f5;
+  text-decoration: underline;
+}
+
 .photosBy {
   position: absolute;
   line-height: 24px;
