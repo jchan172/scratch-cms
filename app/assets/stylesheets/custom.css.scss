@@ -332,14 +332,14 @@ IMG.centeredimage {
   margin-left: auto;
   margin-right: auto;
   padding-top: 20px;
-  padding-bottom: 300px;
+  padding-bottom: 270px;
 }
 
 .container-content { /* this is for displaying project and blog pages; it's narrower */
   width: 700px;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 100px;
+  padding-top: 125px;
   padding-bottom: 270px;
 }
 
@@ -352,6 +352,12 @@ IMG.centeredimage {
   h1 {
     text-align: center;
   }
+}
+
+.navbar .nav.pull-right {
+  margin-top: 13px;
+  float: right;
+  margin-right: 0;
 }
 
 /* home page */
@@ -379,7 +385,7 @@ IMG.centeredimage {
 /* Dashboard */
 
 .navbar-placeholder {
-  padding-top: 96px; /* this is height of navbar + 20 */
+  padding-top: 125px; /* this is height of navbar + 20 */
 }
 
 .management-wrapper {
@@ -443,6 +449,10 @@ IMG.centeredimage {
 }
 
 /* dashboard footer */
+
+.row {
+  margin-left: 0px;
+}
 
 footer {
   background-color: #EFEFEF;
