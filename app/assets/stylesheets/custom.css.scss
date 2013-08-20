@@ -432,6 +432,10 @@ pre {
 
 /* dashboard footer */
 
+.row {
+  margin-left: 0px;
+}
+
 footer {
   background-color: #EFEFEF;
   margin-top: 15px;
@@ -471,7 +475,6 @@ small {
   text-align: right;
   width: 33%;
 }
-
 
 .footer table {
   width: 100%;
@@ -634,7 +637,7 @@ small {
     padding: 10px 0px 10px 0px;
 }
 #footer .credits .social {
-    margin-top: 30px;
+    margin-top: 10px;
     text-align: center;
     color: #a6a6a7;
 }
