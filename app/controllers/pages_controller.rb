@@ -11,4 +11,7 @@ class PagesController < ApplicationController
 
   def error
   end
+
+  def gallery
+  end
 end
