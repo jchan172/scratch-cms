@@ -1,0 +1,119 @@
+<style>
+            /* Only css for gallery */
+
+        #myGallery {
+            width:100%;
+            padding-bottom: 200px;
+        }
+
+        .resize-message {
+            margin:0 auto;
+            width:98%;
+            padding:10px 0px;
+        }
+        .resize-message > p {
+            color:white;
+            font-family: 'open sans', Arial;
+            padding:0;
+            margin: 0;
+            text-align:center;
+            font-weight: 300;
+        }
+        .blue {
+            background-color:#4384ba;
+            margin-top:5px;
+        }
+        .grey > p {
+            font-size: 22px;
+        }
+
+        .grey {
+            background-color: #999;
+            margin-top:10px;
+        }
+        .blue > p {
+            font-family: 18px;
+        }
+
+        .grey a, .blue a{
+            color:white;
+        }
+        .grey a:visited, .blue a:visited  {
+            color:white;
+        }
+        span.step {
+            font-size:20px;
+        }
+    </style>
+
+
+<!--Initialize the gallery-->
+<script>
+    $(document).ready(function () {
+        $('#jacksGallery').rtg({
+            imageWidth:250,
+            spacing:10,
+            categories:true,
+            categoryOptions: {
+                defaultCategory: 'All',
+                includeAll: true
+            },
+            captionOptions: {
+                enableCaptions: true
+            },
+            lightbox:true,
+            center: true,
+            initialHeight: 500
+        });
+        var didit = false;
+        var done = false;
+        setTimeout(function () {
+            var bWidth = $('.rtg-images').width();
+            var resizeStep = function () {
+
+                if (bWidth != $('.rtg-images').width()) {
+                    didit = true;
+                    $('#steps > p').html('<span class="step">Step 2:</span> Awesome. Now click a category and watch it sort!');
+                    $('.rtg-categories > li > a').on('click', function (e) {
+                        if (!done) {
+                            $('#steps > p').html('<span class="step">Step 3:</span> This is an easy one. Click an image!');
+                        }
+
+                        $('#myGallery .rtg-images li').on('click', function (e) {
+                            $('#steps > p').html('<span class="step">Great Job. <a href="http://codecanyon.net/item/responsive-tile-gallery/3290154">Check out Responsive Tile Gallery on CodeCanyon!</a></span>');
+                            done = true;
+                        });
+                    });
+                } else {
+                    if (didit !== true) {
+                        $('#steps > p').html('<span class="step">Still Step 1:</span> Resize the width a little more. Trust me...');
+                    }
+                }
+                bWidth = $('.rtg-images').width();
+            };
+            var stepTimer;
+            $(window).resize(function () {
+                if (didit === false) {
+                    clearTimeout(stepTimer);
+                    stepTimer = setTimeout(resizeStep, 200);
+                }
+            });
+        }, 1000);
+
+    });
+</script>
+
+<div class="container-gallery-text">
+    <h1>My Photography</h1>
+    <p>test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test </p>
+</div>
+
+<div id='jacksGallery' class='rtg-gallery'>
+    <ul class="rtg-images">
+        <%= content_tag :li, image_tag("1.jpg"), "href" => asset_path("1.jpg"), "data-title" => "Some Text" %>
+        <%= content_tag :li, image_tag("2.jpg"), "href" => asset_path("2.jpg"), "data-category" => "Second,Multiple Categories" %>
+        <%= content_tag :li, image_tag("3.jpg"), "href" => asset_path("3.jpg"), "data-category" => "Second,Multiple Categories" %>
+        <%= content_tag :li, image_tag("4.jpg"), "href" => asset_path("4.jpg"), "data-category" => "Second,Multiple Categories", "data-title" => "More Text" %>
+        <%# copy and paste the content_tags %>
+      </ul>
+</div>
