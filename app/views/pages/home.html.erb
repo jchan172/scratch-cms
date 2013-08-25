@@ -29,6 +29,26 @@
         <!-- <span class="photosBy rsAbsoluteEl" data-fade-effect="fa;se" data-move-offset="40" data-move-effect="bottom" data-speed="200">Photos by <a href="http://www.flickr.com/photos/gilderic/">Gilderic</a></span> -->
       <!-- </div> -->
       <div class="rsContent">
+        <%= image_tag asset_path("pcb.jpg"), :class => "rsImg", "alt" => "" %>
+        <!-- <img class="rsImg" src="http://dimsemenov.com/plugins/royal-slider/img/full-width/1.jpg" alt="" /> -->
+        <div class="infoBlock infoBlockBottomLeftWhite rsAbsoluteEl" style="color:#000;" data-fade-effect="" data-move-offset="10" data-move-effect="bottom" data-speed="200">
+          <h4>PoE Measurement Board</h4>
+          <p>This is my first industrial grade hardware design/PCB. It was a 6 month project I did at work as a prototype for...</p>
+          <%= link_to 'Read more', @pcb %>
+        </div>
+      </div>
+
+      <div class="rsContent">
+        <%= image_tag asset_path("scratch.jpg"), :class => "rsImg", "alt" => "" %>
+        <!-- <img class="rsImg" src="http://dimsemenov.com/plugins/royal-slider/img/full-width/1.jpg" alt="" /> -->
+        <div class="infoBlock infoBlockBottomLeftWhite rsAbsoluteEl" style="color:#000;" data-fade-effect="" data-move-offset="10" data-move-effect="bottom" data-speed="200">
+          <h4>Scratch CMS</h4>
+          <p>Using Ruby on Rails, I joined forces with a friend to create a content management system that anyone can now use to...</p>
+          <%= link_to 'Read more', @scratchcms %>
+        </div>
+      </div>
+
+      <div class="rsContent">
         <%= image_tag asset_path("quadrotor.jpg"), :class => "rsImg", "alt" => "" %>
         <!-- <img class="rsImg" src="http://dimsemenov.com/plugins/royal-slider/img/full-width/1.jpg" alt="" /> -->
         <div class="infoBlock infoBlockBottomLeftWhite rsAbsoluteEl" style="color:#000;" data-fade-effect="" data-move-offset="10" data-move-effect="bottom" data-speed="200">

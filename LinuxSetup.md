@@ -14,8 +14,8 @@ Open a terminal, go to edit -> profile preferences -> Title and Command tab -> c
 	# installs bunch of packages that are needed later
 	sudo apt-get install zlib1g-dev curl sqlite3 libsqlite3-dev nodejs openssl postgresql postgresql-client libpq-dev libreadline6-dev libyaml-dev libxml2-dev libxslt1-dev autoconf libgdbm-dev libncurses5-dev automake libtool bison libffi-dev
 	
-	# install RVM with Ruby
-	\curl -#L https://get.rvm.io | bash -s stable --autolibs=3 --ruby
+	# install RVM, Ruby, and Rails
+	\curl -L https://get.rvm.io | bash -s stable --autolibs=3 --rails
 	
 	# runs script to configure Ruby
 	source /home/jchan/.rvm/scripts/rvm
@@ -40,17 +40,9 @@ Check gem version (shows that gem is installed)
 
 	gem -v
 	
-Install Rails
-
-	\curl -L https://get.rvm.io | bash -s stable --autolibs=3 --rails
-	
-Check Rails version (shows that Rails is installed, should also be Rails 4.0)
+Check Rails version (shows that Rails is installed, should be Rails 4.0)
 
 	rails -v 
-	
-Run rvm configuration script
-
-	source /home/jchan/.rvm/scripts/rvm
 
 Now install heroku toolbelt:
 
