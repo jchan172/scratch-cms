@@ -16,9 +16,9 @@ Go to git-scm.com/downloads, then download and install git.
 
 Create a Heroku account if you don't already have an account.
 
-Install RVM and Ruby
+Install RVM, Ruby, and Rails
 
-	\curl -L https://get.rvm.io | bash -s stable --ruby
+	\curl -L https://get.rvm.io | bash -s stable --autolibs=3 --rails
 
 Use Ruby 2.0.0 (run this just in case you're running another version) 
 
@@ -32,12 +32,6 @@ Check gem version (shows that gem is installed)
 
 	gem -v
 
-You may refer to [Installing Ruby, RVM, and Homebrew on Mac OSX][installosx] as well to install the things above.
-	
-Install Rails
-
-	\curl -L https://get.rvm.io | bash -s stable --autolibs=3 --rails
-	
 Check Rails version (shows that Rails is installed, should also be Rails 4.0)
 
 	rails -v 
@@ -45,6 +39,8 @@ Check Rails version (shows that Rails is installed, should also be Rails 4.0)
 Run rvm configuration script
 
 	source /home/jchan/.rvm/scripts/rvm
+
+You may refer to [Installing Ruby, RVM, and Homebrew on Mac OSX][installosx] as well to install the things above.
 
 Go to toolbelt.heroku.com, download the Heroku Toolbelt for Mac, and install it.
 
@@ -60,6 +56,20 @@ Now check that everything for our project works. Go to the directory where the p
 
 We arrive at the tricky part: install PostgreSQL (9.2.4)
 
+Open `~/.bash_profile` in a text editor
+
+	gedit ~/.bash_profile
+
+Add this to the end
+
+	export PATH=/usr/local/bin:$PATH
+
+	if [ -f ~/.bashrc ]; then
+        source ~/.bashrc
+	fi
+
+Quit terminal and open it up again.
+
 Update Homebrew
 
 	brew update
@@ -67,6 +77,27 @@ Update Homebrew
 Install PostgreSQL
 
 	brew install postgresql
+
+Ensure that you're using Homebrew's `psql`
+
+	which psql
+	# output should be '/usr/local/bin/psql' and not '/usr/bin/psql'
+
+Start the psql server manually like it told you two steps ago after you installed postgresql
+
+	pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
+
+Make it so that the server starts every time you boot your computer. First create a launch agent folder.
+	
+	mkdir -p ~/Library/LaunchAgents
+
+Copy the .plist file from postgresql over to the folder you just created. Note that you'll need to check what version of `postgresql` you're using.
+
+	cp /usr/local/Cellar/postgresql/9.2.4/homebrew.mxcl.postgresql.plist ~/Library/LaunchAgent
+
+Then, have it load that .plist file every time you boot computer.
+
+	launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
 
 Make a postgres directory if it doesn't already exist
 
@@ -79,6 +110,61 @@ Tweak its permissions
 Create a database
 
 	initdb /usr/local/var/postgres/data
+
+List the databases that exist
+
+	psql -l
+
+You should see something like this:
+
+		                                    List of databases
+	           Name           |  Owner   | Encoding | Collate | Ctype |   Access privileges   
+	--------------------------+----------+----------+---------+-------+-----------------------
+	 postgres                 | jchan    | UTF8     | C       | C     | 
+	 template0                | jchan    | UTF8     | C       | C     | =c/postgres          +
+	                          |          |          |         |       | postgres=CTc/postgres
+	 template1                | jchan    | UTF8     | C       | C     | =c/postgres          +
+	                          |          |          |         |       | postgres=CTc/postgres
+
+This means that `psql` server is running and sees its databases. If you do `psql -l` and you see something like this:
+
+	psql: could not connect to server: No such file or directory
+	    Is the server running locally and accepting
+	    connections on Unix domain socket "/var/pgsql_socket/.s.PGSQL.5432"?
+
+It means that `psql` server is not running. People have had problems where `psql` is not started automatically on reboot. You might want to fix the problem (you're a hacker) for convenience purposes. Otherwise, you`ll have to  manually start the `psql` server every time you restart your computer and want to work on the project using this line: 
+
+	pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
+
+After verifying that your pqsl is running, you'll need to go into the config/database.yml and change these lines. You can delete the password field.
+
+	# inside config/database.yml:
+	development:
+	  adapter: postgresql
+	  encoding: unicode
+	  database: website_base_development (or whatever you want to name it)
+	  pool: 5
+	  username: <your shell username> 
+
+Create the database.
+
+	bundle exec rake db:create
+
+Run a database migration.
+
+	bundle exec rake db:migrate
+
+Try to start a localhost server.
+
+	rails s
+
+If there are no errors, everything should work. Open up a web browser and navigate to http://localhost:3000/ You ought to see the website.
+
+Now that you're done with the setup, take a look at Post-Setup.md for tips on customizing your front page and tips on pushing to Github and Heroku.
+
+***Alternative PostgresQL Setup***
+
+This is what worked for me after the `brew install postgresql` step, although I did a bunch of futzing around with installing PostgreSQL, so I don't know what could have changed during all that.
 
 If you go into your Rails project directory now and try to run a server or do a `rake db:create`, you will get something along the lines of:
 
@@ -102,7 +188,7 @@ Go into the config/database.yml and change these lines. You can delete the passw
 
 Now you can go into your project directory and create a database
 
-	rake db:create
+	bundle exec rake db:create
 
 Add a password to user you just created by getting into the psql shell
 
@@ -117,18 +203,6 @@ It will prompt you to enter a new password. Do so, and remember it! You'll need 
 Now you can quit out of the psql shell by typing 
 
 	\q
-
-Run a database migration.
-
-	bundle exec rake db:migrate
-
-Try to start a localhost server.
-
-	rails s
-
-If there are no errors, everything should work. Open up a web browser and navigate to http://localhost:3000/ You ought to see the website.
-
-Now that you're done with the setup, take a look at Post-Setup.md for tips on customizing your front page and tips on pushing to Github and Heroku.
 
 Useful Information
 ==================
