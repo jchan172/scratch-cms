@@ -3,7 +3,7 @@ Dev Environment Setup For Mac
 
 ###Installation
 
-Install XCode (won't be using XCode, but need its libraries)
+Install XCode (won't be using XCode, but need its libraries). Xcode 5 had problems, but Xcode 4.6.3 is known to work. Also install Command Line Tools inside Xcode (April 2013 command line tools release known to work).
 
 Install Homebrew, a tool that makes it easy to install other stuff via command line
 
@@ -64,9 +64,11 @@ Update Homebrew
 
 	brew update
 
-Install PostgreSQL
+Install PostgreSQL with Homebrew
 
 	brew install postgresql
+
+Also install PostgreSQL using graphical installer file from [PostgreSQL][postgresql].
 
 Make a postgres directory if it doesn't already exist
 
@@ -181,3 +183,4 @@ Reference
 [sshkeys]: https://help.github.com/articles/generating-ssh-keys
 [markdown]: http://daringfireball.net/projects/markdown/syntax
 [installosx]: http://www.interworks.com/blogs/ckaukis/2013/03/05/installing-ruby-200-rvm-and-homebrew-mac-os-x-108-mountain-lion
+[postgresql]: http://www.postgresql.org/download/macosx/
