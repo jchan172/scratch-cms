@@ -45,6 +45,7 @@ header {
 .navbar.transparent.navbar-inverse .navbar-inner {
     background: rgba(0,0,0,0.6);
     border-bottom: 1px solid rgb(88, 88, 88);
+    width: 100%;
 }
 .navbar.transparent.navbar-inverse .navbar-inner .container {
     margin-top: 10px;
@@ -407,7 +408,7 @@ header {
 		margin-bottom: 0px;
 	}
 	.navbar.transparent.navbar-inverse .navbar-inner {
-		background: #252528;
+		/*background: #252528;*/
 	}
 	.navbar-inverse .nav-collapse .nav > li > a, 
 	.navbar-inverse .nav-collapse .dropdown-menu a {
