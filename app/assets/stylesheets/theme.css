@@ -55,7 +55,8 @@ header {
 }
 .navbar.navbar-inverse .navbar-inner {  
     padding: 10px 0px 10px 0px;
-    background: #252528;    
+    /*background: #252528;    */
+    background: rgba(0,0,0,0.8); /* make this transparent as well for non home page*/
 }
 .navbar.navbar-inverse .navbar-inner.sticky {
     background: rgba(0,0,0,0.8);
