@@ -16,6 +16,7 @@ ScratchCms::Application.routes.draw do
   match '/about' => 'pages#about', :mode => 'main',    via: 'get'
   match '/error' => 'pages#error',    via: 'get'
   match '/photography' => 'pages#gallery', via: 'get'
+  match '/mysticartifact' => 'pages#mysticartifact', via: 'get'
 
   match '/signup',  to: 'users#new',    via: 'get'
 

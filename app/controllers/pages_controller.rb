@@ -15,4 +15,8 @@ class PagesController < ApplicationController
 
   def gallery
   end
+
+  def mysticartifact
+  end
+  
 end
