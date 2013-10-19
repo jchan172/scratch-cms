@@ -28,11 +28,11 @@ body .redactor_box_fullscreen {
 
 .redactor_box textarea {
 	font-family: Menlo, Monaco, monospace, sans-serif;
-	font-size: 13px;
+	font-size: 15px;
 	overflow: auto;
 	resize: none;
 	margin: 0;
-	padding: 0;
+	padding: 15px;
 	display: block;
 	position: relative;
 	z-index: 1004;
