@@ -1,52 +1,40 @@
 <% if yield(:mode) == 'management' %>
 
-	<footer id="footer-container" class="footer navbar navbar-fixed-bottom">
+    <footer id="footer-container" class="footer navbar navbar-fixed-bottom">
 
-		<table>
-			<tr>
-				<td class="cell-left" rowspan="2">
-					&nbsp;&nbsp; <%= link_to image_tag('ScratchCMS.png', alt: 'Scratch CMS', height: 25, width: 112), 'http://scratch-cms.herokuapp.com' %>
-				</td>
+        <table>
+            <tr>
+                <td class="cell-left" rowspan="2">
+                    &nbsp;&nbsp; <%= link_to image_tag('ScratchCMS.png', alt: 'Scratch CMS', height: 25, width: 112), 'http://scratch-cms.herokuapp.com' %>
+                </td>
 
-			</tr>
-			<tr>
-				<td class="cell-right">
-					<span class="copyright-text">
-						Copyright &#169; 2013 Scratch CMS · All Rights Reserved.
-					</span>
-				</td>
-			</tr>
-		</table>
+            </tr>
+            <tr>
+                <td class="cell-right">
+                    <span class="copyright-text">
+                        Copyright &#169; 2013 Scratch CMS · All Rights Reserved.
+                    </span>
+                </td>
+            </tr>
+        </table>
 
-	</footer>
+    </footer>
 
 <% else %>
-	<footer id="footer" class="footer">
+    <footer id="footer" class="footer">
         <div class="container">
-            <div class="row info">
-                <div class="span6 residence">
-                    <ul>
-                        <li></li>
-                        <li></li>
-                    </ul>
-                </div>
-                <div class="pull-right">
-                    <ul>
-                        <!-- <li><strong>Email:</strong><a href="#"> admin@scratchcms.herokuapp.com</a></li> -->
-                    </ul>
-                </div>
-            </div>
             <div class="row credits">
-                <div class="span12">
-                    <div class="row social">
-                        insert Ruby powered, built from Scratch
-                    </div>
-                </div>  
                 <div class="row copyright">
                     <div class="span12">
                         Copyright &#169; 2013 Scratch CMS. All rights reserved.
                     </div>
                 </div> 
+                <div class="span12">
+                    <div class="row social">
+                        <p>This website is built from</p>
+                        <p><%= link_to image_tag(asset_path("builtfromScratchCMS.png")), 'http://scratch-cms.herokuapp.com/' %></p>
+                    </div>
+                </div>  
             </div>
         </div>
 
