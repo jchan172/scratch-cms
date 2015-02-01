@@ -23,7 +23,7 @@ ScratchCms::Application.routes.draw do
   # match '/dashboard' => 'users#show', :defaults => { :id => -1 },    via: 'get'
   match '/dashboard' => 'users#show',    via: 'get'
 
-  match '/blogs/:id/manage' => 'blogs#manage',    via: 'get'
+  match '/blogs/:id/manage' => 'blogs#manage', via: 'get', as: 'blogs_manage'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
