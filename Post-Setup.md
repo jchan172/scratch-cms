@@ -13,6 +13,10 @@ Now log in using the command line.
 
 	heroku login
 
+Add your SSH key if you didn't already (can't push to Heroku if you don't do this):
+
+	heroku keys:add
+
 Add the remote so you can push to Heroku.
 
 	heroku git:remote -a <your app name, e.g. falling-wind-1624>
@@ -25,6 +29,10 @@ Add and commit changes.
 Push to Heroku.
 
 	git push heroku master
+
+Migrate the database on Heroku.
+
+	heroku run rake db:migrate
 
 You should see that Ruby gems install and asset precompilation succeeds. If the steps above complete successfully, then you've deployed your web site! After this, all you have to do is develop and push to Heroku until you're happy with your website. These are the steps when developing:
 
