@@ -9,11 +9,11 @@
     </script>
 
     <div class="span8 dashboard">
-      <h1>Create a New Entry in <i><%= Blog.find(params[:blogid]).title%></i> </h1>
+      <h1>Create a New Entry in <i><%= Blog.find(@blogid).title%></i> </h1>
 
       <%= form_for(@blogentry) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
-        
+
         <div class="text-label-container">
         <%= f.label :title, :class => "text-label" %> <%= f.text_field :title, :class => "text-field" %>
         </div>
@@ -21,7 +21,7 @@
         <br>
         <%# if you change the format of the f.text_field, be sure to change the format of the datetimepicker %>
         <div class="text-label-container">
-          <%= f.label "Date", :class => "text-label" %> 
+          <%= f.label "Date", :class => "text-label" %>
           <%= f.text_field :created_at, :value => (Time.zone.now.strftime('%Y %B %d %I:%M %P')), :id => 'basic_example_1', :class => "text-field" %>
         </div>
 
@@ -41,9 +41,9 @@
           <%= f.text_area :content, placeholder: "Write a new blog entry...", :id => "redactor"%>
         </div>
 
-        <% # :blogid was passed from a blogs_controller action, and now we put it %>
+        <% # @blogid was passed from a blogentries_controller action, and now we put it %>
         <% # into params[:blog][:id] to send off with the POST request. %>
-        <%= hidden_field :blog, :id, :value => params[:blogid] %>
+        <%= hidden_field :blog, :id, :value => @blogid %>
 
         <br>
 

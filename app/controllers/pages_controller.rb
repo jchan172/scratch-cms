@@ -1,10 +1,10 @@
 class PagesController < ApplicationController
   def home
-    @pcb = User.first.projects.find_by_title('PoE Measurement Board')
-    @scratchcms = User.first.projects.find_by_title('Scratch CMS')
-  	@quadrotor = User.first.projects.find_by_title('Radiation Mapping')
-  	@ddr = User.first.projects.find_by_title('DDR')
-  	@amp = User.first.projects.find_by_title('Pocket Amplifier')
+    @pcb = User.first.projects.find_by_title('PoE Measurement Board') rescue '#'
+    @scratchcms = User.first.projects.find_by_title('Scratch CMS') rescue '#'
+  	@quadrotor = User.first.projects.find_by_title('Radiation Mapping') rescue '#'
+  	@ddr = User.first.projects.find_by_title('DDR') rescue '#'
+  	@amp = User.first.projects.find_by_title('Pocket Amplifier') rescue '#'
   end
 
   def about

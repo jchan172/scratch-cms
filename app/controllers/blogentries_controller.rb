@@ -3,6 +3,7 @@ class BlogentriesController < ApplicationController
 
   def new
     @blogentry = Blogentry.new
+    @blogid = params[:blogid]
   end
 
   def edit
@@ -10,16 +11,19 @@ class BlogentriesController < ApplicationController
   end
 
   def destroy
-    Blogentry.find(params[:id]).destroy
+    blogentry = Blogentry.find(params[:id])
+    blog_id = blogentry.blog.id
+    blogentry.destroy
     flash[:success] = "Blog entry deleted."
-    redirect_to dashboard_path
+    redirect_to blogs_manage_path(blog_id)
   end
 
   def update
     @blogentry = Blogentry.find(params[:id])
+    blog_id = @blogentry.blog.id
     if @blogentry.update_attributes(blogentry_params)
       flash[:success] = "Blog entry updated!"
-      redirect_to dashboard_path
+      redirect_to blogs_manage_path(blog_id)
     else
       render 'edit'
     end
@@ -29,8 +33,9 @@ class BlogentriesController < ApplicationController
     @blogentry = current_user.blogs.find(params[:blog][:id]).blogentries.build(blogentry_params)
     if @blogentry.save
       flash[:success] = "Blog entry created successfully!"
-      redirect_to dashboard_path
+      redirect_to blogs_manage_path(params[:blog][:id])
     else
+      @blogid = params[:blog][:id]
       render 'new'
     end
   end
