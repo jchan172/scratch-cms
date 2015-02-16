@@ -20,7 +20,7 @@
         <br>
         <% @blogentries.order('created_at DESC').each do |blogentry| %>
           <div class="row-fluid">
-              <div class="sub-page-list pull-right">
+              <div class="sub-page-list pull-right blogentry-preview">
                 <h3>
                   <% if blogentry.draft == true %>
                     <%= "#{blogentry.title} - <i style=\"color:#BDBDBD;\">draft, #{blogentry.created_at.strftime("%F")}</i>".html_safe %>
