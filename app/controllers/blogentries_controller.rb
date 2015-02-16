@@ -23,7 +23,7 @@ class BlogentriesController < ApplicationController
     blog_id = @blogentry.blog.id
     if @blogentry.update_attributes(blogentry_params)
       flash[:success] = "Blog entry updated!"
-      redirect_to blogs_manage_path(blog_id)
+      redirect_to blogs_manage_path(blog_id, :page => params[:blogentry][:from_page])
     else
       render 'edit'
     end

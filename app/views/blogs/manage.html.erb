@@ -35,7 +35,8 @@
                 </p>
                 <p>
                   <% #according to Rails API, link_to(body, url, html_options) %>
-                  <%= link_to 'Edit', edit_blogentry_path(blogentry), 'data-no-turbolink' => true, :class => "btn" %>
+                  <%  from_page = params[:page].nil? ? "1" : params[:page] %>
+                  <%= link_to 'Edit', edit_blogentry_path(blogentry, :from => from_page), 'data-no-turbolink' => true, :class => "btn" %>
                   
                 </p>
               </div>
