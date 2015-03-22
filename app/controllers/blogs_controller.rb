@@ -16,10 +16,11 @@ class BlogsController < ApplicationController
   end
 
   def show
+    privileged = (params[:privileged].downcase rescue 'false') == 'yes'
     @blog = Blog.find(params[:id])
     # don't paginate the results, show all on one page
     @blogentries = @blog.blogentries
-    if @blog.draft == true
+    if (@blog.draft == true && !privileged)
       redirect_to root_path
     end
   end
