@@ -18,8 +18,8 @@
         </p>
         <p>
           <% #according to Rails API, link_to(body, url, html_options) %>
-          <%= link_to 'New Entry', new_blogentry_path(:blogid => blog.id), 'data-no-turbolink' => true, :class => 'btn' %>
-          <%= link_to 'Manage', { :controller => "blogs", :action => "manage", :id => blog.id }, { :class => "btn" } %>
+          <%= link_to 'New Entry', new_blogentry_path(:blogid => blog.friendly_id), 'data-no-turbolink' => true, :class => 'btn' %> <%# see friendly_id documentation %>
+          <%= link_to 'Manage', { :controller => "blogs", :action => "manage", :id => blog.friendly_id }, { :class => "btn" } %> <%# see friendly_id documentation %>
         </p>
       </div>
       <!--/span-->

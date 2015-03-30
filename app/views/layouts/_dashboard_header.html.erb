@@ -34,7 +34,7 @@ $(document).ready(
            	  					<li>
            	  						<%# deprecated way of rendering users/edit, keeping code for reference %>
            	  						<%#= link_to 'Account Settings', dashboard_path(:link => 'settings'), remote: true %>
-           	  						<%= link_to 'Account Settings', edit_user_path(:id => current_user.id) %>
+           	  						<%= link_to 'Account Settings', edit_user_path(:id => current_user.friendly_id) %>
            	  					</li>
            	  					<li>
            	  						<%= link_to "Sign Out", logout_path, method: :delete %>

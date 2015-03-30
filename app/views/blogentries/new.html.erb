@@ -9,7 +9,7 @@
     </script>
 
     <div class="span8 dashboard">
-      <h1>Create a New Entry in <i><%= Blog.find(@blogid).title%></i> </h1>
+      <h1>Create a New Entry in <i><%= Blog.friendly.find(@blogid).title%></i> </h1>
 
       <%= form_for(@blogentry) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>

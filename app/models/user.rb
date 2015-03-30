@@ -16,6 +16,9 @@
 require 'securerandom'
 
 class User < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :username, use: :slugged
+
   has_many :projects, dependent: :destroy
   has_many :blogs, dependent: :destroy
   has_many :custompages, dependent: :destroy

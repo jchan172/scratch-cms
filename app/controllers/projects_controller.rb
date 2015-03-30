@@ -6,11 +6,11 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @project = Project.find(params[:id])
+    @project = Project.friendly.find(params[:id])
   end
 
   def show
-    @project = Project.find(params[:id])
+    @project = Project.friendly.find(params[:id])
     if @project.draft == true
       redirect_to root_path
     end
@@ -21,26 +21,26 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    @project = Project.find(params[:id])
+    @project = Project.friendly.find(params[:id])
     if @project.update_attributes(project_params)
       flash[:success] = "Project updated!"
-      redirect_to dashboard_path
+      redirect_to dashboard_path(:link => "projects")
     else
       render 'edit'
     end
   end
 
   def destroy
-    Project.find(params[:id]).destroy
+    Project.friendly.find(params[:id]).destroy
     flash[:success] = "Project deleted."
-    redirect_to dashboard_path
+    redirect_to dashboard_path(:link => "projects")
   end
 
   def create
     @project = current_user.projects.build(project_params)
     if @project.save
       flash[:success] = "Project created successfully!"
-      redirect_to dashboard_path
+      redirect_to dashboard_path(:link => "projects")
     else
       render 'new'
     end
@@ -48,7 +48,7 @@ class ProjectsController < ApplicationController
 
   private
 
-    def project_params
+    def project_params # strong params
       params.require(:project).permit(:content, :title, :draft)
     end
 

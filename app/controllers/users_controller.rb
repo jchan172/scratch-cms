@@ -48,11 +48,11 @@ class UsersController < ApplicationController
   end
   
   def destroy
-    User.find(params[:id]).destroy()
+    User.friendly.find(params[:id]).destroy()
   end
   
   def update
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated!"
       redirect_to @user
@@ -63,7 +63,7 @@ class UsersController < ApplicationController
 
   private
 
-    def user_params
+    def user_params # strong params
       params.require(:user).permit(:email, :name, :username, :password, :password_confirmation)
     end
 

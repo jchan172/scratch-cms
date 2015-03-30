@@ -11,6 +11,9 @@
 #
 
 class Blogentry < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
   belongs_to :blog
 
   validates :blog_id, presence: true
