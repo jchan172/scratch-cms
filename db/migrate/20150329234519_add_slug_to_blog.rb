@@ -1,5 +1,5 @@
 class AddSlugToBlog < ActiveRecord::Migration
-  def changew
+  def change
     add_column :blogs, :slug, :string, unique: true
   end
 end
