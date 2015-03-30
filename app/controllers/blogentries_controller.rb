@@ -20,7 +20,7 @@ class BlogentriesController < ApplicationController
 
   def update
     @blogentry = Blogentry.friendly.find(params[:id])
-    blog_id = @blogentry.blog.id
+    blog_id = @blogentry.blog.friendly_id
     if @blogentry.update_attributes(blogentry_params)
       flash[:success] = "Blog entry updated!"
       redirect_to blogs_manage_path(blog_id, :page => params[:blogentry][:from_page])
