@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
 ruby '2.0.0'
-gem 'rails', '4.0.0'
+gem 'rails', '~> 4.1.1'
 gem 'jquery-rails', '3.0.4' # incorporate jquery
 gem 'bootstrap-sass', '2.3.0.1' # Twitter Bootstrap for frontend
-gem 'sass-rails' # integration for sass (frontend stylesheet stuff)
+gem 'sass-rails', '~> 4.0.3' # integration for sass (frontend stylesheet stuff)
 gem 'coffee-rails' # compiles coffeescript
 gem 'uglifier' # used for minifying javascript
 gem 'turbolinks' # turbolinks makes apps appear faster by replacing HTML instead of full reload
