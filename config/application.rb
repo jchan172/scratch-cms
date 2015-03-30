@@ -25,5 +25,8 @@ module ScratchCms
 
     # Change time zone to Pacific time zone
     config.time_zone = 'Pacific Time (US & Canada)'
+
+    # Active Record suppresses errors raised within after_rollback or after_commit callbacks and only prints them to the logs. In Rails 5, these errors will no longer be suppressed.
+    config.active_record.raise_in_transactional_callbacks = true
   end
 end

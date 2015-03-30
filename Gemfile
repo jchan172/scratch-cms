@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 ruby '2.0.0'
-gem 'rails', '~> 4.1.1'
+gem 'rails', '~> 4.2.1'
 gem 'jquery-rails', '3.0.4' # incorporate jquery
 gem 'bootstrap-sass', '2.3.0.1' # Twitter Bootstrap for frontend
 gem 'sass-rails', '~> 4.0.3' # integration for sass (frontend stylesheet stuff)
@@ -26,6 +26,7 @@ gem 'friendly_id', '~> 5.1.0' # allows routing to human friendly URLs instead of
 
 # these gems used both in development and testing
 group :development, :test do
+  gem 'web-console', '~> 2.0' # allows a console to be put in views using <%= console %>
 	# gem 'sqlite3', '1.3.5' # use sqlite for our development database
 	gem 'rspec-rails', '2.11.0' # use rspec as our testing platform
 	gem 'better_errors' # better interface for showing errors
