@@ -13,8 +13,13 @@ class BlogentriesController < ApplicationController
   def destroy
     blogentry = Blogentry.friendly.find(params[:id])
     blog_id = blogentry.blog.id
-    blogentry.destroy
-    flash[:success] = "Blog entry deleted."
+    blogentry.blog.touch
+    if blogentry.destroy
+      flash[:success] = "Blog entry deleted."
+
+    else
+      flash[:fail] = "Blog entry not deleted: Unknown reason."
+    end
     redirect_to blogs_manage_path(blog_id)
   end
 
@@ -22,6 +27,7 @@ class BlogentriesController < ApplicationController
     @blogentry = Blogentry.friendly.find(params[:id])
     blog_id = @blogentry.blog.friendly_id
     if @blogentry.update_attributes(blogentry_params)
+      @blogentry.blog.touch
       flash[:success] = "Blog entry updated!"
       redirect_to blogs_manage_path(blog_id, :page => params[:blogentry][:from_page])
     else
@@ -32,6 +38,7 @@ class BlogentriesController < ApplicationController
   def create
     @blogentry = current_user.blogs.friendly.find(params[:blog][:id]).blogentries.build(blogentry_params)
     if @blogentry.save
+      @blogentry.blog.touch
       flash[:success] = "Blog entry created successfully!"
       redirect_to blogs_manage_path(params[:blog][:id])
     else

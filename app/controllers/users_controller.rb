@@ -13,9 +13,9 @@ class UsersController < ApplicationController
     # this is the case when someone goes to /dashboard, so we'll want to display the user's projects and blogs
     # if params[:id] == -1
       @user = current_user
-      @projects = @user.projects.paginate(page: params[:page], :per_page => 10)
-      @blogs = @user.blogs.paginate(page: params[:page], :per_page => 10)
-      @custompages = @user.custompages.paginate(page: params[:page], :per_page => 10)
+      @projects = @user.projects.paginate(page: params[:page], :per_page => 10, order: 'updated_at DESC')
+      @blogs = @user.blogs.paginate(page: params[:page], :per_page => 10, order: 'updated_at DESC')
+      @custompages = @user.custompages.paginate(page: params[:page], :per_page => 10, order: 'updated_at DESC')
 
       respond_to do |format|
         format.html # renders show.html.erb
